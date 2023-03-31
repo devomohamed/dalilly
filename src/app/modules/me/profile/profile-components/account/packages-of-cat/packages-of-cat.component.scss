@@ -1,0 +1,18 @@
+.card-header, button{
+    background-color: #8c1434;
+    border: 1px solid #8c1434;
+    color: white;
+    
+}
+    .card,.list-group, .list-group-item{
+        border: none !important;
+    }
+    button{
+        border-top: 1px solid;
+        border-radius: 1rem;
+    }
+    .mybutton{
+        width: 30%;
+        text-align: center;
+    }
+    

@@ -1,0 +1,116 @@
+.basiccolor{color:#8c1434}
+.bg1{
+    background-color:#163e73 !important; }
+.bg{background-color: white;}
+::placeholder,select{color:silver;font-size: 14px;}
+i{color: silver;}
+.danger{border-bottom:2px solid #8c1434 !important;}
+textarea {
+	resize: none;
+}
+:disabled{
+   background-color: #8c1434  !important;
+   border: 1px solid #8c1434 !important;
+}
+#mobile:focus{
+    border:none !important;
+}
+.myborder{
+    border:2px solid silver;
+    margin-top: 3px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+  }
+.form-label {
+	font-size: 12px;
+	color: #163e73;
+	margin: 0;
+	display: block;
+	opacity: 1;
+	-webkit-transition: .333s ease top, .333s ease opacity;
+	transition: .333s ease top, .333s ease opacity;
+}
+.form-control {
+	border-radius: 0;
+	border-color: #ccc;
+   	border-width: 0 0 2px 0;
+   	border-style: none none solid none;
+   	box-shadow: none;
+}
+.form-control:focus {
+	box-shadow: none;
+	border-color: #163e73;
+}
+.js-hide-label {
+	opacity: 0; 	
+}
+.js-unhighlight-label {
+	color: #999 
+}
+.btn-start-order {
+	background: 0 0 #ffffff;
+    border: 1px solid #2f323a;
+    border-radius: 3px;
+    color: #2f323a;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+}
+.btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+	border-color: #5e9bfc;
+	color: #5e9bfc;
+}
+thead, tfoot,tfoot,#link{
+    color: white;
+    background-color:#8c1434 ;
+}
+.circle {
+    width: 20px;
+    height: 20px;
+    border:2px solid silver;
+    border-radius: 50%
+  }
+  .del{
+    border: 2px solid #8c1434 !important;
+  }
+  a{
+    cursor: pointer;
+  }
+  .image-upload {
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+    margin: auto;
+    overflow-y: hidden;
+    background-color: rgb(233, 229, 229);
+    //background-size: auto;
+    background-size: 100% 100%;
+      background-repeat: no-repeat;
+     margin-bottom: 15px ;
+}
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload i
+{    width: 80px;
+    cursor: pointer;
+    position: absolute;
+    // top: 212px;
+    // left: 330px;
+    margin: auto;
+    color: var(--white);
+   color: silver;
+   
+}

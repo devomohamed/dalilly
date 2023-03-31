@@ -1,0 +1,25 @@
+ .store{
+  .storeAlign {
+    // background-color: red !important;
+    cursor: pointer;
+    &:hover{
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+    .favorite {
+      right: -20%;
+      top: 20%;
+      transition: .3s;
+      svg{
+        font-size: 18px;
+        &:hover{
+          color: red;
+
+
+        }
+      }
+    }
+    &:hover .favorite{
+      right: 4%;
+    }
+  }
+ }

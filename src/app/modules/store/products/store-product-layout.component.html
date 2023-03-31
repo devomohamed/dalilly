@@ -1,0 +1,33 @@
+<div class="me-profile-layout">
+    <ul class="profile-links row">
+        <li class="col-md-4">
+            <a  class='' routerLink="active-ads/{{id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-store"></i>
+                <span>active ads</span>
+            </a>
+        </li>
+        <li class='col-md-4'>
+            <a routerLink="passive-ads/{{id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                <i class="fas fa-credit-card"></i>
+                <span>passive ads</span>
+            </a>
+        </li>
+        <li class="col-md-4 mx-0">
+            <a routerLink="expired-ads/{{id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                <i class="fas fa-money-check"></i>
+                <span>expired ads</span>
+            </a>
+        </li>
+        <!-- <li>
+            <a routerLink="total-views" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                <i class="fa fa-eye"></i>
+                <span>total views</span>
+            </a>
+        </li> -->
+    </ul>
+    
+        <div class="col-md-12">
+            <router-outlet></router-outlet>
+        </div>
+    
+</div>

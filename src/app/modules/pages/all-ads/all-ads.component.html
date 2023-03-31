@@ -1,0 +1,9 @@
+<app-slider-categories  [categories]="categories" [catSelected]="selectedCat" [type]="'category'" (categoryIdSelected)="changeCat($event)" ></app-slider-categories>
+<div *ngIf="catData">
+  <app-slider-categories  [categories]="subCategories" [subSelected]="subSelected" [type]="'sub'" (subIdSelected)="changeSub($event)"></app-slider-categories>
+</div>
+<div *ngIf="isSub">
+  <app-slider-categories  [categories]="subSubCategories" [subSubSelected]="subSubSelected" [type]="'subsub'" (subSubIdSelected)="changeSubSub($event)"></app-slider-categories>
+</div>
+
+<app-filter-products [subSubCategories]="subSubCategories" [subSubSelected]="subSubSelected" (subSubIdSelected)="changeSubSub($event)" [isSub]="isSub" [categories]="categories" [subSelected]="subSelected" [subCategories]="subCategories" [catSelected]="selectedCat" (catIdSelected)="changeCat($event)" (subIdSelected)="changeSub($event)" (infoReq)="handleReq($event)"></app-filter-products>

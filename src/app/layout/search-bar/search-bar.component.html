@@ -1,0 +1,286 @@
+<div class="header-middle">
+  <div class="container">
+    <div class="header-left">
+      <button class="mobile-menu-toggler" type="button">
+        <i class="icon-menu"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Porto Logo" />
+      </a>
+    </div>
+
+    <div class="header-right d-flex justify-content-between">
+      <div class="header-search">
+        <a href="#" class="search-toggle" role="button"
+          ><i class="porto-icon-search-3"></i
+        ></a>
+        <form action="#" method="get">
+          <div class="header-search-wrapper">
+            <input
+              type="search"
+              class="form-control"
+              name="q"
+              id="q"
+              placeholder="I'm searching for..."
+              required
+            />
+            <button class="btn" type="submit">
+              <i class="porto-icon-search-3"></i>
+            </button>
+          </div>
+          <!-- End .header-search-wrapper -->
+        </form>
+      </div>
+      <!-- End .header-search -->
+
+      <div class="horizontal_bar"></div>
+      <a routerLink="/home/me/profile/my-profile" class="header-user">
+        <img
+          class="profilephoto mr-3"
+          src="../../../../assets/images/profile/person.png"
+        />
+
+        <div class="header-userinfo">
+          <span>Hello!</span>
+          <h4>My Account</h4>
+        </div>
+      </a>
+      <!-- start order notification -->
+      <div class="d-flex justify-content-between">
+        <div class="dropdown cart-dropdown main-notifiy">
+          <a
+            class="dropdown-toggle main-link"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-display="static"
+          >
+            <i class="minicart-icon"></i>
+            <span class="cart-count notify-count">{{ counter_order }}</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdownmenu-wrapper">
+              <a class="dropdown-item">
+                <div class="dropdown-cart-products">
+                  <div
+                    class="product d-flex justify-content-left row"
+                    *ngFor="let noty of orders_notification"
+                  >
+                    <div
+                      class="rounded"
+                      [ngClass]="noty.is_open != 1 ? 'active' : ''"
+                      (click)="
+                        set_as_open(
+                          noty.notification_id,
+                          noty.is_open,
+                          noty.object_id
+                        )
+                      "
+                    >
+                      <div class="row d-flex justify-content-between">
+                        <figure
+                          class="product-image-container img-notify col-md-5"
+                        >
+                          <a class="product-image">
+                            <img
+                              src="https://dalilisouq.com/{{
+                                noty.sender.image
+                              }}"
+                              alt="product"
+                              width="40px"
+                              class="border rounded-circle myimg"
+                            />
+                          </a>
+                        </figure>
+                        <p class="col-md-6 d-flex align-items-center text-dark">
+                          {{ noty.sender.name }} {{ noty.sender.s_name }}
+                        </p>
+                        <!-- <p class="col-md-4">23-3-3303</p>
+                             -->
+                      </div>
+                      <div class="product-details">
+                        <h4 class="product-title">
+                          <a>{{ noty.action }}</a>
+                          <!-- <a href="#" class="btn-remove" title="Remove Product"><i
+                                        class="porto-icon-retweet"></i></a> -->
+                        </h4>
+                      </div>
+                      <!-- End .product-details -->
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- end order notification -->
+
+        <!-- start notification -->
+        <div class="dropdown cart-dropdown main-notifiy">
+          <a
+            href="#"
+            class="dropdown-toggle main-link"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-display="static"
+          >
+            <i class="fa fa-bell notify fa-2x"></i>
+            <span class="cart-count notify-count">{{ counter_noty }}</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdownmenu-wrapper">
+              <a class="dropdown-item">
+                <div class="dropdown-cart-products">
+                  <div
+                    class="product d-flex justify-content-left row"
+                    *ngFor="let noty of notifications"
+                  >
+                    <div
+                      class="rounded"
+                      [ngClass]="noty.is_open != 1 ? 'active' : ''"
+                      (click)="
+                        set_as_open(noty.notification_id, noty.is_open, ' 0')
+                      "
+                    >
+                      <div class="row d-flex justify-content-between">
+                        <figure
+                          class="product-image-container img-notify col-md-5"
+                        >
+                          <a class="product-image">
+                            <img
+                              src="https://dalilisouq.com/{{
+                                noty.sender.image
+                              }}"
+                              alt="product"
+                              width="40px"
+                              class="border rounded-circle myimg"
+                            />
+                          </a>
+                        </figure>
+                        <p class="col-md-6 d-flex align-items-center text-dark">
+                          {{ noty.sender.name }} {{ noty.sender.s_name }}
+                        </p>
+                        <!-- <p class="col-md-4">23-3-3303</p>
+                             -->
+                      </div>
+                      <div class="product-details">
+                        <h4 class="product-title">
+                          <a>{{ noty.action }} </a>
+                          <!-- <a href="#" class="btn-remove" title="Remove Product"><i
+                                        class="porto-icon-retweet"></i></a> -->
+                        </h4>
+                      </div>
+                      <!-- End .product-details -->
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- end notification -->
+
+        <div class="dropdown cart-dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-display="static"
+          >
+            <i class="fa fa-shopping-cart fa-2x bg-light"></i>
+            <span class="cart-count">2</span>
+          </a>
+
+          <div class="dropdown-menu">
+            <div class="dropdownmenu-wrapper">
+              <div class="dropdown-cart-header">
+                <span>2 Items</span>
+
+                <a href="cart.html">View Cart</a>
+              </div>
+              <!-- End .dropdown-cart-header -->
+              <div class="dropdown-cart-products">
+                <div class="product">
+                  <div class="product-details">
+                    <h4 class="product-title">
+                      <a href="product.html">Woman Ring</a>
+                    </h4>
+
+                    <span class="cart-product-info">
+                      <span class="cart-product-qty">1</span> x $99.00
+                    </span>
+                  </div>
+                  <!-- End .product-details -->
+
+                  <figure class="product-image-container">
+                    <a href="product.html" class="product-image">
+                      <img
+                        src="assets/images/products/cart/product-1.jpg"
+                        alt="product"
+                      />
+                    </a>
+                    <a href="#" class="btn-remove" title="Remove Product"
+                      ><i class="porto-icon-retweet"></i
+                    ></a>
+                  </figure>
+                </div>
+                <!-- End .product -->
+
+                <div class="product">
+                  <div class="product-details">
+                    <h4 class="product-title">
+                      <a href="product.html">Woman Necklace</a>
+                    </h4>
+
+                    <span class="cart-product-info">
+                      <span class="cart-product-qty">1</span> x $35.00
+                    </span>
+                  </div>
+                  <!-- End .product-details -->
+
+                  <figure class="product-image-container">
+                    <a href="product.html" class="product-image">
+                      <img
+                        src="assets/images/products/cart/product-2.jpg"
+                        alt="product"
+                      />
+                    </a>
+                    <a href="#" class="btn-remove" title="Remove Product"
+                      ><i class="porto-icon-retweet"></i
+                    ></a>
+                  </figure>
+                </div>
+                <!-- End .product -->
+              </div>
+              <!-- End .cart-product -->
+
+              <div class="dropdown-cart-total">
+                <span>Total</span>
+
+                <span class="cart-total-price">$134.00</span>
+              </div>
+              <!-- End .dropdown-cart-total -->
+
+              <div class="dropdown-cart-action">
+                <a href="checkout-shipping.html" class="btn btn-block"
+                  >Checkout</a
+                >
+              </div>
+              <!-- End .dropdown-cart-total -->
+            </div>
+            <!-- End .dropdownmenu-wrapper -->
+          </div>
+          <!-- End .dropdown-menu -->
+        </div>
+      </div>
+      <!-- End .dropdown -->
+    </div>
+    <!-- End .header-right -->
+  </div>
+</div>

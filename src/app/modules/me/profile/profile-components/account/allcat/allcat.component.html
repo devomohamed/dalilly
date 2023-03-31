@@ -1,0 +1,39 @@
+
+<div class='card-header header'>
+    <a class="btn link " (click)='isaccount()'>accounts</a>
+    <a class="btn link" (click)='iscategory()'>categories</a>
+</div>
+
+<div class="row card-body" *ngIf='is_category'>
+    <div class='me card-header col-md-6 header rounded d-flex justify-content-between align-items-center' *ngFor='let category of categories '>
+        <img  src="https://dalilisouq.com/{{category.image}}" width='60px' height="20px">
+        <a (click)='upgradespecificcategory(category.id)' class='d-flex h3'>{{category.name}} </a>  
+    </div>
+</div>
+<div class="row mt-2" *ngIf='is_account'>
+    <div class="col-md-4" *ngFor='let account of accounts let i = index'>
+     
+    <div class="card ">
+        <div class='card-header price' text-center > {{account.price.price}} EGP</div>
+        <div class='text-center basiccolor h3 mt-2' > {{account.name}}</div>
+    <div class='h4 m-2 p-1 '><i class="fa fa-star basiccolor pr-3"></i>{{account.days}} days</div>
+    <div class='h4 m-2 p-1 '><i class="fa fa-star basiccolor pr-3"></i>{{account.ads}} special days</div>
+    <div class='h4 m-2 p-1 '><i class="fa fa-star basiccolor pr-3"></i>{{account.balance}} balance</div>
+   
+    <div class="card plan-card"style="border: none;" >
+        <ul class="list-group" >
+            <div *ngFor='let cat of account.categories'>
+            <li class="list-group-item d-flex justify-content-between" >
+                <span>{{cat.category.name}}</span>
+                <span class='badge badge-light'>{{cat.ads}}</span>
+            </li>
+        </div>       
+        </ul>
+        
+    </div>
+    <div class='d-flex justify-content-center align-items-end '>
+        <button class="text-cennter  btn btn-lg rounded mb-1 " (click)='upgrade(account.id,account.price.price)'> buy</button>
+        </div>
+</div>
+</div>
+</div>

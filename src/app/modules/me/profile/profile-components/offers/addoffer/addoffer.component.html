@@ -1,0 +1,80 @@
+<div class="container">
+    
+    <div class="row ">
+        <div class="  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
+            <form id="contact-form" class="form mt-0" #f='ngForm' (ngSubmit)='create()' enctype="multipart/form-data"> 
+               
+          <div class='bg1 w-100 border-bottom  border-secondary' style="height: 200px;padding-top: 10px;margin-bottom: 5px;margin-top: 2px;">
+                
+            <div class="image-upload text-center" [ngStyle]="{'background-image': 'url(' + imageSrc+ ')'}">
+                <label for="file-input" class="text-center">
+                    <i class="fa fa-camera fa-2x"></i>
+                </label>
+                    
+                <input required id="file-input" type="file" accept="image/*" (change)="selectedFile($event)"/>
+            </div>
+            
+       
+            </div>
+                    
+            <div class="form-group mt-3">      
+                <label class="form-label" [ngClass]="data.store_name!='' ? '' : 'js-hide-label select1'" class=''>Select account</label>
+               <select required id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
+                      <option  class="text-dark " [selected]='data.store_name=="my account"' >My account</option>
+                      <option class="text-dark" id={{store.id}} [selected]='data.store_name==store.name'
+                       *ngFor='let store of stores' >{{store?.name}}</option>
+                  </select>
+                 
+              </div>
+                <div class="form-group " >
+                    <label  *ngIf='data.category_store_name' for="exampleInputEmail1">Select Category</label>
+                  
+                    <input required id='categoryname' #categoryname='ngModel' ngModel [ngClass]='categoryname.touched&&categoryname.errors?.["required"]?"danger":""'  class="form-control" placeholder="select category" (click)='show($event)'  name='category' [(ngModel)]=data.category_store_name>
+                         
+                </div> 
+               
+                <div class="form-group">
+                    <label  class="" *ngIf='data.city_id' for="exampleInputEmail1" class=''> Select City</label>
+                    <input  required id='city' #city='ngModel' ngModel [ngClass]='city.touched&&city.errors?.["required"]?"danger":""'  class="form-control" placeholder="select city" (click)='getcity()'    name='city' [(ngModel)]=data.city_name >
+                    
+                </div>
+            
+           
+                <div class="form-group">
+                    <label for="exampleInputEmail1 " class='js-hide-label name'>title</label>
+                    <input type="text" required placeholder="Title" class="form-control name" id="name" aria-describedby="emailHelp" [ngClass]='name.touched&&name.errors?.["required"]?"danger":""' #name='ngModel' [(ngModel)]=data.name name='name' (change)='displaylabel("name")' (blur)='hidelabel("name")' (click)='displaylabel("name")' (focus)='displaylabel("name")'>
+                </div>
+            
+           
+                <div class="form-group"  >
+                    <label for="exampleInputEmail1" class='js-hide-label desc'>details</label>
+                    <input required type="text" id='desc' placeholder=" detailes" class="form-control desc" [ngClass]='desc.touched&&desc.errors?.["required"]?"danger":""' #desc='ngModel' aria-describedby="emailHelp" [(ngModel)]=data.desc name='desc'  (change)='displaylabel("desc")' (blur)='hidelabel("desc")' (click)='displaylabel("desc")' (focus)='displaylabel("desc")'>
+                </div>
+            
+               
+           
+                <div class="form-group ">
+                    <label for="exampleInputEmail1" class='js-hide-label mobile' >phone</label>
+                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                        <img src='https://dalilisouq.com/{{country.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                    <input id='mobile' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number" (change)='displaylabel("mobile")' (blur)='hidelabel("mobile")' (click)='displaylabel("mobile")' (focus)='displaylabel("mobile")' placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=data.mobile name='phone'>
+                  
+               
+            </div> 
+                </div>
+                 
+               
+
+                               <!-- <label for="quantity"class='' >ubdate product Location</label>
+                   -->
+                <div id='map' style="width:100%;height:400px" class=""></div> 
+
+                <div class="text-center col-md-12 d-flex justify-content-between">
+                    <!-- <a class="btn btn-primary">Reset</a> -->
+        <button type="submit" class="mybtn btn  border rounded btn-primary" [disabled]='f.invalid'>Add</button>
+       
+        </div>
+    </form>
+</div>
+</div>
+</div>

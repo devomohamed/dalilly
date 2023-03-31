@@ -1,0 +1,5 @@
+<div class="categorries d-flex flex-wrap">
+  <div class="category" *ngFor="let store of stores" routerLink="/storeseller/{{store.id}}">
+    <app-store2 [store]="store"></app-store2>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="store" routerLink="/storeseller/{{store?.id}}">
+  <div class="top position-relative">
+    <div *ngIf="store?.image;then thenBlock;else elseBlock"></div>
+    <ng-template #thenBlock>
+      <img [src]="'https://dalilisouq.com/'+store?.image" alt="">
+    </ng-template>
+    <ng-template #elseBlock>
+      <img src="../../../assets/images/stores/pexels-caio-64613.jpg" alt="">
+    </ng-template>
+    <div class="badge badge-light position-absolute">{{store?.no_adds}}</div>
+  </div>
+  <div class="txt">
+  </div>
+  <div class="txt ml-3 d-flex flex-column justify-content-between">
+    <div class="title h4">
+      {{store?.name}}
+    </div>
+    <div class="icons text-warning">
+      <ng-container *ngFor="let r of [1,2,3,4,5] | slice:0:store?.rate">
+        <i class="fa-solid fa-star"></i>
+      </ng-container>
+    </div>
+  </div>
+</div>

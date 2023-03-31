@@ -1,0 +1,93 @@
+a{
+    cursor: pointer;
+}
+.card-header{
+    background-color: white;
+}
+h4.title {
+    //position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .6);
+    margin: 0;
+    text-align: center;
+    opacity: 0.5;
+    width: 30%;
+}
+img{
+    height: 40px !important;
+}
+.header{
+    background-color: white;
+   
+    
+}
+.me{
+    transition: 0.3s;
+}
+.me:hover{
+    transform: scale(1.02);
+
+
+}
+.link{
+    background-color: white;
+    color: silver;
+    width: 50%;
+}
+.link:hover{
+    background-color:#113859;
+    color: white !important;
+}
+.basiccolor{
+    color:#113859;
+}
+.card{
+    border-top: 1px solid;
+    border-radius: 1rem;
+}
+.price{
+    border-bottom: solid;
+   
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+   background-color:#113859;
+   color:white;
+   width: 50%;
+ margin: auto;
+ text-align: center;
+}
+.card-header,.borderbottom{
+    border-bottom: 1px solid #ccc;;
+}
+li{
+    border-left: none;
+    border-right: none;
+}
+button{
+    background-color: #8c1434;
+    border: 1px solid #8c1434;
+    color: white;
+    border-radius: 1.4rem;
+}
+a:hover{
+    cursor: pointer;
+}
+.circle {
+    width: 20px;
+    height: 20px;
+    border:2px solid silver;
+    border-radius: 50%
+  }
+  .active{
+     border:1px solid black
+  }
+ #prop .card-header::after{
+    content: none !important;
+}
+.activediv{
+    border:1px solid red;
+}

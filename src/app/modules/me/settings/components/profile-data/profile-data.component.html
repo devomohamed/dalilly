@@ -1,0 +1,43 @@
+<div class="card profile-data mt-4">
+    <div class="card-header">
+        <div>
+            <a class="btn btn-sm btn-primary" routerLink="edit">
+                <i class="fa fa-edit"></i> 
+                edit profile
+            </a>
+        </div>
+        <ul class='m-0'>
+            <li><a [href]=profile_data?.Response.facebook *ngIf='profile_data?.Response.facebook'><i class='fab fa-facebook-f'></i></a></li>
+            <li><a href='{{profile_data?.Response.instagram}}'><i class='fab fa-instagram'></i></a></li>
+            <li><a [href]=profile_data?.Response.twitter *ngIf='profile_data?.Response.twitter'><i class='fab fa-twitter'></i></a></li>
+            <li><a  [href]=profile_data?.Response.youtube *ngIf='profile_data?.Response.youtube'><i class='fab fa-youtube'></i></a></li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://dalilisouq.com/{{profile_data?.Response.image}}" alt="">
+            </div>
+            <div class="col-md-8">
+                <ul class="list-group">
+                    <li class="list-group-item"><i class="fa fa-user"></i> <span class="ml-2">{{profile_data?.Response.url}}</span> </li>
+                    <li class="list-group-item"><i class="fa fa-envelope"></i> <span class="ml-2">{{profile_data?.Response.email}}</span> </li>
+                    <li class="list-group-item"><i class="fa fa-phone"></i> <span class="ml-2">{{profile_data?.Response.mobile}}</span><i class="fa fa-check bg-success text-light p-1 mx-5 rounded-circle border"></i> </li>
+                    <li class="list-group-item"><i class="fas fa-venus-mars"></i> <span class="ml-2" *ngIf='profile_data?.Response.gender'>male</span><span class="ml-2" *ngIf='!profile_data?.Response.gender'>female</span> </li>
+                    <li class="list-group-item"><i class="fa fa-calendar"></i> <span class="ml-2">{{profile_data?.Response.birth_date}}</span> </li>
+                    <li class="list-group-item">
+                        <div class="form-group form-check m-0">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]='profile_data?.Response.is_public==1'> 
+                            <label class="form-check-label ml-2" for="exampleCheck1"> show number on profile and advertising</label>
+                        </div>
+                    </li>
+
+                </ul>
+                <button class="btn btn-sm btn-primary mt-2" routerLink="change-password">
+                    <i class="fa fa-lock"></i> 
+                    change password
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

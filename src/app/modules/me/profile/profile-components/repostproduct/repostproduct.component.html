@@ -1,0 +1,68 @@
+<!-- <div *ngIf='mess' class="alert alert-dark">{{mess}}</div> -->
+
+<div class='row '>
+   
+    <div class="col-md-4 mb-1" *ngFor='let package of packages'>
+      
+    <div class="card rounded-top h-100 " >
+<div class='card-header'>{{package.name}}</div>
+<div class='card-body'>
+    <div class="card plan-card" >
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Total ads</span>
+            <span class='badge badge-light'>{{package.ads}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>package validity</span>
+            <span class='badge badge-light'>{{package.days}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>special days</span>
+            <span class='badge badge-light'>{{package.special_product_days}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>package price </span>
+            <span class='badge badge-light' >{{package.price}}</span>
+
+            <span class='badge badge-light' ></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Ads online for </span>
+            <span class='badge badge-light' >{{package.product_days}}</span>
+
+            <span class='badge badge-light' ></span>
+        </li>
+        <li class="list-group-item ">
+            {{package.description}}
+         </li>
+        
+    </ul>
+    
+</div>
+
+</div>
+<div class='d-flex justify-content-center align-items-end '>
+    <button class="text-cennter  btn btn-lg rounded mb-1 " (click)='subscribe(response.Response.id,package.id)'> buy</button>
+    </div>
+  </div>
+  
+</div>
+
+</div>
+<div  class='row d-flex justify-content-center p-5 m-3'>
+    <button style="cursor: pointer;" (click)=' continueo()'>continue without packages </button>
+    
+    </div>
+      <!-- Modal content -->
+      <div  id="myModal" class="modal">
+
+        <div  class="modal-content">
+          <span (click)='close()' class="close">&times;</span>
+          <p class="text-center">{{mess}}</p>
+          <div class='row d-flex justify-content-between m-3'>
+              <!-- <a class="rouned btn btn-primary" (click)='close()'>change</a>
+              <a class="rounded btn btn-primary" (click)='upgrade()'  >upgrade</a> -->
+          </div>
+        </div>
+        </div>

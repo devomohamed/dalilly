@@ -1,0 +1,33 @@
+a{
+    cursor: pointer;
+  }
+  .image-upload {
+    height: 170px;
+    width: 170px;
+   // border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+    margin: auto;
+    overflow-y: hidden;
+    background-color: rgb(233, 229, 229);
+    //background-size: auto;
+    background-size: 100% 100%;
+      background-repeat: no-repeat;
+     margin-bottom: 15px ;
+}
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload i
+{    width: 80px;
+    cursor: pointer;
+    position: absolute;
+    // top: 212px;
+    // left: 330px;
+    margin: auto;
+    color: var(--white);
+   color: silver;
+   
+}
+

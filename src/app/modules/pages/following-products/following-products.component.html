@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="top my-3 d-flex justify-content-between">
+    <div class="left">Filter By City:</div>
+    <div class="right">
+      <select class="custom-select" [(ngModel)]="city" (change)="getProducts();currentPage = 1">
+        <option *ngFor="let item of cities" [value]="item.id">{{item.name}}</option>
+        <!-- <option value="2">Two</option>
+        <option value="3">Three</option> -->
+      </select>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4" *ngFor="let product of products?.data">
+      <app-product [data]="product"></app-product>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li [class.text-muted]="currentPage == 1" class="page-item page-link cursor-pointer" (click)="previousPage()">&laquo;</li>
+        <li [class.active]="i+1 == currentPage" class="page-item page-link cursor-pointer" *ngFor="let item of counter(products?.last_page) ;let i = index" (click)="changePage(i+1)">{{i+1}}</li>
+        <li [class.text-muted]="currentPage == products?.last_page" class="page-item page-link cursor-pointer" (click)="nextPage()">&raquo;</li>
+      </ul>
+    </nav>
+  </div>
+</div>

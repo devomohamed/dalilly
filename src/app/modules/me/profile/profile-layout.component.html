@@ -1,0 +1,137 @@
+<div class="me-profile-layout">
+    <div class="row mt-2">
+        <div class="col-md-3" >
+            <ul class="profile-links">
+                <li>
+                    <a routerLink="my-profile" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fa fa-user"></i>
+                        <span>my profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="following" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+
+                        <div>
+                        <i class="fa fa-users"></i>
+                        <span>my following</span>
+                    </div>
+                        <div>
+                            <span *ngIf='followings?.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followings?.length}}</span>
+                        </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a  routerLink="followers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+                      <div>
+                        <i class="fa fa-users"></i>
+                        <span>my followers</span>
+                    </div>
+                    <div>
+                        <span  *ngIf='followers?.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followers?.length}}</span>
+                    </div>
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="favourites" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+
+                        <i class="fa fa-heart"></i>
+
+                        <span> my favourites </span>
+
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="addresses" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span> my addresses </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="account/data" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fa fa-user"></i>
+                        <span> my account </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="stores" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fas fa-store-alt"></i>
+                        <span> my stores </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="offers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fas fa-tags"></i>
+                        <span> my offers </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="orders" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span> my orders </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="sales" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fas fa-chart-line"></i>
+                        <span> my sales </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="paid-sales" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+
+                            <div>
+                        <i class="fas fa-credit-card"></i>
+
+                        <span> paid sales </span>
+                        </div>
+
+
+
+                        <div>
+                            <span  *ngIf='count_paid!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{count_paid}}</span>
+                        </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="rejected-sales" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+
+                            <div>
+                        <i class="fas fa-receipt"></i>
+                        <span> rejected sales </span>
+                        </div>
+                        <div>
+                            <span  *ngIf='count_rejected!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{count_rejected}}</span>
+                        </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="recently-view" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fa fa-eye"></i>
+                        <span> recently view </span>
+                    </a>
+                </li>
+                <li>
+                    <a (click)='logout()' [routerLinkActive]="'active'" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                          </svg>
+                        <span> Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <!-- <app-my-profile *ngIf="route=='/me/profile'" ></app-my-profile> -->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

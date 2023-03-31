@@ -1,0 +1,73 @@
+<div class="row  "  >
+  <div id='prop' class=' col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3  '>
+    <form (ngSubmit)='submit()' class="form">
+      <div class='card-header  d-flex justify-content-between' >
+        <a  ><i class="fa fa-arrow-left mr-3"></i>select color</a>
+        <button *ngIf='objectofcolor.length!=0' class='' type='submit'>submit</button>
+    </div>
+        
+ <div *ngIf='data.is_color!=0' class='me card-body col-md-6 m-2 mx-5 header rounded ' > 
+                    <a  class='card-header d-flex h3'> select color</a>
+                    
+                  
+                  <div class='form-check  row d-flex justify-content-start' >
+                    
+                    <div   class=' d-flex justify-content-start m-1' *ngFor='let color of colors '>
+                    <span (click)='getcolor(color.color,color.id)' id={{color.id}}  class="p-1 circle d-flex justify-content-between" [style.background]="color.color">    
+                    
+                    </span>
+                      </div>
+                    </div>
+                     </div>
+                     <div *ngIf='data.is_size!=0' class='me card-body col-md-6 m-2 mx-5 header rounded ' > 
+                        <a  class='card-header d-flex h3'> select size</a>
+                                        
+                  <div class='form-check  row d-flex justify-content-start' >
+                    
+                    <div  class=' d-flex justify-content-start m-1' *ngFor='let size of sizes '>
+                    <span id={{size}} (click)='getsize(size)' class="text-center border bg-light d-flex justify-content-between p-3" >    
+                    {{size}}
+                    </span>
+                      </div>
+                    </div>
+                    <div *ngIf='data?.is_color==1&&data?.is_size==1||data?.is_online==0' class="d-flex justify-content-center text-center row"><a (click)='addplus()' class="d-flex justify-content-center btn btn-primary border col-md-6 rounded-top ">add</a>    
+                    </div>
+                     </div>
+                     <div *ngIf='data.is_online==1&&(data?.is_color==2||data.is_size==2)' class='me card-body col-md-6 m-2 mx-5 header rounded ' > 
+                        <a  class='card-header d-flex h3'> Add quantity </a>
+                        <div class="row d-flex justify-content-center text-center ">
+                        <div  class="my-2 text-center d-flex justify-content-center  border  p-3 rounded"><span class='plus col-md-4 d-flex align-items-center justify-content-center' (click)='min()'>-</span><input class='form-control col-md-4' name='quantity' value={{quantity}} [(ngModel)]=quantity type="number" min="1"><span class='col-md-4 plus d-flex align-items-center justify-content-center' (click)='plus()'>+</span></div>
+                         </div>   
+                         <a (click)='add()' class=" d-flex justify-content-center btn btn-primary button border mb-0 rounded-top ">add</a>    
+                        
+                    </div>
+                   
+                    <div  class="myborder ml-5 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-3 form">
+                 
+                    <div *ngIf='objectofcolor.length!=0' class="form-group">
+                        <table class='table table-bordered w-100'>
+                            <thead>
+                                <tr class='text-center'>
+                                    <th scope="col">color</th>
+                                    <th scope="col">quantity</th>
+                                    <th scope="col">size</th>
+                                    <th scope="col">remove</th>
+                                </tr>
+                              </thead>
+                                <tr *ngFor='let obj of objectofcolor' class='text-center'>
+                                    <td class=" "><span class='circle p-2 px-3' [style.background]='obj.color'></span></td>
+                                    <td>{{obj.quantity}}</td>
+                                    <td>{{obj.size}}</td>
+                                    <td (click)='deleteitem(obj)'><i class='del p-2 fa fa-times border rounded-circle basiccolor'></i></td>
+                                </tr>
+                           
+                        </table>
+                    </div>
+                  </div>
+                    
+                     
+                     
+                    </form>
+                    </div>
+                  </div>
+                  

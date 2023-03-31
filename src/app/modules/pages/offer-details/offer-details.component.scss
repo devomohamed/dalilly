@@ -1,0 +1,81 @@
+.offer-btns {
+  button {
+      width: 33.33%;
+      border: none;
+      padding: 2rem .5rem;
+      cursor: pointer;
+      transition: .3s;
+      outline: none;
+      background-color: #8c1434;
+      color: #fff;
+      font-size: 1.5rem;
+      &:hover {
+          background-color: #163e73;
+      }
+      i {
+          margin-right: .5rem;
+          transition: .3s;
+      }
+  }
+}
+
+.comments{
+  .comment{
+    margin-top: 15 px;
+    .txt{
+
+
+    width: 100%;
+    margin-left: 10px;
+    .right{
+      h5{
+        padding: 10px;
+      background-color:#ddd;
+    border-radius: 8px;
+      }
+      .options{
+        i{
+
+        }
+      }
+    }
+    }
+  }
+  .write-comment{
+    form{
+      input{
+        // max-width: 80%;
+        width: 80%;
+      }
+      button{
+        // max-width: 80%;
+        width: 20%;
+      }
+    }
+  }
+}
+
+.btn-like.active{
+  background-color: #163e73 !important;
+}
+
+
+
+.container{
+  .image{
+    img{
+      height: fit-content;
+    }
+    .txt-dt{
+      width: 100%;
+      // bottom: 0;
+      // left: 0;
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+iframe{
+  width: 100%;
+}

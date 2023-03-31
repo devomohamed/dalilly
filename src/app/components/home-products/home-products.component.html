@@ -1,0 +1,27 @@
+<div class="my-5 products-categorry">
+  <div class="boxes d-flex">
+    <div class="left text-center">
+      <h2 class="py-2">{{categoryAllData?.name}}</h2>
+      <ul class="products">
+        <li class="pe-auto h4 cursor-pointer mr-3" aria-disabled="true" ><a [class.active]="-1 == idActive" (click)="changeActive(-1,-1)" class="py-3 pl-3 d-flex align-items-center"><img style="width: 30px; height: 30px;" src="../../../assets/images/download.jpg" alt=""><span class="pl-3">All</span></a></li>
+        <li class="pe-auto h4 cursor-pointer mr-3" aria-disabled="true" *ngFor="let item of categoryAllData?.categories;let i = index"><a
+           [class.active]="i == idActive" (click)="changeActive(i,item?.id);subName = item.name" class="py-3 pl-3 d-flex align-items-center"><img style="width: 30px; height: 30px;" src="{{domain}}{{item.icon}}" alt=""><span class="pl-3">{{item.name}}</span> </a></li>
+      </ul>
+    </div>
+    <div class="right px-3">
+      <div class="head d-flex justify-content-between align-items-center p-2">
+        <h2>{{idActive == -1? 'All':subName}}</h2>
+        <a class="cursor-pointer" (click)="redirectByCat()">View All</a>
+      </div>
+      <section class="section-products mt-2">
+        <div>
+          <swiper class="mySwiper" [config]="config">
+            <ng-template *ngFor="let product of products" swiperSlide>
+              <app-product [data]="product"></app-product>
+            </ng-template>
+          </swiper>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

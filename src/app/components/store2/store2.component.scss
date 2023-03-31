@@ -1,0 +1,40 @@
+.store{
+  border: 1px solid #000;
+  padding-bottom: 10px;
+  height: 195px;
+  .top{
+    img{
+      height: 145px;
+      width: 100%;
+    }
+    .badge{
+      right: 20px;
+      width: fit-content;
+      top: 20px;
+      font-size: 2rem;
+      // padding: 2rem;
+      border-radius: 50%;
+      z-index: 3;
+      visibility: hidden;
+      transition: .1s ease-in;
+    }
+    &::after{
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: rgba($color: #000000, $alpha: .7);
+      right: 0;
+      top: 0;
+      visibility: hidden;
+      transition: .1 ease-in;
+    }
+  }
+  &:hover{
+    .top{
+      .badge,&::after{
+        visibility: visible;
+      }
+    }
+  }
+}

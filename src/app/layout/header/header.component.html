@@ -1,0 +1,397 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/home" (click)="menuOpened = false"><img style="width: auto;max-height:47px"
+      src="../../../assets/images/logo.png" alt=""></a>
+  <button class="navbar-toggler" type="button" (click)="menuOpened = !menuOpened">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <div class="rightMobile d-flex align-items-center">
+    <div class="icons d-flex align-items-center">
+      <div class="dropdown cart-dropdown main-notifiy">
+        <a class="dropdown-toggle main-link" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" data-display="static">
+          <i class="minicart-icon mycarticon"></i>
+          <span class="cart-count notify-count">{{ counter_order }}</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <div class="dropdownmenu-wrapper">
+            <a class="dropdown-item">
+              <div class="dropdown-cart-products">
+                <div class="product d-flex justify-content-left row" *ngFor="let noty of orders_notification">
+                  <div class="rounded" [ngClass]="noty.is_open != 1 ? 'active' : ''" (click)="
+                      set_as_open(
+                        noty.notification_id,
+                        noty.is_open,
+                        noty.object_id
+                      )
+                    ">
+                    <div class="row d-flex justify-content-between">
+                      <figure class="product-image-container img-notify col-md-5">
+                        <a class="product-image">
+                          <img src="https://dalilisouq.com/{{
+                              noty.sender.image
+                            }}" alt="product" width="40px" class="border rounded-circle myimg" />
+                        </a>
+                      </figure>
+                      <p class="col-md-6 d-flex align-items-center text-dark">
+                        {{ noty.sender.name }} {{ noty.sender.s_name }}
+                      </p>
+                      <!-- <p class="col-md-4">23-3-3303</p>
+                           -->
+                    </div>
+                    <div class="product-details">
+                      <h4 class="product-title">
+                        <a>{{ noty.action }}</a>
+                      </h4>
+                    </div>
+                    <!-- End .product-details -->
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- end order notification -->
+
+
+
+      <!-- start notification -->
+      <div class="dropdown cart-dropdown main-notifiy">
+        <a href="#" class="dropdown-toggle main-link" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" data-display="static">
+          <i class="fa fa-bell notify fa-2x"></i>
+          <span class="cart-count notify-count">{{ counter_noty }}</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <div class="dropdownmenu-wrapper">
+            <a class="dropdown-item">
+              <div class="dropdown-cart-products">
+                <div class="product d-flex justify-content-left row" *ngFor="let noty of notifications">
+                  <div class="rounded" [ngClass]="noty.is_open != 1 ? 'active' : ''"
+                    (click)=" set_as_open(noty.notification_id, noty.is_open, ' 0')">
+                    <div class="row d-flex justify-content-between">
+                      <figure class="product-image-container img-notify col-md-5">
+                        <a class="product-image">
+                          <img src="https://dalilisouq.com/{{
+                              noty.sender.image
+                            }}" alt="product" width="40px" class="border rounded-circle myimg" />
+                        </a>
+                      </figure>
+                      <p class="col-md-6 d-flex align-items-center text-dark">
+                        {{ noty.sender.name }} {{ noty.sender.s_name }}
+                      </p>
+                      <!-- <p class="col-md-4">23-3-3303</p>
+                           -->
+                    </div>
+                    <div class="product-details">
+                      <h4 class="product-title">
+                        <a>{{ noty.action }} </a>
+                        <!-- <a href="#" class="btn-remove" title="Remove Product"><i
+                                      class="porto-icon-retweet"></i></a> -->
+                      </h4>
+                    </div>
+                    <!-- End .product-details -->
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- end notification -->
+
+
+      <div class="dropdown cart-dropdown">
+        <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" data-display="static">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">{{cartItems?.cart?.length}}</span>
+        </a>
+
+        <div class="dropdown-menu">
+          <div class="dropdownmenu-wrapper">
+            <div class="dropdown-cart-header">
+              <span>{{cartItems?.cart?.length}} Items</span>
+
+              <a routerLink="me/profile/orders">View Cart</a>
+            </div>
+            <!-- End .dropdown-cart-header -->
+            <div class="dropdown-cart-products">
+              <div class="product" *ngFor="let item of cartItems?.cart">
+                <div class="product-details">
+                  <h4 class="product-title">
+                    <a>{{item?.product?.name}}</a>
+                  </h4>
+
+                  <span class="cart-product-info">
+                    <span class="cart-product-qty">{{item?.quantity}}</span> x ${{item?.product?.price}}
+                  </span>
+                </div>
+                <!-- End .product-details -->
+
+                <figure class="product-image-container">
+                  <a href="product.html" class="product-image">
+                    <img [src]="'https://dalilisouq.com/'+item?.product?.image" alt="product" />
+                  </a>
+                  <a (click)="deleteProductFromCart(item?.id)" class="btn-remove" title="Remove Product"><i class="porto-icon-retweet"></i></a>
+                </figure>
+              </div>
+              <!-- End .product -->
+
+            </div>
+            <!-- End .cart-product -->
+
+            <div class="dropdown-cart-total">
+              <span>Total</span>
+
+              <span class="cart-total-price">${{cartItems?.total}}</span>
+            </div>
+            <!-- End .dropdown-cart-total -->
+
+            <div class="dropdown-cart-action">
+              <a routerLink="/checkout" class="btn btn-block">Checkout</a>
+            </div>
+            <!-- End .dropdown-cart-total -->
+          </div>
+          <!-- End .dropdownmenu-wrapper -->
+        </div>
+        <!-- End .dropdown-menu -->
+      </div>
+    </div>
+    <a routerLink="me/profile/my-profile" (click)="menuOpened = false"><img style="width: 44px; height: 44px;border-radius: 50%;" src="{{ProfileImage}}" alt=""></a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto">
+      <li class="mx-3 h5" routerLinkActive="active"><a routerLink="categories"><i class="fa fa-th fa-xl"></i><span
+            class="pt-2">categories</span></a></li>
+      <li class="mx-3 h5" routerLinkActive="active"><a routerLink="buy-online"><i
+            class="fa fa-shopping-cart fa-xl"></i><span class="pt-2">buy online</span></a></li>
+      <li class="mx-3 h5" routerLinkActive="active"><a routerLink="stores"><i class="fa fa-store fa-xl"></i><span
+            class="pt-2">stores</span></a></li>
+      <li class="mx-3 h5" routerLinkActive="active"><a routerLink="all-ads"><i class="fa fa-ad fa-xl"></i><span
+            class="pt-2">all ads</span></a></li>
+      <li class="mx-3 h5" routerLinkActive="active"><a routerLink="offers"><i class="fa fa-tag fa-xl"></i><span
+            class="pt-2">offers</span></a></li>
+      <li class="mx-3 h5" routerLinkActive="active"><a routerLink="followingproducts"><i
+            class="porto-icon-category-fluids size-big1 fa-xl"></i><span class="pt-2">Follow</span></a></li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <input (keyup.enter)="search()" [(ngModel)]="DataSearch.keyword" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <select [(ngModel)]="DataSearch.category" class="custom-select" id="inlineFormCustomSelect">
+        <option [selected]="DataSearch.category == -1" value="-1">All Categories</option>
+        <option [selected]="DataSearch.category == item?.id" *ngFor="let item of categories" [value]="item?.id">{{item?.name}}</option>
+      </select>
+      <select [(ngModel)]="DataSearch.city" class="custom-select" id="inlineFormCustomSelect">
+        <option [selected]="DataSearch.city == -1" value="-1">City</option>
+        <option [selected]="DataSearch.city == item?.id" *ngFor="let item of cities" [value]="item?.id">{{item?.name}}</option>
+      </select>
+      <button (click)="search()" class="btn-outline-success my-2 my-sm-0" type="submit"><i
+          class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="pl-3 settings ml-auto d-flex flex-column align-items-end">
+      <div class="top">
+        <select (change)="changeLanguage($event)" id="inlineFormCustomSelect">
+          <option value="en" selected>English</option>
+          <option value="ar">Arabic</option>
+        </select>
+      </div>
+      <div class="bottom d-flex flex-row align-items-center">
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src="{{domain}}{{myCountry}}" alt="">
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li class="dropdown-item d-flex" *ngFor="let country of countries; index as i;"
+              (click)="changeCountry(country.id,i)">
+              <img class=" mr-5" [src]="country.image" alt="">
+              <span>{{country.name}}</span>
+            </li>
+          </ul>
+        </div>
+        <a routerLink="me/profile/my-profile" class=""><img src="{{ProfileImage}}" alt=""></a>
+
+
+        <div class="dropdown cart-dropdown main-notifiy">
+          <a class="dropdown-toggle main-link" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" data-display="static" routerLink="messages">
+            <i class="fa-regular fa-comment"></i>
+            <span class="cart-count notify-count">5</span>
+          </a>
+        </div>
+
+
+        <div class="dropdown cart-dropdown main-notifiy">
+          <a class="dropdown-toggle main-link" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" data-display="static">
+            <i class="minicart-icon mycarticon"></i>
+            <span class="cart-count notify-count">{{ counter_order }}</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdownmenu-wrapper">
+              <a class="dropdown-item">
+                <div class="dropdown-cart-products">
+                  <div class="product d-flex justify-content-left row" *ngFor="let noty of orders_notification">
+                    <div class="rounded" [ngClass]="noty.is_open != 1 ? 'active' : ''" (click)="
+                        set_as_open(
+                          noty.notification_id,
+                          noty.is_open,
+                          noty.object_id
+                        )
+                      ">
+                      <div class="row d-flex justify-content-between">
+                        <figure class="product-image-container img-notify col-md-5">
+                          <a class="product-image">
+                            <img src="https://dalilisouq.com/{{
+                                noty.sender.image
+                              }}" alt="product" width="40px" class="border rounded-circle myimg" />
+                          </a>
+                        </figure>
+                        <p class="col-md-6 d-flex align-items-center text-dark">
+                          {{ noty.sender.name }} {{ noty.sender.s_name }}
+                        </p>
+                        <!-- <p class="col-md-4">23-3-3303</p>
+                             -->
+                      </div>
+                      <div class="product-details">
+                        <h4 class="product-title">
+                          <a>{{ noty.action }}</a>
+                        </h4>
+                      </div>
+                      <!-- End .product-details -->
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- end order notification -->
+
+
+
+        <!-- start notification -->
+        <div class="dropdown cart-dropdown main-notifiy">
+          <a href="#" class="dropdown-toggle main-link" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" data-display="static">
+            <i class="fa fa-bell notify fa-2x"></i>
+            <span class="cart-count notify-count">{{ counter_noty }}</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdownmenu-wrapper">
+              <a class="dropdown-item">
+                <div class="dropdown-cart-products">
+                  <div class="product d-flex justify-content-left row" *ngFor="let noty of notifications">
+                    <div class="rounded" [ngClass]="noty.is_open != 1 ? 'active' : ''"
+                      (click)=" set_as_open(noty.notification_id, noty.is_open, ' 0')">
+                      <div class="row d-flex justify-content-between">
+                        <figure class="product-image-container img-notify col-md-5">
+                          <a class="product-image">
+                            <img src="https://dalilisouq.com/{{
+                                noty.sender.image
+                              }}" alt="product" width="40px" class="border rounded-circle myimg" />
+                          </a>
+                        </figure>
+                        <p class="col-md-6 d-flex align-items-center text-dark">
+                          {{ noty.sender.name }} {{ noty.sender.s_name }}
+                        </p>
+                        <!-- <p class="col-md-4">23-3-3303</p>
+                             -->
+                      </div>
+                      <div class="product-details">
+                        <h4 class="product-title">
+                          <a>{{ noty.action }} </a>
+                          <!-- <a href="#" class="btn-remove" title="Remove Product"><i
+                                        class="porto-icon-retweet"></i></a> -->
+                        </h4>
+                      </div>
+                      <!-- End .product-details -->
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- end notification -->
+
+
+        <div class="dropdown cart-dropdown">
+          <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" data-display="static">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count">{{cartItems?.cart?.length}}</span>
+          </a>
+
+          <div class="dropdown-menu">
+            <div class="dropdownmenu-wrapper">
+              <div class="dropdown-cart-header">
+                <span>{{cartItems?.cart?.length}} Items</span>
+
+                <a routerLink="me/profile/orders">View Cart</a>
+              </div>
+              <!-- End .dropdown-cart-header -->
+              <div class="dropdown-cart-products">
+                <div class="product" *ngFor="let item of cartItems?.cart">
+                  <div class="product-details">
+                    <h4 class="product-title">
+                      <a>{{item?.product?.name}}</a>
+                    </h4>
+
+                    <span class="cart-product-info">
+                      <span class="cart-product-qty">{{item?.quantity}}</span> x ${{item?.product?.price}}
+                    </span>
+                  </div>
+                  <!-- End .product-details -->
+
+                  <figure class="product-image-container">
+                    <a href="product.html" class="product-image">
+                      <img [src]="'https://dalilisouq.com/'+item?.product?.image" alt="product" />
+                    </a>
+                    <a (click)="deleteProductFromCart(item?.id)" class="btn-remove" title="Remove Product"><i class="porto-icon-retweet"></i></a>
+                  </figure>
+                </div>
+                <!-- End .product -->
+
+              </div>
+              <!-- End .cart-product -->
+
+              <div class="dropdown-cart-total">
+                <span>Total</span>
+
+                <span class="cart-total-price">${{cartItems?.total}}</span>
+              </div>
+              <!-- End .dropdown-cart-total -->
+
+              <div class="dropdown-cart-action">
+                <a routerLink="/checkout" class="btn btn-block">Checkout</a>
+              </div>
+              <!-- End .dropdown-cart-total -->
+            </div>
+            <!-- End .dropdownmenu-wrapper -->
+          </div>
+          <!-- End .dropdown-menu -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div [class.active]="menuOpened" class="rightMenuBar position-absolute">
+  <ul>
+    <li><a (click)="menuOpened = !menuOpened" routerLink="/categories" routerLinkActive="active"><i class="fa fa-th fa-xl"></i><span class="ml-3">Categories</span></a></li>
+    <li><a (click)="menuOpened = !menuOpened" routerLink="/buy-online" routerLinkActive="active"><i class="fa fa-shopping-cart fa-xl"></i><span class="ml-3">Buy Online</span></a></li>
+    <li><a (click)="menuOpened = !menuOpened" routerLink="/stores" routerLinkActive="active"><i class="fa fa-store fa-xl"></i><span class="ml-3">Stores</span></a></li>
+    <li><a (click)="menuOpened = !menuOpened" routerLink="/all-ads" routerLinkActive="active"><i class="fa fa-ad fa-xl"></i><span class="ml-3">All Ads</span></a></li>
+    <li><a (click)="menuOpened = !menuOpened" routerLink="/offers" routerLinkActive="active"><i class="fa fa-tag fa-xl"></i><span class="ml-3">Offers</span></a></li>
+    <li><a (click)="menuOpened = !menuOpened" routerLink="/followingproducts" routerLinkActive="active"><i class="porto-icon-category-fluids size-big1 fa-xl"></i><span class="ml-3">Follow</span></a></li>
+    <li><a (click)="menuOpened = !menuOpened" routerLink="/messages" routerLinkActive="active"><i class="fa-regular fa-comment"></i><span class="ml-3">Messages</span></a></li>
+  </ul>
+  <select (change)="changeLanguage($event)" id="inlineFormCustomSelect">
+    <option value="en" selected>English</option>
+    <option value="ar">Arabic</option>
+  </select>
+</div>

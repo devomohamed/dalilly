@@ -1,0 +1,29 @@
+<div class="me-profile-layout">
+    <div class="row mt-2">
+        <div class="col-md-3" >
+            <ul class="profile-links">
+                <li>
+                    <a routerLink="active-ads" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fa fa-user"></i>
+                        <span> active ads </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="passive-ads" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fa fa-users"></i>
+                        <span> passive ads </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="expired-ads" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <i class="fa fa-users"></i>
+                        <span> expired ads </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

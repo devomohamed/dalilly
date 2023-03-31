@@ -1,0 +1,8 @@
+<div class="message">
+  <textarea name="" id="" (keyup)="changeText($event)"></textarea>
+  <div class="file mt-2">
+    <label for="image" class="cursor-pointer"><i class="fa-solid fa-camera fa-2x"></i></label>
+    <input id="image" type="file" (change)="changePhoto($event)">
+    {{imgFile?.name}}
+  </div>
+</div>

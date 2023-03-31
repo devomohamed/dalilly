@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="images position-relative" style="background-image:url({{url+storeData?.bg}});">
+    <div class="panner position-absolute">
+      <div class="image">
+        <img class="rounded-circle" [src]="url + storeData?.image" alt="">
+      </div>
+      <h2 class="font-weight-bold text-center">{{storeData?.name}}</h2>
+      <div class="icons text-center">
+
+        <button (click)="copyUrl()" class="px-2 cursor-pointer"><i class="fa-solid fa-share-nodes fa-lg"></i></button>
+        <button (click)="qrCode()"><i class="fa-solid fa-qrcode fa-lg px-2 cursor-pointer"></i></button>
+        <button  *ngIf="userData?.id == storeData?.user.id" (click)="editStore()"><i class="fa-solid fa-pen-to-square fa-lg px-2 cursor-pointer"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="seller-txt text-center mt-3">
+    <div class="icons d-flex justify-content-between  align-items-center">
+      <div class="socialIcons">
+        <a [href]="storeData?.facebook"><i class="fa-brands fa-facebook fa-2xl cursor-pointer"></i></a>
+        <a [href]="storeData?.instagram"><i class="fa-brands fa-instagram fa-2xl cursor-pointer"></i></a>
+        <a [href]="storeData?.twitter"><i class="fa-brands fa-twitter fa-2xl cursor-pointer"></i></a>
+        <a [href]="storeData?.youtube"><i class="fa-brands fa-youtube fa-2xl cursor-pointer"></i></a>
+      </div>
+      <div class="rate">
+        <ng-container *ngFor="let r of [1,2,3,4,5] | slice:0:storeData?.rate">
+          <i class="fa-solid fa-star fa-2xl text-warning"></i>
+        </ng-container>
+      </div>
+    </div>
+    <div class="buttons">
+      <a *ngIf="userData?.id != storeData?.user?.id" href="tel:+{{storeData?.city?.country?.phone_code}}{{storeData?.mobile}}"><button class="btn btn-dark mx-1">Call</button></a>
+
+      <button *ngIf="userData?.id != storeData?.user?.id" class="btn btn-dark mx-1" (click)="followAndUnFollow()">{{storeData?.is_follow ? "Un Follow" : "follow"}}</button>
+      <button (click)="about()" class="btn btn-dark mx-1">About Us</button>
+      <button *ngIf="userData?.id != storeData?.user?.id" class="btn btn-dark mx-1" (click)="getChat()">Chat</button>
+    </div>
+    <div class="follwing-data mt-3 d-flex justify-content-center">
+      <p class="p-2 m-1" >{{storeData?.user?.no_followings}} Following</p>
+      <p class="p-2 m-1">{{storeData?.no_follows}} Followers</p>
+      <p class="p-2 m-1">{{storeData?.no_add}} Advertising</p>
+      <p class="p-2 m-1">{{storeData?.no_views}} Total Views</p>
+    </div>
+  </div>
+  <div class="bar-filter d-flex justify-content-between align-items-center">
+    <div class="search">
+      <form action="">
+        <input type="search" placeholder="Search In Your Ads" #keyword (keyup)="searchProducts(keyword.value)">
+        <button (click)="searchProducts(keyword.value)"><i class="fa-solid fa-magnifying-glass  fa-2xl"></i></button>
+      </form>
+    </div>
+    <div class="view">
+      <button class="p-2"><i class="fa fa-th-large ii rri fa-2xl"></i></button>
+      <button class="p-2"><i class="fa-solid fa-list fa-2xl"></i></button>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div *ngIf="storeData?.products?.data.length != 0;then thenBlock;else elseBlock"></div>
+      <ng-template #thenBlock>
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4" *ngFor="let product of products">
+          <app-product [data]="product"></app-product>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <p>No Data In Store</p>
+      </ng-template>
+  </div>
+
+</div>
+

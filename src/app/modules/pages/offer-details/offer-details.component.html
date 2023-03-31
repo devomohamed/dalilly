@@ -1,0 +1,91 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="image col-lg-6 col-md-12">
+      <img [src]="'https://dalilisouq.com/'+data?.image" class="card-img-top" alt="...">
+      <div class="txt-dt d-flex justify-content-between">
+        <div class="icons d-flex">
+          <div class="like px-3">
+            <i class="far fa-thumbs-up"></i>
+            <span>{{data?.likes}}</span>
+          </div>
+          <div class="views px-3">
+            <i class="fa-solid fa-eye"></i>
+            <span>{{data?.viewers}}</span>
+          </div>
+        </div>
+        <div class="date">
+          Expire In: {{data?.created_at}}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-12">
+      <div class="store d-flex justify-content-between align-items-center pb-5">
+        <div class="left d-flex">
+          <img routerLink="/storeseller/{{data?.store?.id}}" class="rounded-circle" style="width: 60px;height:60px;" [src]="'https://dalilisouq.com/'+data?.store?.image"
+            alt="">
+          <div class="txt pl-3 pt-3" routerLink="/storeseller/{{data?.store?.id}}">
+            <h3>{{data?.store?.name}}</h3>
+            <p>{{data?.created_at}}</p>
+          </div>
+        </div>
+        <a class="rounded-circle" href="tel:+{{data?.country?.phone_code}}{{data?.mobile}}"><i class="fa-solid fa-phone fa-2xl"></i></a>
+      </div>
+      <div class="txt pt-5">
+        <div class="title h1 pb-2">
+          {{data?.name}}
+        </div>
+        <div class="description">
+          <h2>Description</h2>
+          <p>{{data?.desc}}</p>
+        </div>
+        <div class="address">
+          <h2>Address</h2>
+          <p>{{data?.city?.name}} - {{data?.region?.name}}</p>
+        </div>
+      </div>
+
+      <google-map height="100px"
+            width="100%"
+            [center]="center"
+            [zoom]="zoom">
+</google-map>
+
+    </div>
+
+    <div class="col-lg-6 col-md-12">
+      <div class="reactions card-footer offer-btns p-0 d-flex justify-content-between align-items-center">
+        <button (click)="likeAndDislike()" [class.active]="data?.is_like" class='btn-like'><i class="far fa-thumbs-up"></i>like </button>
+        <button class='btn-comment' data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-comment-alt"></i>comment</button>
+        <button class='btn-share' (click)="copyUrl()"><i class="fas fa-share-alt"></i>share</button>
+    </div>
+    <div class="comments mt-2 collapse" id="collapseExample">
+      <div class="comment my-3 d-flex" *ngFor="let comment of offersComments">
+        <img style="width: 40px;height:40px;" class="rounded-circle"
+          src="https://dalilisouq.com/{{comment?.user?.image}}" alt="">
+        <div class="txt d-flex justify-content-between align-items-center">
+          <div class="left">
+            <h5>{{comment?.user?.name}}</h5>
+            <p>{{comment?.updated_at}}</p>
+          </div>
+          <div class="right d-flex">
+            <button  *ngIf="userData?.id == comment?.user?.id" (click)="deleteComment(comment?.id)" style="width: fit-content;width: fit-content;padding: 0 !important;background-color: transparent;color: red;" class="border-0 "><i class="cursor-pointer p-2 fa-solid fa-trash fa-2x"></i></button>
+            <h5>{{comment?.comment}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="write-comment mt-5">
+        <form class="d-flex" action="">
+          <textarea name="" id="" style="width: auto;width: -webkit-fill-available;" rows="2" #commentTxt></textarea>
+          <button (click)="addOfferComment(commentTxt)"><i class="fa-solid fa-paper-plane fa-2x"></i></button>
+        </form>
+      </div>
+    </div>
+    </div>
+    <!-- <div class="col-lg-6 col-md-12">
+
+    </div> -->
+
+  </div>
+</div>
+

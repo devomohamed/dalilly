@@ -1,0 +1,140 @@
+.buy-online{
+  height: calc(100vh - 63.75px);
+  padding: 0 15px;
+  .left{
+    &::-webkit-scrollbar-track
+    {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar
+    {
+      width: .6em;
+      background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+      background-color: #8c1434;
+    }
+    padding-top: 10px;
+    height: 100%;
+    overflow-x: auto;
+    width: 20%;
+    // border-right: 1px solid #000;
+    .category{
+      // border-bottom: 0.57px solid #000;
+      margin-right: 10px;
+      &.active,&:hover{
+        background-color: #8c1434;
+        border-radius: 10px;
+        h2{
+          color: #fff;
+        }
+      }
+      img{
+
+      }
+      h2{
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .right{
+    .categgories , .products{
+
+    }
+    width: 80%;
+    height: 100%;
+    .categgories{
+      padding: 0 10px;
+      width: 100%;
+      height: 100%;
+      overflow-x: auto;
+    }
+    .products{
+      height: 100%;
+      overflow-x: auto;
+      width: 100%;
+      padding: 0 10px;
+      .product{
+        width: calc(100% / 7);
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1200px){
+  .buy-online .right .products .product{
+    width: calc(100% / 5);
+  }
+}
+
+@media (max-width: 992px){
+  .buy-online{
+    .left{
+      width: 30%;
+    }
+    .right{
+      width: 70%;
+      height: calc(100vh - 63.75px);
+      .products .product{
+          width: calc(100% / 3);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .buy-online .right .products .product{
+    width: calc(100% / 2);
+  }
+}
+
+@media (max-width: 576px){
+  .buy-online .right .products .product{
+    width: calc(100% / 1);
+  }
+}
+
+@media (max-width: 404px){
+  .buy-online{
+    .left{
+      width: 40%;
+    }
+    .right{
+      width: 60%;
+      height: calc(100vh - 63.75px);
+    }
+  }
+}
+
+
+@media (max-width: 330px){
+  .buy-online{
+    .left{
+      width: 47%;
+    }
+    .right{
+      width: 53%;
+      height: calc(100vh - 63.75px);
+    }
+  }
+}
+
+// @media (max-width: 576px){
+//   .buy-online{
+//     .left{
+//       width: 30%;
+//     }
+//     .right{
+//       width: 70%;
+//       height: calc(100vh - 63.75px);
+//     }
+//   }
+// }

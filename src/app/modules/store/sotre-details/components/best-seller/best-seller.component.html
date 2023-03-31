@@ -1,0 +1,37 @@
+<h3>best seller</h3>
+
+    <div class='row m-3'>
+        <div class="header-search m-3">
+            <a href="#" class="search-toggle" role="button"><i class="porto-icon-search-3"></i></a>
+            <form action="#" method="get">
+                <div class="header-search-wrapper" style="width: 20%;">
+                    <input type="search" class="form-control" name="q" id="q" placeholder=" Search in your stores..." required style='background-color:#990033 ;color:white;font-size:14px' [(ngModel)]="term">
+                    <button class="btn" type="submit" style='background-color:#990033; color:white'><i class="porto-icon-search-3"></i></button>
+                </div>
+
+            </form>
+        </div>
+        <div class="filter-view-way col-md-5 ml-5">
+    
+            <div class='view-way'>
+                <i class="fas fa-th" (click)='shrink()'></i>
+                <i class="fas fa-list" (click)='spread()'></i>
+            </div>
+        </div>
+
+</div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let p of products">
+        <div class="card h-100">
+            <img src="https://dalilisouq.com/{{p.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{p.name}}</h4>
+                <h3 class="card-title text-primary">{{p.price}} EGP</h3>
+                <p class="card-text d-flex flex-column">
+                    <span>{{p.created_at}}</span>
+                    <span></span>
+                </p>
+                <span class="badge badge-info">{{p.category?.name}}</span>
+            </div>
+        </div>
+    </div>

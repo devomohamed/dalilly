@@ -1,0 +1,43 @@
+<h3>my sales</h3>
+<!-- <div class="filter-view-way">
+    <div class='input'>
+        <input type="text" class="form-control" placeholder="search" aria-label="Username"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class='view-way'>
+        <i class="fas fa-th"></i>
+        <i class="fas fa-list"></i>
+    </div>
+</div> -->
+<div class="row">
+    <div class="col-md-6" *ngFor="let s of orders" >
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <p  class='m-0'>
+                    <span class="badge badge-warning" *ngIf='s.status==0'>
+                        pending
+                    </span>
+                    <span class="badge badge-warning" *ngIf='s.status==1'>
+                        Shipped
+                    </span>
+                </p>
+                <p class='m-0'>
+                    order ({{s.id}})
+                </p>
+                <p class='m-0 d-flex flex-column'>
+                    <span>{{s.created_at}}</span>
+                  
+                </p>
+            </div>
+            <div class="card-body">
+                <i class="fa fa-store"></i><span class='name mx-3'>{{s.f_name}} {{s.s_name}}</span>
+                <p class='m-0 d-flex justify-content-between'>
+                    cash on delivery
+                    <span>{{s.date}}</span>
+                    <span>{{s.time}}</span>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="">
+  <!-- <div class="search">
+    <form action="" class="d-flex">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <button style="width: 20%;height: 24px;background-color: transparent !important;color: #58091e;border: 1px solid #58091e !important;" class="btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let category of categories ; index as i">
+            <div class="category-card mb-3">
+                <img src="https://dalilisouq.com/{{category.image}}" alt="">
+                <span class="count">14</span>
+                <h4 class="title">{{category.name}} </h4>
+            </div>
+        </div>
+    </div> -->
+    <app-banner [name]="'categories'"></app-banner>
+    <div class="search  mb-3  d-flex justify-content-center">
+      <form action="" class="d-flex position-relative">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" (focus)="dataSearchActive = true" (blur)="searchNotActive()" (keyup)="search($event)">
+        <button class="btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <!-- <div [class.active]="dataSearchActive" class="data-search active">
+          <div *ngFor="let item of dataSearch" class="item" [routerLink]="item?.id">{{item.name}}</div>
+        </div> -->
+      </form>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+

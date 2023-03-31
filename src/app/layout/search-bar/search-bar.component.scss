@@ -1,0 +1,83 @@
+.profilephoto{
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+}
+.cart-dropdown .dropdown-toggle .cart-count {
+    background-color: #163e73;
+   
+}
+
+.header-middle .contact-widget .contact-chat {
+    color: #163e73;
+}
+
+.dropdown-cart-action .btn {
+   // background-color: #113859;
+    border-color: #113859;
+    &:hover {
+        //background-color: #163e73;
+        border-color: #163e73;
+    }
+}
+
+// a {
+//     color: #113859;
+// }
+.notify{
+    color: #113859;
+    border: none;
+}
+.main-notifiy{
+   margin-right: 13px;
+}
+.notify-count{ background-color: #8c1434 !important;}
+.img-notify{
+    margin-left: 0 !important;
+    margin-right: 12px !important;
+    border: none;
+}
+.myimg{
+    height:40px  ;
+}
+.dropdown-item,.dropdownmenu :hover{
+    background-color: white;
+    cursor:default !important;
+}
+.dropdownmenu-wrapper{
+    
+    max-height:450px;/* you can change as you need it */
+    overflow: auto ;/* to get scroll */
+}
+.product{white-space: pre-line;
+         cursor: pointer;
+         font-size: 12px;
+         }
+         .product:hover{
+            transform: scale(1.1);
+         }
+.active{
+    background-color: rgb(250, 246, 246);
+    padding: 10px;
+    
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

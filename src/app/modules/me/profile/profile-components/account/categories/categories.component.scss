@@ -1,0 +1,12 @@
+.filter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .radio-inputs {
+        display: flex;
+    }
+    .sort-and-view {
+        display: flex;
+        align-items: center;
+    }
+}

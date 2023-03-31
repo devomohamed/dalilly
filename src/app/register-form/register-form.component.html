@@ -1,0 +1,115 @@
+<!-- <div class="">
+
+
+
+    <div class="header-menu">
+        <div *ngIf='message_error' class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{message_error.desc}}!</strong>
+          </div>
+    <form class="my-5" #f='ngForm' (ngSubmit)='regist()'>
+        <div class="text-center ">
+
+            <input class=' mb-3  form-control input  round' placeholder="firstname" required type="text" name="firstName" id='name' [(ngModel)]=user.name>
+            <input class='  ml-3  form-control input   round' placeholder="lastname" required type="text" name="lastName" id ='name' [(ngModel)]=user.s_name>
+
+          </div>
+        <div class="form-group rounded">
+
+          <input class='form-control input mx-auto round' placeholder="E-mail" required type="email" name="email" id="email" [(ngModel)]=user.email>
+
+        </div>
+        <div class="form-group mt-3">
+
+            <input class='form-control input round mx-auto' placeholder='password' required type="password" name="password" id="password" [(ngModel)]=user.password>
+          </div>
+        <div class="form-group mt-3">
+
+            <input class='form-control input mx-auto round' placeholder="mobile" required type="number" name="mobile"  [(ngModel)]=user.mobile>
+
+          </div>
+          <div class="form-group mt-3">
+
+            <input class='form-control input mx-auto round' type="date"  placeholder="birth-data" required  name="birthdate"  [(ngModel)]=user.birth_date>
+
+          </div>
+
+       <div class="text-left ml-5 pl-5">
+        <button  class='button btn ml-5 round' type="submit" [disabled]='f.invalid'>regist</button>
+        <a routerLink='/login' id='a' class='text-secondary ml-5 pl-5 link-secondar'> already has account</a>
+        </div>
+      </form>
+    </div> -->
+
+
+
+
+    <div class="loginForm d-flex">
+      <!-- <div class="image"></div> -->
+      <div class="myForm text-center image">
+        <div class="header-menu">
+          <div class="form-login">
+            <img style="width:50px;height: 50px;display: block; " src="../../assets/images/logo.png" alt="">
+            <h1>Register</h1>
+          <form class="my-5" [formGroup]="myForm">
+            <div class="text-center d-flex name">
+
+              <input class=' mb-3  form-control input  round' placeholder="firstname" required type="text" name="name" id='name' formControlName="name">
+              <input class='  ml-3  form-control input   round' placeholder="lastname" type="text" name="lastName" id ='name' formControlName="s_name">
+
+            </div>
+          <div class="form-group rounded">
+
+            <input class='form-control input mx-auto round' placeholder="E-mail" required type="email" name="email" id="email" formControlName="email">
+
+          </div>
+          <div class="form-group mt-3 ">
+            <input class='form-control input rounded mx-auto' placeholder='password' required [type]="isPassword"
+              name="password" id="password" formControlName="password">
+              <button (click)="changeInputType()"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div class="form-group mt-3 d-flex phoneNumber">
+            <select class="custom-select" formControlName="country_code">
+              <!-- <option [value]="0" disabled>Select country</option> -->
+              <option [value]="country?.phone_code" *ngFor="let country of countries">+{{country?.phone_code}}</option>
+            </select>
+              <input class='form-control input mx-auto round' placeholder="mobile" required type="tel" name="mobile" formControlName="mobile">
+
+            </div>
+            <div class="form-check mt-3 d-flex">
+              <div class="gender">
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" [value]="1" formControlName="gender">
+              <label class="form-check-label" for="exampleRadios1">
+                Male
+              </label>
+              </div>
+              <div class="gender">
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" [value]="2" formControlName="gender">
+              <label class="form-check-label" for="exampleRadios1">
+                Female
+              </label>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+
+              <input class='form-control input mx-auto round' type="date"  placeholder="birth-data" required  name="birthdate"  formControlName="birth_date">
+
+            </div>
+            <div class="form-check mt-3 policy">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" formControlName="policy">
+              <label class="form-check-label" for="defaultCheck1">
+                I agree of all terms and conditional privacy policy
+              </label>
+            </div>
+            <div class="buttons mt-3">
+              <button class='button btn round' type="submit" [disabled]='myForm.invalid || myForm.value.policy == false' (click)='regist()'>Regist</button>
+              <button class='button btn rounded mt-2' routerLink="/login">Login</button>
+            </div>
+          </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+

@@ -1,0 +1,38 @@
+<div class="loginForm d-flex">
+  <!-- <div class="image"></div> -->
+  <div class="myForm text-center image">
+    <div class="header-menu">
+      <div class="form-login">
+        <img style="width:50px;height: 50px;display: block; " src="../../assets/images/logo.png" alt="">
+        <h1>Log in</h1>
+      <form class="my-5" #f='ngForm' enctype="multipart/form-data" >
+        <div class="form-group rounded">
+
+          <input class='form-control input mx-auto rounded' placeholder="E-mail" required type="email" name="email"
+            id="email" [(ngModel)]=user.email>
+
+        </div>
+        <div class="form-group mt-3">
+
+          <input class='form-control input rounded mx-auto' placeholder='password' required [type]="isPassword"
+            name="password" id="password" [(ngModel)]=user.password>
+            <button (click)="changeInputType()"><i class="fa-regular fa-eye"></i></button>
+        </div>
+
+        <div class="buttons">
+          <button class='button btn rounded mt-2' type="submit" [disabled]='f.invalid' (click)="login()">Login</button>
+          <button class='button btn rounded mt-2' routerLink="/regist">Register</button>
+        </div>
+
+        <div class="social-links mt-3">
+          <button (click)="signInWithFacebook()"><i class="fa-brands fa-facebook"></i></button>
+          <button (click)="signInWithGoogle()"><i class="fa-brands fa-google"></i></button>
+          <button (click)="signInWithTwitter()"><i class="fa-brands fa-twitter"></i></button>
+        </div>
+
+      </form>
+      </div>
+
+    </div>
+  </div>
+</div>

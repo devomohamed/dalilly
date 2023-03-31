@@ -1,0 +1,29 @@
+<div class="buy-online d-flex">
+  <div class="left">
+    <div [class.active]="categorySelectedId == -1" class="pl-3 category py-3 d-flex align-items-center cursor-pointer" (click)="changeSub(-1);title='all'">
+      <img style="width: 30px; height: 30px;" src="../../../../assets/images/download.jpg" alt="">
+      <h2 class="ml-3">All</h2>
+    </div>
+    <div [class.active]="i == categorySelectedId" class="pl-3 category py-3 d-flex align-items-center cursor-pointer" *ngFor="let category of categories; let i = index" (click)="changeSub(i);title='notAll';apiIdChoice=category.id">
+      <img style="width: 30px; height: 30px;" src="{{domain}}{{category.icon}}" alt="">
+      <h2 class="ml-3">{{category.name}}</h2>
+    </div>
+  </div>
+  <div class="right">
+    <div *ngIf="title == 'all';then thenBlock;else elseBlock"></div>
+      <ng-template #thenBlock>
+        <div class="products d-flex flex-wrap align-items-center">
+          <div class="product" *ngFor="let product of allProducts">
+            <app-product [data]="product"></app-product>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div class="categgories">
+          <div class="category" *ngFor="let category of subCategorySelected">
+            <app-sub-categorries [name]="category.name" [subCategoryId]="category.id" ></app-sub-categorries>
+          </div>
+        </div>
+      </ng-template>
+  </div>
+</div>

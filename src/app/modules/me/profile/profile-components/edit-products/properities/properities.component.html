@@ -1,0 +1,32 @@
+<div class="row  "  >
+  <div id='prop' class=' col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg '>
+          <form (ngSubmit)='submit()' class="form" #f='ngForm'>
+            <div class='card-header  d-flex justify-content-between' >
+              <a  (click)='back()'><i class="fa fa-arrow-left mr-3"></i>properties</a>
+              <button [disabled]='f.invalid' class='' type='submit'>submit</button>
+          </div>
+            <div class="container ">
+            <div class="row m-2">
+             <div class="col-md-4 my-2 " *ngFor='let prop of properties ;let j=index' >
+              <div class='me card-body  h-100  header rounded ' id={{prop.name}} >
+                   
+                  <a  class='card-header d-flex h3'>{{prop.name}} </a>  
+              
+              <div class="form-check" *ngFor=' let option of prop?.options;let i=index'>
+                 
+                  <input class="form-check-input"  [type]="prop.type_id!=1?'checkbox':'radio'" [checked]="option.selected==1" name={{prop?.name}} id={{option?.id}}   value={{option.name}}  >
+                  <label class="form-check-label" for="defaultCheck1">
+                   {{option?.name}}
+                  </label>
+                </div>
+                </div>
+                </div>
+                
+                </div>
+               
+                </div>
+               
+            </form>
+            </div>
+          </div>
+     

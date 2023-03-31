@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header border-0 bg-white d-flex justify-content-between align-items-center  cursor-pointer" routerLink="/offer/{{offerData?.id}}">
+      <div>
+          <h4>{{offerData?.store?.name}}</h4>
+          <p class='m-0'>november 4, 2021 <small>({{offerData?.city?.name}} - {{offerData?.region?.name}})</small> </p>
+      </div>
+  </div>
+  <div class="card-body d-flex justify-content-between align-items-center  cursor-pointer" routerLink="/offer/{{offerData?.id}}">
+      <p class="m-0">{{offerData?.name}}</p>
+      <span class='badge bg-warning' *ngIf="offerData?.is_active == 0">pending</span>
+  </div>
+
+  <img style="object-fit: cover;" [src]="'https://dalilisouq.com/'+offerData?.image" class="card-img-top cursor-pointer" alt="..." routerLink="/offer/{{offerData?.id}}">
+  <div class="card-body d-flex justify-content-between align-items-center">
+      <div>
+          <i class="fa fa-eye"></i>
+          <span class='ml-2'>{{offerData?.viewers}}</span>
+      </div>
+      <div>
+          <i class="fas fa-thumbs-up"></i>
+          <span class='ml-2'>{{offerData?.likes}}</span>
+      </div>
+  </div>
+  <div class="card-footer offer-btns p-0 d-flex justify-content-between align-items-center">
+      <button (click)="likeAndDislike()" [class.active]="offerData?.is_like" class='btn-like'><i class="far fa-thumbs-up"></i>like</button>
+      <button  routerLink="/offer/{{offerData?.id}}" class='btn-comment'><i class="fas fa-comment-alt"></i>comment</button>
+      <button (click)="copyUrl()" class='btn-share'><i class="fas fa-share-alt"></i>share</button>
+  </div>
+</div>

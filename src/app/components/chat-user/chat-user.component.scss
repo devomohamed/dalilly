@@ -1,0 +1,155 @@
+.top{
+  margin-top: -10px;
+  height: 14%;
+  border-bottom: 1px solid #000;
+  .user-data{
+    & > div:first-of-type{
+      display: flex;
+    margin: 10px;
+    width: fit-content;
+    img{
+      width: 60px;
+      height:60px;
+      border:3px solid #ddd
+    }
+    .txt{
+      font-size: 1.4rem;
+      .name{
+        font-weight: bold;
+      }
+      .status{
+        color: #7e818a;
+      }
+    }
+    }
+  }
+}
+.middle{
+  height: calc(100% - 14% - 30.5px);
+  overflow: auto;
+  .message{
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    padding: 0 10px;
+    & > div{
+      width: fit-content;
+      padding: 10px;
+      background-color: #58b666;
+      color: #fff;
+      height: fit-content;
+    }
+    &.sent{
+      justify-content: flex-end;
+      &>div{
+        &:hover .deleicon{
+          // z-index: 1;
+          visibility: visible;
+          transform: translateX(-110%);
+        }
+        background-color: #6fbced;
+        position: relative;
+        .deleicon{
+          position: absolute;
+          left: 0;
+          top: 9px;
+          // z-index: -1;
+          visibility: hidden;
+          transition: .3s;
+          color: #000;
+          background: transparent;
+          cursor: pointer;
+          border: none;
+        }
+      }
+      p{
+        background-color: #6fbced;
+      }
+
+    }
+    &.receve{
+
+    }
+  }
+}
+.bottom{
+  height: 10px;
+  form{
+    margin: 0;
+    width: 100%;
+    input{
+      width: 80%;
+      height: 30px;
+      padding: 10px;
+      padding-right: 14rem;
+    }
+    .img{
+      width: 20%;
+      height: 30px;
+      button{
+      width: 100%;
+      height: 100%;
+      }
+      label{
+        left: -25px;
+        top: 5px;
+        svg{
+          font-size: 2rem;
+        }
+      }
+      p{
+        left: -4rem;
+        top: 3px;
+        font-size: 1.7rem;
+        font-weight: bold;
+        cursor: pointer;
+        visibility: hidden;
+        transition: .3s;
+        &.active{
+          visibility: visible;
+          &:hover{
+            color: red;
+          }
+        }
+      }
+      & > span{
+        left: -14rem;
+        top: 7px;
+        width: 100px;
+        display: block;
+        overflow: hidden;
+        height: 14px;
+        // &:first-of-type{
+        //   cursor: pointer;
+        //   transition: .3s;
+        //   font-weight: bold;
+        //   &:hover{
+        //     color: red;
+        //   }
+        // }
+        // &:last-of-type{
+        //   &:hover{
+        //     color: black;
+        //   }
+        // }
+      }
+    }
+
+  }
+}
+
+
+.properities{
+  .btn-group{
+    button{
+      &::before{
+        display: none;
+
+      }
+    }
+  }
+}
+
+.iconseen.active{
+  color: black;
+}

@@ -1,0 +1,317 @@
+<section class="orders">
+    <div class="backBtn row border-bottom rounded" >
+        <a href="#"><i class="fa fa-arrow-left"></i></a>
+        <span class="col-md-8">order details(#{{order.id}})</span>
+        <button class='btn btn-xm ml-5 col-md-2 py-2 rounded'>reorder</button>
+    </div>
+    <div *ngIf='order.stores.length!=0'>
+        <div *ngFor='let store of order.stores'>
+    <div class="store container mt-2 p-2 border-bottom rounded border-2">
+        <div class="row p-5" >
+            <div class='col-md-8'><h3><i class="fa fa-store mr-2"></i>{{store.name}}</h3></div>
+            <div class='col-md-4'><h3>{{order.created_at}}<i class="fa fa-clock ml-2"></i></h3></div>
+        </div>
+        <div class="row p-5">
+            <div class='col-md-8'><h3><i class="fa fa-map-marker mr-2"></i>{{store.address}}</h3></div>
+            </div>
+        <div class="row p-5">
+            <div class='col-md-8'><h3><i class="fa fa-phone mr-2"></i>{{store.mobile}}</h3></div>
+            <button class='btn btn-xm ml-5 col-md-3 rounded'>view all products code</button>
+   </div>
+   
+
+    </div>
+    <div *ngFor='let product of store.products'>
+    <div class="store container ">
+        
+<section class="orders">
+   
+    
+    <div class='row' >
+        <div class='col-md-12' >
+           
+              <div id="Waiting" class="tabcontent active " >
+              <div class="order_item">
+               
+                   
+            
+                
+                <div class="content">
+                    <div class="imgBx">
+                        <img src="https://dalilisouq.com/{{product.image}}" alt="Watch Brand">
+                    
+                    </div>
+                    <div class="textBx ">
+                        <div class="progress ">
+                            <div class='row text-center '> 
+                               
+                            
+                            <div class='col-md-12 '>
+                            <ul class=" progressbar d-flex justify-content-evenly ml-5" >
+                                <li class="
+                                 col-md-4 " [ngClass]="order.status==0||order.status==1||order.status==2?'active':''">Processing</li>
+                                <li class=" col-md-4" [ngClass]="order.status==1||order.status==2?'active':''">shipped</li>
+                                <li class='col-md-4' [ngClass]="order.status==2?'active':''">delivered</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                        <h3 class="title">{{product.name}}</h3>
+                        <p class="price" py-2 mx-5 >{{product.price}} EGP</p>
+                       <div class="row">
+                        <p  class="bg-light border py-3 mx-3 rounded-pill text-center text-dark col-md-2"> QTY :{{product.quantity}} </p>
+                        <p class="price" py-2 mx-3 > {{product.size_id}} </p>
+                       
+                        <span  id='color-product' [style.background-color]='product.color_id' ></span>
+                        
+                      </div>
+                        <p>Rate this product:</p>
+                        <p class="ratings">
+                            <i class="fa fa-star " [ngClass]='1 ?"active":" "'></i>
+                            <i class="fa fa-star "></i> 
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star"></i>
+                        </p>
+                    </div>
+                </div>
+                <div class=" row text-center" style="background-color: white;">
+                    <a class="  col-md-2 text-center" ></a>
+                    <a href="" id='abtn1' class=" col-md-2 py-3 border rounded text-center" style='background-color: #9b1919 !important;
+                    color: #ffffff !important;' >view code</a>
+                    <a class="  col-md-2 text-center" ></a>
+                    <a href="" class="py-3 border rounded col-md-2" py-3 style='background-color: #9b1919 !important;
+                    color: #ffffff !important;' >Report order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </section>
+    <div class="store container border-top border-bottom p-2  rounded border-2">
+        <div class="row m-3">
+           
+            <h3 class='col-md-3 mx-3'>sub total</h3>
+            <h3 class=' mx-2 basiccolor'>{{product.price}} EGP</h3>
+            <h4 class='col-md-2'></h4>
+           
+            <h3  class='col-md-3 mx-3'>delivery fees</h3>
+            <h3 class=' mx-2 basiccolor'>{{store.delivery_price}} EGP</h3>
+       
+        </div>
+        <div class="row m-3">
+            <h3 class='col-md-3 mx-3'>Speed order fees</h3>
+            <h3 class=' mx-2 basiccolor'>{{store.speed_fees}} EGP</h3>
+            <h2 class='col-md-3'></h2>
+            <div style="background-color: #9b1919;color: white; " class="col-md-3 border ml-5 rounded text-center">
+            <span  class='ml-2 h5  mx-2 mr-3' style="color:white">total:</span>
+            <span class='h5  ml-5' style="color:white">{{store.total_user}} EGP</span>
+            </div>
+
+        </div>
+       </div>
+    </div>
+    
+          </div>
+        </div>
+    </div>
+
+
+    <div *ngIf='order.users.length!=0'>
+        <div *ngFor='let store of order.users'>
+    <div class="store container mt-2 p-2 border-bottom rounded border-2">
+        <div class="row p-5" >
+            <div class='col-md-8'><h3><i class="fa fa-store mr-2"></i>{{store.name}}</h3></div>
+            <div class='col-md-4'><h3>{{order.created_at}}<i class="fa fa-clock ml-2"></i></h3></div>
+        </div>
+        <div class="row p-5">
+            <div class='col-md-8'><h3><i class="fa fa-map-marker mr-2"></i>{{store.address}}</h3></div>
+            </div>
+        <div class="row p-5">
+            <div class='col-md-8'><h3><i class="fa fa-phone mr-2"></i>{{store.mobile}}</h3></div>
+            <button class='btn btn-xm ml-5 col-md-3 rounded'>view all products code</button>
+   </div>
+   
+
+    </div>
+    <div *ngFor='let product of store.products'>
+    <div class="store container ">
+        
+<section class="orders">
+   
+    
+    <div class='row' >
+        <div class='col-md-12' >
+           
+              <div id="Waiting" class="tabcontent active " >
+              <div class="order_item">
+               
+                   
+            
+                
+                <div class="content">
+                    <div class="imgBx">
+                        <img src="https://dalilisouq.com/{{product.image}}" alt="Watch Brand">
+                    
+                    </div>
+                    <div class="textBx ">
+                        <div class="progress ">
+                            <div class='row text-center '> 
+                               
+                            
+                            <div class='col-md-12 '>
+                            <ul class=" progressbar d-flex justify-content-evenly ml-5" >
+                                <li class="
+                                 col-md-4 " [ngClass]="order.status==0||order.status==1||order.status==2?'active':''">Processing</li>
+                                <li class=" col-md-4" [ngClass]="order.status==1||order.status==2?'active':''">shipped</li>
+                                <li class='col-md-4' [ngClass]="order.status==2?'active':''">delivered</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                        <h3 class="title">{{product.name}}</h3>
+                        <p class="price" py-2 mx-5 >{{product.price}} EGP</p>
+                       <div class="row">
+                        <p  class="bg-light border py-3 mx-3 rounded-pill text-center text-dark col-md-2"> QTY :{{product.quantity}} </p>
+                        <p class="price" py-2 mx-3 > {{product.size_id}} </p>
+                       
+                        <span  id='color-product' [style.background-color]='product.color_id' ></span>
+                        
+                      </div>
+                        <p>Rate this product:</p>
+                        <p class="ratings">
+                            <i class="fa fa-star " [ngClass]='1 ?"active":" "'></i>
+                            <i class="fa fa-star "></i> 
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star"></i>
+                        </p>
+                    </div>
+                </div>
+                <div class=" row text-center" style="background-color: white;">
+                    <a class="  col-md-2 text-center" ></a>
+                    <a href="" id='abtn1' class=" col-md-2 py-3 border rounded text-center" style='background-color: #9b1919 !important;
+                    color: #ffffff !important;' >view code</a>
+                    <a class="  col-md-2 text-center" ></a>
+                    <a href="" class="py-3 border rounded col-md-2" py-3 style='background-color: #9b1919 !important;
+                    color: #ffffff !important;' >Report order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </section>
+    <div class="store container border-top border-bottom p-2  rounded border-2">
+        <div class="row m-3">
+           
+            <h3 class='col-md-3 mx-3'>sub total</h3>
+            <h3 class=' mx-2 basiccolor'>{{product.price}} EGP</h3>
+            <h4 class='col-md-2'></h4>
+           
+            <h3  class='col-md-3 mx-3'>delivery fees</h3>
+            <h3 class=' mx-2 basiccolor'>{{store.delivery_price}} EGP</h3>
+       
+        </div>
+        <div class="row m-3">
+            <h3 class='col-md-3 mx-3'>Speed order fees</h3>
+            <h3 class=' mx-2 basiccolor'>{{store.speed_fees}} EGP</h3>
+            <h2 class='col-md-3'></h2>
+            <div style="background-color: #9b1919;color: white; " class="col-md-3 border ml-5 rounded text-center">
+            <span  class='ml-2 h5  mx-2 mr-3' style="color:white">total:</span>
+            <span class='h5  ml-5' style="color:white">{{store.total_user}} EGP</span>
+            </div>
+
+        </div>
+       </div>
+    </div>
+    <!-- <div class="store container border-top border-bottom p-2 mt-3 mb-3 rounded border-2">
+        <div class="row m-3">
+            <h3 class='col-md-3 '>sub total</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.total}} EGP</h3>
+        
+           
+            <h3  class='col-md-3 '>delivery fees</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.delivery_price}} EGP</h3>
+       
+          </div>
+          <div class="row m-3">
+            <h3 class='col-md-3 '>speed order fees</h3>
+            <h3 class='col-md-3  basiccolor'>{{order.is_fast}} EGP</h3>
+           
+           
+            <h3  class='col-md-3 '>Discount copoun</h3>
+            <h3 class='col-md-3  basiccolor'>{{order.coupon_value}} EGP</h3>
+       
+          </div>
+          <div class="row m-3">
+            <h3 class='col-md-3'>Reward points</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.reward_points}} EGP</h3>
+            
+           
+            <h3  class='col-md-3 '>Discount points</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.points_redeem}} EGP</h3>
+       
+          </div>
+          <div class="row m-3">
+            <h3 class='col-md-3 '>Services</h3>
+            <h3 class='col-md-3  basiccolor'>{{order.service_percent}} EGP</h3>
+            
+           
+            <h3  class='col-md-3 '>Tax</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.vat_amount}} EGP</h3>
+       
+          </div>
+          <div class='row m-3 total border rounded'>
+              
+            <span  class=' h4 total p-4 col-md-6' style="color:white">Total price:</span>
+            <span class='h4 total p-4 col-md-4 text-right' style="color:white">{{order.total_price}} EGP</span>
+        </div>
+          </div> -->
+          </div>
+        </div>
+    </div>
+    <div class="store container border-top border-bottom p-2 mt-3 mb-3 rounded border-2">
+        <div class="row m-3">
+            <h3 class='col-md-3 '>sub total</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.total}} EGP</h3>
+            <!-- <h4 class='col-md-2'></h4> -->
+           
+            <h3  class='col-md-3 '>delivery fees</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.delivery_price}} EGP</h3>
+       
+          </div>
+          <div class="row m-3">
+            <h3 class='col-md-3 '>speed order fees</h3>
+            <h3 class='col-md-3  basiccolor'>{{order.is_fast}} EGP</h3>
+           
+           
+            <h3  class='col-md-3 '>Discount copoun</h3>
+            <h3 class='col-md-3  basiccolor'>{{order.coupon_value}} EGP</h3>
+       
+          </div>
+          <div class="row m-3">
+            <h3 class='col-md-3'>Reward points</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.reward_points}} EGP</h3>
+            <!-- <h4 class='col-md-2'></h4> -->
+           
+            <h3  class='col-md-3 '>Discount points</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.points_redeem}} EGP</h3>
+       
+          </div>
+          <div class="row m-3">
+            <h3 class='col-md-3 '>Services</h3>
+            <h3 class='col-md-3  basiccolor'>{{order.service_percent}} EGP</h3>
+            <!-- <h4 class='col-md-2'></h4> -->
+           
+            <h3  class='col-md-3 '>Tax</h3>
+            <h3 class='col-md-3 basiccolor'>{{order.vat_amount}} EGP</h3>
+       
+          </div>
+          <div class='row m-3 total border rounded'>
+              
+            <span  class=' h4 total p-4 col-md-6' style="color:white">Total price:</span>
+            <span class='h4 total p-4 col-md-4 text-right' style="color:white">{{order.total_price}} EGP</span>
+        </div>
+          </div>
+
+</section>

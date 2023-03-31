@@ -1,0 +1,248 @@
+<div class="container">
+    
+    <div class="row ">
+        <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
+            <form id="contact-form" class="form"#f='ngForm'  (ngSubmit)='edit()' > 
+              
+                <div class="row d-flex justify-content-left m-2"><h3>up to 10 images</h3></div>
+                 
+                <div class='bg1 w-100 border-bottom d-flex justify-content-left border-secondary' style="height: 200px;;margin-bottom: 5px;">
+                   <div class="image-upload text-center mr-3" >
+                        <label for="file-input0" class="text-center">
+                            <i class="d-flex justify-content-center fa fa-camera fa-3x"></i>
+                        </label>
+                            
+                        <input required id="file-input0" type="file" accept="image/*" (change)="selectedFile($event)"/>
+                    </div>
+                   
+                    <div id='img0' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[0]+ ')'}">
+                       <!-- <img src={{imageSrc[0]}}> -->
+                        <label for="file-input1" class="text-center">
+                            <i (click)='delete(0)' class="fa fa-times fa-2x" style="top: 45px;"></i>
+                        </label>
+                            
+                    </div>
+                   
+                    <div id='img1' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[1]+ ')'}">
+                        <!-- <img src={{imageSrc[1]}}> -->
+                        <label for="file-input2" class="text-center">
+                            <i (click)='delete(1)' class="fa fa-times fa-2x" style="top: 45px;"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- img3 -->
+                    <div id='img2' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[2]+ ')'}">
+                        <!-- <img src={{imageSrc[2]}}> -->
+                        <label for="file-input3" class="text-center">
+                            <i (click)='delete(2)' class="fa fa-times fa-2x" style="top: 45px;"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img3 -->
+                    <!-- img4 -->
+                    <div id='img3' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[3]+ ')'}">
+                       <!-- <img src={{imageSrc[3]}}> -->
+                        <label for="file-input4" class="text-center">
+                            <i (click)='delete(3)' class="fa fa-times fa-2x" style="top: 45px;"></i>
+                        </label>
+                            
+                    </div>
+                    <!--end img4 -->
+                    <!-- img5 -->
+                    <div id='img4' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[4]+ ')'}">
+                        <!-- <img src={{imageSrc[4]}}> -->
+                        <label for="file-input5" class="text-center">
+                            <i (click)='delete(4)' class="fa fa-times fa-2x" style="top: 45px;"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img5 -->
+                    <!-- img6 -->
+                    <div id='img5' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[5]+ ')'}">
+                        <!-- <img src={{imageSrc[5]}}> -->
+                        <label for="file-input6" class="text-center">
+                            <i (click)='delete(5)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- emdimg6 -->
+                    <!-- img7 -->
+                    <div id='img6' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[6]+ ')'}">
+                        <!-- <img src={{imageSrc[6]}}> -->
+                        <label for="file-input7" class="text-center">
+                            <i (click)='delete(6)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img7 -->
+                    <!-- img8 -->
+                    <div id='img7' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[7]+ ')'}">
+                        <!-- <img src={{imageSrc[7]}}> -->
+                        <label for="file-input8" class="text-center">
+                            <i (click)='delete(7)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img8 -->
+                    <!-- img9 -->
+                    <div id='img8' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[8]+ ')'}">
+                        <!-- <img src={{imageSrc[8]}}> -->
+                       
+                        <label for="file-input9" class="text-center">
+                            <i (click)='delete(8)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!--  end img9 -->
+                    <!-- img10 -->
+                    <div id='img9' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[9]+ ')'}">
+                        <!-- <img src={{imageSrc[9]}}>
+                        -->
+                        <label for="file-input10" class="text-center">
+                            <i (click)='delete(9)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img 10 -->
+               
+                    </div>    
+                    <div class="form-group mt-3" *ngIf='data.store_name'>      
+                  <label class="form-label" class='js-hide-label select1'>Select account</label>
+                 <select  id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
+                        <option  class="text-dark " [selected]='data.store_name=="my account"' >My account</option>
+                        <option class="text-dark" id={{store.id}} [selected]='data.store_name==store.name'
+                         *ngFor='let store of stores' >{{store?.name}}</option>
+                    </select>
+                   
+                </div>
+          
+                <div   class="myborder col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-3 form">
+                    <div class='form-group' *ngFor='let name of data?.category_name ;let i=index'>
+                        <label class="" *ngIf='i==0'> Model </label>
+                        <!-- <label class="" *ngIf='i!=0'>Sub Category</label>-->
+                        <a > <div class="form-control d-flex justify-content-between"><span>{{name}}</span><i class='fa fa-angle-right'></i> </div>
+                        </a> 
+                    </div>
+                    <div class='form-group' *ngFor='let prop of data?.properties'>
+                        <label>{{prop.name}}</label>
+                         <span *ngFor='let option of prop.options'>
+                            <a (click)='changepro()'>  <div class="form-control d-flex justify-content-between" *ngIf='option.selected!=0'><span>{{option.name}}</span><i class='fa fa-angle-right'></i> </div></a>
+                         </span>
+                        
+                     </div>
+                      <div *ngIf='data?.colors&&data?.colors?.length!=0' class='form-group'>
+                         
+                         <table class='table table-bordered w-100'>
+                         <thead class=''>
+                             <tr  class='text-center'>
+                                 <th scope="col">color</th>
+                                 <th scope="col">quantity</th>
+                                 <th scope="col">size</th>
+                                 <th scope="col">remove</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr *ngFor='let dataofcolor of data?.colors' class='text-center'>
+                                
+                                 <td class="d-flex align-items-center justify-content-center "><span class='circle p-2 px-3' [style.background]='dataofcolor.color'></span></td>
+                                 <td>{{dataofcolor.quantity}}</td>
+                                 <td>{{dataofcolor.size}}</td>
+                                 <td (click)='deleteitem(dataofcolor)'><i class='fa fa-times  rounded-circle basiccolor p-2 del'></i></td>
+                            
+                             </tr> 
+                            </tbody>
+                             <tfoot>
+                             <tr>
+                            
+                             <td colspan="4" class='text-center'><a id='link1' (click)='navme()'>Add More / Edit color &Quantity</a></td>
+                             </tr>
+                            </tfoot>
+                        
+                     </table>
+                 </div>
+                 
+             </div>
+           
+             <div class="form-group">
+                <label  class="" *ngIf='data.city_id' for="exampleInputEmail1" class=''> Select City</label>
+                <input  required id='city' #city='ngModel' ngModel [ngClass]='city.touched&&city.errors?.["required"]?"danger":""'  class="form-control" placeholder="select city" (click)='getcity()'    name='city' [(ngModel)]=data.city_name >
+                
+            </div>
+            
+           
+                <div class="form-group">
+                    <label for="exampleInputEmail1 " class=' title1'>product title</label>
+                    <input type="text" required placeholder="product title" class="form-control title1" id="title" aria-describedby="emailHelp" [ngClass]='title.touched&&title.errors?.["required"]?"danger":""' #title='ngModel' [(ngModel)]=data.title name='title' (change)='displaylabel("title1")' (blur)='hidelabel("title1")' (click)='displaylabel("title1")' (focus)='displaylabel("title1")'>
+                </div>
+            
+           
+                <div class="form-group"  >
+                    <label for="exampleInputEmail1" class=' desc'>product details</label>
+                    <input required type="text" id='desc' placeholder="product detailes" class="form-control desc" [ngClass]='desc.touched&&desc.errors?.["required"]?"danger":""' #desc='ngModel' aria-describedby="emailHelp" [(ngModel)]=data.desc name='desc'  (change)='displaylabel("desc")' (blur)='hidelabel("desc")' (click)='displaylabel("desc")' (focus)='displaylabel("desc")'>
+                </div>
+            
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class=' price' >product price</label>
+                    <input type="number" required id='price' [ngClass]='price.touched&&price.errors?.["required"]?"danger":""' #price='ngModel' placeholder="price" class="form-control price" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]=data.price name='price' (change)='displaylabel("price")' (blur)='hidelabel("price")' (click)='displaylabel("price")' (focus)='displaylabel("price")'>
+                </div>
+           
+                <div class="form-group ">
+                    <label for="exampleInputEmail1" class=' mobile' >phone</label>
+                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                        <img src='https://dalilisouq.com/{{country.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                    <input id='mobile' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number" (change)='displaylabel("mobile")' (blur)='hidelabel("mobile")' (click)='displaylabel("mobile")' (focus)='displaylabel("mobile")' placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=data.mobile name='phone'>
+                  
+               
+            </div> 
+                </div>
+           
+            
+                <div class="form-group" *ngIf='((!data.colors||data.colors?.length==0)&&data.is_online==1)'>
+                    <label *ngIf='data.quantity' for="quantity" class=' quantity' >product quantity</label>
+                    <input id='quantity' type='number' required [ngClass]='quantity.touched&&quantity.errors?.["required"]?"danger":""' #quantity="ngModel"  placeholder="Product quantity" class="form-control quantity"  aria-describedby="emailHelp" [(ngModel)]=data.quantity name='quantity' (change)='displaylabel("mobile")' (blur)='hidelabel("quantity")' (click)='displaylabel("quantity")' (focus)='displaylabel("quantity")'>
+                </div>
+           
+            
+                <div class="form-group">
+                    <label class="form-label" class='js-hide-label link' for="link">youtube link</label>
+                    <input  [ngClass]='link.touched&&link.errors?.["required"]?"danger":""' type="text" placeholder=" youtube link" class="form-control link " id="link" #link="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.link name='link' (change)='displaylabel("link")' (blur)='hidelabel("link")' (click)='displaylabel("link")' (focus)='displaylabel("link")'>
+                    
+
+                </div>
+                <label for="quantity"class='' >ubdate product Location</label>
+                   
+                <div id='map'  style="width:100%;height:400px" class=""></div>
+                <label *ngIf='data.is_online==0||data.is_online==1'>{{data.note}}</label>
+                <div *ngIf='data.is_online||temp' class="form-group">
+                    
+                <label class="switch form-label">
+                    <input  (click)='toggleonline()' type="checkbox" class="form-control" [checked]='data.is_online==1'>
+                    <span class="slider round"></span>
+                  </label>
+                  </div>
+                <div class=" text-center col-md-12 d-flex justify-content-between">
+                 
+        <button type="submit" class="col-5 btn btn-primary" [disabled]='f.invalid'>Update</button>
+       
+        </div>
+    </form>
+</div>
+</div>
+</div>
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span (click)='close()' class="close">&times;</span>
+      <div class="text-center">
+      <p>Successfully updated...</p>
+      <i class="fa fa-check  fa-5x text-success"></i>
+    </div>
+      <div class='row d-flex justify-content-between m-3'>
+          <a class="rouned btn btn-primary" (click)='close()'>Cancel</a>
+          <a class="rounded btn btn-primary" (click)='upgrade()'  >continue to products</a>
+      </div>
+    </div>
+  
+  </div>
+  

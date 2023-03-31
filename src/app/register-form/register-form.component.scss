@@ -1,0 +1,208 @@
+// .header-menu{
+//     overflow-x: auto;
+//     background-color: #163e73;
+//     width: 50%;
+//     border-radius: 0.5rem;
+
+
+// }
+
+// .button{
+//     background-color:  #55152d;
+//     color:white;
+// }
+// .input{
+//     background-color:#102951;
+//     color:white;
+//     font-size: 20px;
+// }
+// .round{
+//     border-radius: 7px;
+
+
+// }
+// #name{
+//     width: 37%;
+//     display: inline;
+
+// }
+// #a{
+//     text-decoration: underline;
+// }
+
+.loginForm{
+  height: 100vh;
+
+  .image{
+    width: 50%;
+    height: 100%;
+    background-image: url('../../../src/assets/images/login&register/pexels-vlada-karpovich-4050334.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    &::after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: rgba($color: #000000, $alpha: .7);
+      z-index: -1;
+    }
+  }
+  .myForm{
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    .header-menu{
+      position: absolute;
+      // background-color: transparent !important;
+      color: #fff;
+      height: 85%;
+      width: 30%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background-color: white;
+      z-index: 4;
+      border-radius: 15px;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+      .form-login{
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1{
+          padding-top: 10px;
+          color: #000;
+        }
+        form{
+          .name{
+            input{
+              font-size: 1.3rem;
+            }
+          }
+          .policy{
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+            label{
+              font-size: 1rem;
+            }
+          }
+          .form-check{
+            .gender:first-of-type{
+              margin-right: 36px;
+            }
+          }
+          .form-group{
+            &.phoneNumber{
+              select{
+                width: 20%;
+                height: inherit;
+              }
+            }
+            &:nth-of-type(3){
+              position: relative;
+              // display: flex;
+              button{
+                position: absolute;
+                right: 10px;
+                top: 11px;
+                cursor: pointer;
+                background-color: transparent;
+                border: none;
+                width: fit-content;
+                height: fit-content;
+                padding: 0;
+                margin: 0;
+                svg{
+                  color: black;
+                  .active{
+                    color: blueviolet;
+                  }
+                }
+              }
+            }
+            input{
+              padding: 10px;
+              font-size: 1.3rem;
+            }
+          }
+          button{
+            background-color: black;
+            color: #fff;
+            width: calc(100% / 2 - 2rem);
+            margin: .5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media (min-width: 992px){
+//   .form-check{
+//     label{
+//       font-size: 1rem;
+//     }
+//   }
+// }
+
+
+@media (max-width: 992px){
+  .loginForm{
+    height: 100vh;
+    .image{
+      width: 50%;
+      height: 100%;
+      &::after{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .myForm{
+      height: 100%;
+      width: 100%;
+      .header-menu{
+        position: absolute;
+        height: 70%;
+        width: 50%;
+        .form-login{
+          width: 85%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 460px){
+  .loginForm{
+    height: 100vh;
+    .image{
+      width: 50%;
+      height: 100%;
+      &::after{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .myForm{
+      height: 100%;
+      width: 100%;
+      .header-menu{
+        position: absolute;
+        height: 70%;
+        width: 70%;
+        .form-login{
+          width: 85%;
+        }
+      }
+    }
+  }
+}

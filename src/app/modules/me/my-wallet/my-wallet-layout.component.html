@@ -1,0 +1,28 @@
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5>current balance</h5>
+                <h2>{{profile_data?.Response?.wallet}} <small>points</small> </h2>
+<a class="btn btn-primary" routerLink='balances'> BUY BALANCE</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>reward points system</h5>
+
+                <ul class="list-group">
+                    <li *ngFor='let mypoint of mypoints' class="list-group-item d-flex justify-content-between">
+                        <span>{{mypoint.point.points}} points</span>
+                        <span>{{mypoint.price}}EGP</span>
+                    </li>
+                  
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

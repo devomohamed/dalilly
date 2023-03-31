@@ -1,0 +1,332 @@
+<div class="container product-details pt-5 d-flex flex-wrap">
+  <div class="productImages">
+    <div *ngIf="productDetails?.images.length > 1;then thenBlock;else elseBlock"></div>
+              <ng-template #thenBlock>
+                <img [src]="'https://dalilisouq.com/'+productDetails?.images[productChecked]?.image" alt="">
+              </ng-template>
+              <ng-template #elseBlock>
+                <!-- {{'https://dalilisouq.com/'+productDetails?.image}} -->
+
+                <img [src]="'https://dalilisouq.com/'+productDetails?.image" alt="">
+              </ng-template>
+    <!-- <div class="imageCanSelected d-flex">
+      <img class="cursor-pointer" [class.active]="productChecked == i" [src]="'https://dalilisouq.com/'+product.image" alt="" *ngFor="let product of productDetails?.images;let i = index" (click)="productChecked = i">
+    </div> -->
+
+
+
+
+
+    <!-- <swiper [config]="config2">
+      <ng-template class="category pt-3 cursor-pointer" *ngFor="let product of productDetails?.images;let i = index" swiperSlide>
+         <img style="max-height: 80vh;" [src]="'https://dalilisouq.com/'+productDetails?.images[productChecked]?.image" alt="">
+         <lib-ngx-image-zoom
+    [thumbImage]="'https://dalilisouq.com/'+productDetails?.images[productChecked]?.image"
+    [fullImage]=myFullresImage
+></lib-ngx-image-zoom>
+      </ng-template>
+    </swiper> -->
+    <swiper [config]="config3" (slideChange)="slideChange($event)">
+      <ng-template class="category pt-3 cursor-pointer" *ngFor="let product of productDetails?.images;let i = index" swiperSlide> <img  (click)="productChecked = i" style="max-height: 200px;" [src]="'https://dalilisouq.com/'+product?.image" alt=""></ng-template>
+    </swiper>
+
+
+
+
+    <!-- start -->
+    <!-- <div class="product-single-container product-single-default">
+      <div>
+          <div class="product-single-gallery">
+              <div class="product-slider-container product-item">
+                  <div class="product-single-carousel owl-carousel owl-theme">
+                    <div class="product-item">
+                      <img class="product-single-image" src="assets/images/products/zoom/product-1.jpg" data-zoom-image="assets/images/products/zoom/product-1-big.jpg"/>
+                  </div>
+                      <div *ngFor="let product of productDetails?.images;let i = index" class="product-item">
+                          <img class="product-single-image" [src]="'https://dalilisouq.com/'+product.image" [attr.data-zoom-image]="'https://dalilisouq.com/' + product.image"/>
+                      </div>
+                  </div>
+
+                  <span class="prod-full-screen">
+                      <i class="porto-icon-plus"></i>
+                  </span>
+              </div>
+              <div class="prod-thumbnail row owl-dots" id='carousel-custom-dots'>
+                <div class="col-3 owl-dot">
+                  <img src="assets/images/products/zoom/product-1.jpg"/>
+              </div>
+                  <div class="col-3 owl-dot" *ngFor="let product of productDetails?.images;let i = index">
+                      <img [src]="'https://dalilisouq.com/'+product.image"/>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div> -->
+    <!-- end -->
+
+
+
+    <div class="mt-4">
+      <div style="color: red;" class="note h5">{{productDetails?.note}}</div>
+
+    <div class="adsInfo my-2">
+      <div class="addsNumber">Adds Number: {{productDetails?.id}}</div>
+      <div class="delevery">{{productDetails?.is_online == 1 ? "Cash On Delivery & Pay Online": "Pay Offline"}}</div>
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+  </div>
+  <div class="txt px-5">
+    <div class="name">{{productDetails?.name}}</div>
+    <a class="rate d-flex  align-items-center" class="nav-link" data-toggle="tab" href="#product-reviews-content">
+      <div class="icons text-warning my-1">
+        <ng-container *ngFor="let r of [1,2,3,4,5] | slice:0:productDetails?.rate">
+          <i class="fa-solid fa-star"></i>
+        </ng-container>
+      </div>
+      <span class="ml-2">({{productDetails?.reviews?.length }} Reviews)</span>
+    </a>
+
+    <div class="description" [innerHTML]="productDetails?.desc">
+
+    </div>
+
+    <div class="price">${{productDetails?.price}}</div>
+    <div class="quantity my-2 d-flex flex-wrap justify-content-between">
+      <div class="left">Quantity: {{productDetails?.quantity}}</div>
+      <div class="cart">
+        <i class="fa-solid fa-basket-shopping"></i> {{productDetails?.shops}}
+      </div>
+    </div>
+    <div class="category d-flex">
+      <div *ngIf="productDetails?.category?.category?.category?.name" class="cat mx-2 cursor-pointer" (click)="redirectByCat(productDetails?.category?.category?.category?.id)">{{productDetails?.category?.category?.category?.name}}</div>
+      <div  (click)="redirectBySub(productDetails?.category?.category?.category?.id,productDetails?.category?.category?.id)" *ngIf="productDetails?.category?.category?.name" class="cat mx-2 cursor-pointer">{{productDetails?.category?.category?.name}}</div>
+      <div class="cat mx-2 cursor-pointer" (click)="redirectBySubSub(productDetails?.category?.category?.category?.id,productDetails?.category?.category?.id,productDetails?.category?.id)">{{productDetails?.category?.name}}</div>
+    </div>
+    <div class="colorsB">
+      Colors: <div class="colors d-flex flex-wrap"><span (click)="changeColor(color?.color_id)" [class.active]="color?.color_id == colorSelectID" *ngFor="let color of productDetails?.colors_sizes" [style.backgroundColor]="color?.color_obj?.color" class="color cursor-pointer"></span></div>
+    </div>
+    <div class="sizes" *ngIf="sizes">
+      <span>Sizes:</span> <div class="d-flex flex-wrap"><span (click)="sizeSelected = size?.size_id" [class.active]="sizeSelected == size?.size_id" *ngFor="let size of sizes?.sizes" class="p-2 m-1 cursor-pointer">{{size?.size_obj?.value}}</span></div>
+    </div>
+
+    <div class="w-100 d-flex  flex-column">
+      <label for="inputNote">Add Note</label>
+      <!-- <input type="text" class="form-control w-100"> -->
+      <textarea name="" style="font-size: 1.6rem;width: 300px;"  [(ngModel)]="note" id="inputNote" class="" columns="20" rows="2"></textarea>
+    </div>
+    <div class="action d-flex">
+      <div action="" class="d-flex flex-wrap">
+        <input class="my-2"  *ngIf="productDetails?.is_online == 1" type="number" [(ngModel)]="count" value="5" minlength="1">
+        <button class="my-2" *ngIf="productDetails?.is_online == 1 && userData?.id != productDetails?.user?.id" (click)="addToCart()"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+        <button [class.active]="isLike" (click)="likeAndDisLike()" class="my-2"><i class="fa-regular fa-heart"></i></button>
+        <button (click)="copyUrl()" class="my-2"><i class="fa-solid fa-share-nodes"></i></button>
+        <!-- <button></button> -->
+        <div class="btn-group dropleft menuReport my-2">
+          <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+          <div class="dropdown-menu">
+            <!-- Dropdown menu links -->
+            <a (click)="dialog()" class="cursor-pointer">Report Product</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="seller px-3">
+    <div *ngIf="productDetails?.store" class="top d-flex align-items-center cursor-pointer" [routerLink]="['/storeseller/',productDetails?.store?.id]" >
+      <img style="width: 50px;height:50px" class="rounded-circle" [src]="'https://dalilisouq.com/'+productDetails?.store?.image" alt="">
+      <div class="name">{{productDetails?.store?.name}} {{productDetails?.store?.s_name}}</div>
+    </div>
+    <div *ngIf="!productDetails?.store" class="top d-flex align-items-center cursor-pointer" [routerLink]="['/sellerprofile/',productDetails?.user?.id]" >
+      <img style="width: 50px;height:50px" class="rounded-circle" [src]="'https://dalilisouq.com/'+productDetails?.user?.image" alt="">
+      <div class="name">{{productDetails?.user?.name}} {{productDetails?.user?.s_name}}</div>
+    </div>
+    <div class="center my-4">
+      <span>{{productDetails?.created_at}}</span><span class="px-3">|</span><span>Views {{productDetails?.viewers}}</span>
+    </div>
+    <div class="locationText d-flex">
+      <i class="fa-solid fa-location-dot"></i>
+      <p class="pl-3">{{productDetails?.country?.name}} / {{productDetails?.region?.name}}</p>
+    </div>
+    <div *ngIf="userData?.id != productDetails?.user?.id" class="contact d-flex flex-wrap my-3">
+      <a href="tel:+{{productDetails?.country?.phone_code}}{{productDetails?.mobile}}" class="btn btn-success mr-3 rounded-pill">Call The Owner</a>
+      <button class="btn btn-success rounded-pill" (click)="getChat()">Chat With The Owner</button>
+    </div>
+    <div class="locationMap">
+      <google-map height="400px"
+            width="100%"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)">
+</google-map>
+    </div>
+  </div>
+  <div class="subDetails">
+    <div class="product-single-tabs">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="product-tab-specifications" data-toggle="tab" href="#product-specifications-content"
+            role="tab" aria-controls="product-specifications-content" aria-selected="false">Specifications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="product-tab-reviews" data-toggle="tab" href="#product-reviews-content"
+            role="tab" aria-controls="product-reviews-content" aria-selected="false">Reviews</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+
+        <div class="tab-pane fade show active" id="product-specifications-content" role="tabpanel"
+          aria-labelledby="product-tab-desc">
+          <div class="product-desc-content">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Property</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let prop of productDetails?.properties">
+                    <th scope="row">{{prop?.name}}</th>
+                    <td><div *ngFor="let option of prop.options">{{option?.name}}</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div><!-- End .product-desc-content -->
+        </div><!-- End .tab-pane -->
+
+
+
+        <div class="tab-pane fade" id="product-reviews-content" role="tabpanel"
+          aria-labelledby="product-tab-reviews">
+          <div class="product-reviews-content">
+
+            <div class="add-product-review">
+              <h3 class="text-uppercase heading-text-color font-weight-semibold">WRITE YOUR OWN REVIEW</h3>
+              <p>How do you rate this product? *</p>
+
+              <form action="#">
+                <ngb-rating (rateChange)="rateCountChange($event)" style="font-size: 30px;" [max]="5" [(rate)]="currentRate"></ngb-rating>
+                <div class="form-group mb-2">
+                  <label>Review <span class="required">*</span></label>
+                  <textarea style="font-size: 1.6rem;" #coMment (input)="changeComment($event)" cols="5" rows="6" class="form-control form-control-sm" placeholder="Add Your Comment"></textarea>
+                  <div class="photo d-flex">
+                    <div class="button">
+                      <label  class="mt-2 cursor-pointer" for="img"><i class="fa-solid fa-camera fa-2x"></i></label>
+                    <input style="visibility: hidden;width: 1px;height: 1px;" type="file" id="img" (change)="changePhoto($event)" name="img" accept="image/*" #image>
+                    </div>
+                    <div class="preview ml-4">
+                      {{imgFileComment?.name}}
+                    </div>
+                  </div>
+                </div><!-- End .form-group -->
+
+                <input type="submit" class="btn btn-primary" (click)="commentProduct(coMment,image)" value="Submit Review">
+              </form>
+            </div><!-- End .add-product-review -->
+
+            <div class="collateral-box mt-5">
+              <ul>
+                <li *ngFor="let review of comments?.comments">
+                  <div class="d-flex justify-content-between">
+                    <div class="left">
+                      <div class="top d-flex align-items-center">
+                        <div class="left"><img style="width: 37px;height: 37px;" [src]="'https://dalilisouq.com/'+review?.user?.image" alt=""></div>
+                        <h3 class="ml-3 mt-3">{{review?.user?.name}}</h3>
+                      </div>
+                      <div class="middle">
+                        {{review?.created_at}}
+                      </div>
+                      <div class="rate">
+                        <ng-container *ngFor="let r of [1,2,3,4,5] | slice:0:review?.rate">
+                          <i style="color: #ec7200;" class="fa-solid fa-star"></i>
+                        </ng-container>
+                      </div>
+                    </div>
+                    <div class="right">
+                      <button style="width: fit-content;" class="btn d-block d-flex justify-content-center align-items-center text-info" type="button" data-toggle="collapse" [attr.data-target]="'#id'+review?.id"  aria-expanded="false" [attr.aria-controls]="'#id'+review?.id"><span class="h5 mr-2">{{review?.replys.length}}</span><i class="fa-solid fa-reply fa-2x"></i></button>
+                      <button *ngIf="userData?.id == review?.user?.id" style="width: fit-content;" class="btn d-block text-danger" (click)="deleteComment(review?.id)"><i class="fa-solid fa-trash fa-2x"></i></button>
+                    </div>
+                  </div>
+                  <div class="bottom pt-3">
+                    {{review?.comment}}
+                    <img *ngIf="review?.image" style="width: 200px;height: 200px;" [src]="'https://dalilisouq.com/'+review?.image" alt="">
+                  </div>
+                  <!-- <div *ngIf="review?.replys.length != 0">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" [attr.data-target]="'#id'+review?.id" aria-expanded="false" [attr.aria-controls]="'#id'+review?.id">
+                      Replies
+                    </button>
+                  </div> -->
+                  <div class="collapse" id="id{{review?.id}}">
+                    <div class="card card-body">
+                      <ul class="replaies">
+                        <li *ngFor="let replay of review?.replys">
+                          <div class="d-flex justify-content-between">
+                            <div class="left">
+                              <div class="top d-flex align-items-center">
+                                <div class="left"><img style="width: 37px;height: 37px;" [src]="'https://dalilisouq.com/'+replay?.user?.image" alt=""></div>
+                                <h3 class="ml-3 mt-3">{{replay?.user?.name}}</h3>
+                              </div>
+                              <div class="middle">
+                                {{replay?.created_at}}
+                              </div>
+                            </div>
+                            <div class="right">
+                              <button *ngIf="userData?.id == replay?.user?.id" style="width: fit-content;" class="btn d-block text-danger" (click)="deleteReplay(review?.id,replay?.id)"><i class="fa-solid fa-trash fa-2x"></i></button>
+                            </div>
+                          </div>
+                          <div class="bottom pt-3">
+                            {{replay?.comment}}
+                          </div>
+                        </li>
+                        <li>
+                          <form class="d-flex" action="" (submit)="replayComment(review?.id,rep)">
+                            <input style="width:-webkit-fill-available" type="text" #rep name="" id="">
+                            <button style="width:fit-content" type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+                          </form>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div><!-- End .collateral-box -->
+          </div><!-- End .product-reviews-content -->
+        </div><!-- End .tab-pane -->
+      </div><!-- End .tab-content -->
+    </div><!-- End .product-single-tabs -->
+  </div>
+  <div *ngIf="productDetails?.similar?.data.length != 0" style="text-decoration: underline;" class="title my-3 h3">
+    Related Adds
+  </div>
+  <swiper [config]="config">
+    <ng-template  *ngFor="let myData of productDetails?.similar?.data" class="category pt-3" swiperSlide>
+      <app-product [data]="myData"></app-product>
+    </ng-template>
+</swiper>
+</div>
+
+
+<!-- <lib-ngx-image-zoom
+    [thumbImage]=myThumbnail
+    [fullImage]=myFullresImage
+    [magnification]="2"
+    [enableLens]="true"
+    [circularLens]="true"
+    [circularLens]="false"
+    [lensWidth]="200"
+    [lensHeight]="200"
+></lib-ngx-image-zoom> -->

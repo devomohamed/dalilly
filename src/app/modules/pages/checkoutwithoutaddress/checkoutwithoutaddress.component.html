@@ -1,0 +1,202 @@
+<div class="mt-3 container-fluid my-5 fontsize">
+    <div class="row justify-content-center ">
+        <div class="col-md-11">
+            <div class="card  ">
+                <!-- <div class="row p-2 mt-3 justify-content-between mx-sm-2">
+                    <div class="col">
+                        <p class="text-muted space mb-0 shop"> Shop No.78618K</p>
+                        <p class="text-muted space mb-0 shop">Store Locator</p>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-start ">
+                            <div class="col">
+                                <img class="irc_mi img-fluid cursor-pointer " src="https://i.imgur.com/jFQo2lD.png"  width="70" height="70" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <img class="irc_mi img-fluid bell" src="https://i.imgur.com/uSHMClk.jpg" width="30" height="30"  >
+                    </div>
+                </div> -->
+                <div class="row  mx-auto justify-content-center text-center">
+                    <div class="col-12 mt-3 ">
+                        <nav aria-label="breadcrumb" class="second ">
+                            <ol class="breadcrumb indigo lighten-6 first  ">
+                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " routerLink='/all-ads'><span class="mr-md-3 mr-1">BACK TO SHOPPING</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                                  </ol>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="row justify-content-around">
+                    <div class="col-md-8">
+                        <div class="card border-0">
+                            <div class="card-header pb-0">
+                                <h2 class="card-title space mt-4">Address Detailes</h2>
+
+                                <hr class="my-0">
+                            </div>
+                            <div class="card-body">
+
+
+
+                                <div class="col-md-12" >
+                                    <div class="form-group">
+                                    <div id="map" style="height: 500px"></div>
+                                     </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Title</label>
+                                    <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="Title" [(ngModel)]=title>
+                                </div>
+                                <div class="form-group">
+                                    <div class="">
+                                        <label for="NAME" class="small text-muted mb-1">City</label>
+
+                                    <select (change)='getcityid($event)' class="form-control form-control-sm" id="validationDefault04" required>
+                                      <option selected disabled value="">Choose...</option>
+                                      <option id={{city.id}} *ngFor='let city of cities;let i=index'>{{city.name}}</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <!-- region -->
+                                <div class="form-group" *ngIf='city_id'>
+                                    <div class="">
+                                        <label for="NAME" class="small text-muted mb-1">Region</label>
+
+                                    <select (change)='getregionid($event)' class="form-control form-control-sm" id="validationDefault04" required>
+                                      <option selected disabled value="">Choose...</option>
+                                      <option  id={{region.id}} *ngFor='let region of selected_city'>{{region.name}}</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <!-- end region -->
+                                <div class="form-group ">
+                                    <label for="exampleInputEmail1" class='js-hide-label mobile' >phone</label>
+                                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                                        <img src='https://dalilisouq.com/{{country?.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                                    <input id='mobile' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number"  placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=fmobile name='phone'>
+
+
+                            </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="exampleInputEmail1" class='js-hide-label mobile' >Alternate phone</label>
+                                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                                        <img src='https://dalilisouq.com/{{country?.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                                    <input id='mobile2' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number"  placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=smobile name='phone2'>
+
+
+                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Street</label>
+                                    <input type="text" class="form-control form-control-sm" name="streetNAME" id="streetNAME" aria-describedby="helpId" placeholder="Street Name" [(ngModel)]=street>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Building</label>
+                                    <input type="text" class="form-control form-control-sm" name="buildingNAME" id="streetNAME" aria-describedby="helpId" placeholder="Building number" [(ngModel)]=building>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Floor</label>
+                                    <input type="text" class="form-control form-control-sm" name="floorNAME" id="streetNAME" aria-describedby="helpId" placeholder="Floor number" [(ngModel)]=floor>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Apartment(optional)</label>
+                                    <input type="text" class="form-control form-control-sm" name="apartementNAME" id="streetNAME" aria-describedby="helpId" placeholder="Apartement number" [(ngModel)]=apartment>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Postal code(optional)</label>
+                                    <input type="text" class="form-control form-control-sm" name="buildingNAME" id="postal" aria-describedby="helpId" placeholder="Postal code"  [(ngModel)]=postalcode>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" (change)='setasdefault()' type="checkbox" value="" id="invalidCheck2" required>
+                                    <label class="form-check-label" for="invalidCheck2">
+                                      Set as default
+                                    </label>
+                                  </div>
+
+                                  <div class="row mb-1 mt-4 ">
+                                    <div class="col-md-7 col-lg-6 mx-auto"><button (click)=' addnewaddress()' type="button" class="btn btn-block btn-outline-primary btn-lg">save and continue</button></div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- <div class="card border-0 " >
+                            <div class="card-header card-2">
+                                <p class="card-text text-muted mt-md-4  mb-2 space">YOUR ORDER  </p>
+                                <hr class="my-2">
+                            </div>
+                            <div class="card-body pt-0">
+
+
+                                <div class="row  justify-content-between" *ngFor='let product of cart_products'>
+                                    <div class="col-auto col-md-7">
+                                        <div class="media flex-column flex-sm-row">
+                                            <img class=" img-fluid mr-2" src="https://dalilisouq.com/{{product.product.image}}" style="width: 62px;height: 64px;">
+                                            <div class="media-body  my-auto">
+                                                <div class="row ">
+                                                    <div class="col mx-2"><p class="mb-0"><b>{{product.product.name}}</b></p><small class="mx-2 mt-2 text-muted d-flex   ">
+
+                                                        <p style="height: 20px; width: 20px;" class=" bg-light border mx-3 d-flex justify-content-center align-items-center p-3  rounded-circle"  >{{product.size_id}}</p>
+
+                                                           <p style="height: 20px; width: 20px;" class="   rounded-circle"  [style.background]="product.color_id" ></p>
+
+                                                    </small></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">{{product.quantity}}</p></div>
+                                    <div class="pl-0 flex-sm-col col-auto  my-auto"><p class="d-flex justify-content-center"><b>${{product.product.price}} </b></p></div>
+                                </div>
+
+
+                                <hr class="my-2">
+                                <div class="row ">
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><p class="mb-1"><b>Items</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.quantites}} </b></p></div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                        <div class=" mx-3 row justify-content-between align-items-center bg-light text-dark">
+                                            <div class="col-4 d-flex "><p ><b>Total</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p  class="mb-1 text-danger">
+                                                <b >{{cart_data.total}}</b>
+
+                                                   </p></div>
+                                                </div>
+
+                                        <hr class="my-0">
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div style="display: none">
+                    <span id='lat'>
+
+                    </span>
+                    <span id=lng></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

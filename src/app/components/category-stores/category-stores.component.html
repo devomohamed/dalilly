@@ -1,0 +1,5 @@
+<div class="categorries d-flex flex-wrap">
+  <div class="category" *ngFor="let cat of categories" [routerLink]="cat?.id">
+    <app-categorry [category]="cat" [count]="cat.no_stores"></app-categorry>
+  </div>
+</div>

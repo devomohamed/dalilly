@@ -1,0 +1,150 @@
+<section class="orders">
+    <div class="backBtn row border-bottom rounded" >
+        <!-- <a href="#">
+            <i class="fa fa-arrow-left"></i></a> -->
+        <span class="col-md-8">Order(#{{order?.id}})</span>
+
+    </div>
+    <div class='row d-flex justify-content-center' >
+        <div class="store container col-md-10  mt-2 p-2 border-bottom rounded border-2">
+
+            <div class="row p-5" >
+            <div class='col-md-8'><i class="fa fa-user mr-2"></i>{{order.f_name}} {{order.s_name}}</div>
+            <div class='col-md-4'>{{order.created_at}}</div>
+        </div>
+        <div class="row p-3 pl-5">
+            <div class='col-md-8' *ngIf='order.payment_type==0'> cash on delivery  </div>
+            <div class='col-md-8' *ngIf='order.payment_type==2'> online payement  </div>
+
+            <div class="col-md-4 d-flex justify-content-start">
+                <img *ngIf='order.is_fast==1' src='assets/images/fast.svg ' style="width: 20px !important;">
+                   <span>{{order.date}}-{{order.time}}</span>
+                </div>
+
+            </div>
+            <div class="row px-5 pb-3"  *ngIf='order.customer_note'>
+                <div class='col-md-8 '><i class="fa fa-comment mr-2 text-success  border-success" ></i> <span class="text-success">customer_note:</span>{{order.customer_note}} </div>
+
+            </div>
+        <div class="row text-right pb-0">
+
+            <a routerLink='/me/profile/allcodeseller/{{order.id}}' class='btn btn-xm ml-5  rounded '>view all products code</a>
+
+
+   </div>
+
+</div>
+    <div class='col-md-10 ' *ngFor='let product of order?.products;let i =index'>
+
+<div >
+    <div class="store container ">
+        <section class="orders">
+
+
+            <div class='row' >
+                <div class='col-md-12' >
+
+                      <div id="Waiting" class="tabcontent active " >
+                      <div class="order_item">
+
+
+
+
+                        <div class="content">
+                            <div class="imgBx">
+                                <img *ngIf='product.image== "undefined"' src="assets/images/admin.jpg" alt="Watch Brand">
+                                <img *ngIf='product.image!="undefined"' src="https://dalilisouq.com/{{product.image}}" alt="Watch Brand">
+
+                            </div>
+                            <div class="textBx ">
+                                <div class="progress ">
+                                    <div class='row text-center '>
+
+
+                                    <div class='col-md-12 '>
+                                        <ul class="mb-3">
+                                        <li *ngIf='product.customer_note'><i class="fa fa-comment  text-success  border-success" ></i>{{product.customer_note}}</li>
+                                    </ul>
+                                    <ul *ngIf='product.status==0||product.status==1||product.status==2' class=" progressbar d-flex justify-content-evenly ml-5" >
+                                        <li class="
+                                         col-md-4 " [ngClass]="product.status==0||product.status==1||product.status==2?'active':''">Processing</li>
+                                        <li class=" col-md-4" [ngClass]="product.status==1||product.status==2?'active':''">shipped</li>
+                                        <li class='col-md-4' [ngClass]="product.status==2?'active':''">delivered</li>
+
+                                    </ul>
+                                    <ul class="row">
+                                         <li *ngIf='product.status==3' class='col-md-12 text-danger' >Out of stock</li>
+
+                                    </ul>
+
+                                    </div>
+                                </div>
+                                </div>
+                                <h3 class="title d-flex justify-content-start align-item-center" ><span>{{product.name}}</span>
+                                    <span class="bg-light bordery h6 px-5 py-3 ml-5 border-secondary" style=" border-radius: 20%;">Ads:#{{product.id}}</span>
+                                </h3>
+                                <p class="price" py-2 mx-5 >{{product.price}} EGP</p>
+                               <div class="row ">
+
+                                <p  class="bg-light border py-3  rounded-pill text-center text-dark col-md-2" style=" border-radius: 20%;"> QTY :{{product.quantity}} </p>
+                                <p *ngIf='product.size_id' class=" bg-light border py-3 mx-3 rounded-pill text-center text-dark col-md-2" style="border-radius: 20%;"> {{product.size_id}} </p>
+                                <p class="pt-5" id='color-product' [style.background-color]='product.color_id' ></p>
+
+                              </div>
+
+                            </div>
+                        </div>
+                        <div class=" row text-center" style="background-color: white;" *ngIf='order.status!=1&&product.status!=3'>
+                            <a class="  col-md-2 text-center" ></a>
+                            <a  id='abtn1' class=" col-md-2 py-3 border rounded text-center" style='background-color: #9b1919 !important;
+                            color: #ffffff !important;' routerLink='/me/profile/salescode/{{order.id}}/{{i}}'>view code</a>
+                            <a class="  col-md-2 text-center" ></a>
+                            <a  class="py-3 border rounded col-md-2" py-3 style='background-color: #9b1919 !important;
+                            color: #ffffff !important;' (click)='setoutofstock(product.cart_id)'>set out of stock</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <hr>
+            </section>
+
+
+        </div>
+
+        </div>
+
+</div>
+<div class='col-md-10 ' >
+    <div class="store container  mt-1 p-2 border-bottom rounded border-2">
+        <div class="row">
+        <h3 class='col-md-3 mx-3'>sub total</h3>
+        <h3 class=' mx-2 basiccolor'>{{order.total}} EGP</h3>
+        <h4 class='col-md-2'></h4>
+
+        <h3  class='col-md-3 mx-3'>commission</h3>
+        <h3 class=' mx-2 basiccolor'>{{order.commission}} EGP</h3>
+    </div>
+    <div class="row">
+        <h3 class='col-md-3 mx-3'>Total:</h3>
+        <h3 class='col-md-3 mx-3'>{{order.total_price}} EGP</h3>
+
+    </div>
+    </div>
+    <!-- <div class='col-md-10 ' >
+        <div class="store container  mt-1 p-2 border-bottom rounded border-2">
+
+
+        <div style="background-color: #9b1919;color: white; " class="col-md-3 border ml-5 rounded text-center">
+        </div>
+        </div>
+    </div> -->
+
+   </div>
+
+    </div>
+
+
+
+
+       </section>

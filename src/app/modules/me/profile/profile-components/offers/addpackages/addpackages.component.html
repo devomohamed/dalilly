@@ -1,0 +1,24 @@
+<div class="row mt-2" >
+    <div class="col-md-4" *ngFor='let p of packages'>
+     
+    <div class="card h-100">
+        
+        <div class='text-center basiccolor h3 mt-2 ' > {{p.name}}</div>
+    <div class='h4 m-2 p-1 ml-4 basiccolor'><img src="../../../../../../../assets/images/discount-svgrepo-com.svg" class='basiccolor' height="22px" width="20px" alt="">{{p.balance}} balance</div>
+    <div class='h4 m-2 mb-2 p-1 ml-4 basiccolor'><i class="fa fa-eye basiccolor mr-1"></i>{{p.views}} double views</div>
+    <div class='h4 m-2 p-1 ml-4 basiccolor'><i class="fa fa-dollar-sign dollar  text-center"></i> EGP</div>
+    <div class='d-flex justify-content-around mb-3' >
+    <a (click)='detectme(type.id)' id={{type.id}} class='bg-secondary rounded text-light h4 m-2 p-2  py-2  text-center' *ngFor='let type of p.types'>{{type.days}} days</a>
+   
+    </div>
+    <div class='d-flex justify-content-center align-items-end '>
+        <button class="text-cennter  btn btn-lg rounded mb-1 " (click)='add_package()' > Select</button>
+        </div>  
+   </div>
+   </div>
+  
+   </div>
+   <div class='row d-flex justify-content-center p-5 m-3'>
+   <button (click)=' continueo()'>continue without packages </button>
+   
+   </div>

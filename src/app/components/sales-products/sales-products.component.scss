@@ -1,0 +1,11 @@
+img{
+  height: 180px;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .row{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+}

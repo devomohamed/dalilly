@@ -1,0 +1,35 @@
+<google-map height="400px"
+            width="100%"
+            height="30vh"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)">
+</google-map>
+<div class="info mt-3">
+  <div class="line my-4 d-flex">
+    <div class="icon"><i class="fa-solid fa-store fa-2x"></i></div>
+    <div class="txt h4 ml-3">{{this.dialogBelonging.customData.store.name}}</div>
+  </div>
+  <div class="line my-4 d-flex">
+    <div class="icon"><i class="fa-solid fa-circle-info fa-2x"></i></div>
+    <div class="txt h4 ml-3">{{this.dialogBelonging.customData.store.desc}}</div>
+  </div>
+  <div class="line my-4 d-flex">
+    <div class="icon"><i class="fa-solid fa-location-dot fa-2x"></i></div>
+    <div class="txt h4 ml-3">{{this.dialogBelonging.customData.store.city.name}} , {{this.dialogBelonging.customData.store.region.name}} , {{this.dialogBelonging.customData.store.address}}</div>
+  </div>
+  <div class="line my-4 d-flex">
+    <div class="icon"><i class="fa-solid fa-phone fa-2x"></i></div>
+    <div class="txt h4 ml-3"><a href="tel:+{{this.dialogBelonging.customData.store.city.country.phone_code}}{{this.dialogBelonging.customData.store.user.mobile}}">{{this.dialogBelonging.customData.store.user.mobile}}</a></div>
+  </div>
+  <div class="line my-4 d-flex">
+    <div class="icon"><i class="fa-solid fa-at fa-2x"></i></div>
+    <div class="txt h4 ml-3">{{url}}</div>
+  </div>
+  <div class="line my-4 d-flex">
+    <div class="icon"><i class="fa-solid fa-gauge-high fa-2x"></i></div>
+    <div class="txt h4 ml-3">Heigh Speed Of Response</div>
+  </div>
+</div>
+

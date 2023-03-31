@@ -1,0 +1,25 @@
+<div class="store" [routerLink]="['/storeseller/',store?.id]">
+  <div class="storeAlign d-flex position-relative overflow-hidden">
+    <div class="image">
+      <img style="max-width: 100px;height:100px" [src]="url+store?.image"
+        alt="">
+    </div>
+    <div class="txt ml-3 d-flex flex-column justify-content-between">
+      <div class="icons text-warning">
+        <ng-container *ngFor="let r of [1,2,3,4,5] | slice:0:store?.rate">
+          <i class="fa-solid fa-star"></i>
+        </ng-container>
+      </div>
+      <div class="title h4">
+        {{store?.name}}
+      </div>
+      <div class="price h5">
+        {{store?.no_adds}} Products
+      </div>
+    </div>
+    <div class="favorite position-absolute text-warning">
+      <i class="fa-regular fa-heart"></i>
+      <i class="fa-solid fa-heart d-none"></i>
+    </div>
+  </div>
+</div>

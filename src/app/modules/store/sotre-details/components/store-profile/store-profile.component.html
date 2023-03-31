@@ -1,0 +1,74 @@
+<h3></h3>
+<div class='row m-3'>
+    <div class="header-search m-3">
+        <a href="#" class="search-toggle" role="button"><i class="porto-icon-search-3"></i></a>
+        <form action="#" method="get">
+            <div class="header-search-wrapper" style="width: 20%;">
+                <input type="search" class="form-control" name="q" id="q" placeholder=" Search in your stores..." required style='background-color:#990033 ;color:white;font-size:14px' [(ngModel)]="term">
+                <button class="btn" type="submit" style='background-color:#990033; color:white'><i class="porto-icon-search-3"></i></button>
+            </div>
+            <!-- End .header-search-wrapper -->
+        </form>
+    </div>
+
+   
+        <div class="filter-view-way col-md-5 ml-5">
+    
+            <div class='view-way'>
+                <i class="fas fa-th" (click)='shrink()'></i>
+                <i class="fas fa-list" (click)='spread()'></i>
+            </div>
+        </div>
+</div>
+
+<div class="row" >
+    <div [ngClass]="flag === 0? 'col-md-4' : 'col-md-6'" *ngFor='let ad of store '>
+        <div class="card shadow border-0">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center remove-after">
+                <h4 class='m-0'>{{ad.name}}</h4>
+                <div class="dropdown">
+                    <i class="fas fa-ellipsis-v" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                    </i>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" routerLink="edit-product"><i class="fas fa-pen-square"></i> edit product</a>
+                        <a class="dropdown-item"><i class="fas fa-newspaper"></i>repost product</a>
+                        <a (click)='delete(ad.id)' class="dropdown-item"><i class="fas fa-trash-alt"></i> delete product</a>
+                        <a class="dropdown-item"><i class="fas fa-shopping-cart"></i> set out of stock</a>
+                        <a class="dropdown-item"><i class="fas fa-file"></i> report product</a>
+                    </div>
+                </div>
+            </div>
+            <img src="https://dalilisouq.com/{{ad.image}}" class="card-img-top" alt="...">
+            <div class="card-body border-0">
+                <div class='d-flex justify-content-between align-items-center mb-1'>
+                    <p class="mb-0" *ngIf='ad.quantity!=0'>{{ad.quantity}} items left</p>
+                    <p class="mb-0"> <i class="fas fa-calendar mr-1"></i>{{ad.created_at}}</p>
+                    <p class="mb-0"> <i class="fas fa-map-marker mr-1"></i>{{ad.city?.name}},{{ad.city?.country?.name}}</p>
+                </div>
+                <p class="mb-0 text-danger" *ngIf='ad.quantity==0'>out of stock</p>
+                   
+                <div class='d-flex justify-content-between align-items-center mb-2'>
+                    <h2 class="m-0">{{ad.price}}<small>EGP</small></h2>
+                    
+                    <i class="far fa-heart favourite-icon " [ngClass]="{'text-danger' : ad.favourite}" ></i>
+                </div>
+                <!-- <p class="mb-1">online for : {{ad.online_for}}</p>
+                <p class="mb-1">expire in: {{ad.expire_in}}</p> -->
+            </div>
+            <div class="card-footer border-0 p-0 bg-white">
+                <div class="advertising-info-footer">
+                    <ul>
+                        <li> <a><i class="fa fa-eye"></i>{{ad.viewers}}</a></li>
+                        <li> <a><i class="fa fa-phone"></i></a>{{ad.calls}}</li>
+                        <li> <a><i class="fa fa-comment"></i></a>{{ad.chats}}</li>
+                        <li> <a><i class="fas fa-comment-alt"></i></a>{{ad.comments}}</li>
+                        <li> <a><i class="fas fa-tag"></i>{{ad.offers}}</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-primary w-100" routerLink="/home/me/store/284/doupleview">double the view</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

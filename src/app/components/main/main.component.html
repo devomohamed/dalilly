@@ -1,0 +1,41 @@
+<div class="px-4 my-4 main">
+  <div class="row">
+    <div class="slider col-lg-8 col-md-12 py-2">
+      <swiper
+      [config]="config"
+    >
+      <ng-template class="category" *ngFor="let srcR of sliderData" swiperSlide>
+        <div style="height: 100%;" class="position-relative">
+          <img  src="{{domain}}{{srcR.image}}" alt="">
+        <div class="txt position-absolute">
+        <span>Get 50% Off</span>
+        <h3 class="py-3">{{"Shop Wise With Price Comparisons" | uppercase }}</h3>
+        <div class="buttons">
+          <button type="button" class="btn btn-outline-primary rounded">{{ "View Collection" | uppercase }}</button>
+          <button type="button" class="btn btn-warning">{{ "Categories" | uppercase }}</button>
+        </div>
+      </div>
+        </div>
+        </ng-template>
+    </swiper>
+    </div>
+    <div class="images col-lg-4 col-md-12 row">
+        <div class="im col-lg-12 col-md-6 position-relative py-3 cursor-pointer" routerLink="/stores">
+          <div class="image">
+            <img [src]="'https://dalilisouq.com/'+data?.stores_background" alt="">
+          <div class="txt position-absolute text-white">
+            <p>{{ "Stores" | uppercase }}</p>
+          </div>
+          </div>
+        </div>
+        <div class="im col-lg-12 col-md-6 mt-lg-3 position-relative cursor-pointer" routerLink="/buy-online">
+          <div class="image">
+            <img [src]="'https://dalilisouq.com/'+data?.buyonline_background" alt="">
+          <div class="txt position-absolute text-white">
+            <p>{{ "By Online" | uppercase }}</p>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

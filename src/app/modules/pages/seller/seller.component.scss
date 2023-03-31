@@ -1,0 +1,136 @@
+.container{
+  .banner{
+    background-color: white;
+    .socialIcons{
+
+    }
+    .profile-data{
+      .left{
+         img{
+          width: 100px;
+          height: 100px;
+          border: 1px solid #000;
+         }
+         .txt{
+          .name{
+
+          }
+          .buttons{
+            button{
+              // height: fit-content;
+              // padding: .375rem .75rem;
+              // font-size: 1rem;
+              min-width: fit-content;
+              padding: 5px 30px
+            }
+          }
+          .follwing-data{
+            p{
+              border: 1px dotted #000;
+            }
+          }
+         }
+      }
+      .right
+      svg{
+
+      }
+    }
+  }
+}
+
+.bar-filter{
+  background-color: rgb(189, 189, 189);
+  margin: 10px 0;
+      padding: 5px;
+  .search{
+    width: fit-content;
+
+    form{
+      display: flex;
+      margin: 0;
+       input{
+        padding: 5px;
+        width: 80%;
+        border: none !important;
+       }
+       button{
+        border-color: transparent;
+        margin-left: 10px;
+        color: #8c1434;
+       }
+    }
+  }
+  .view{
+    button{
+      border: none;
+      margin: 0 3px;
+    }
+  }
+}
+
+
+@media (max-width: 576px){
+  .product{
+    width: 80% !important;
+    margin: 3rem auto;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .searchProducts{
+    .title{
+      // margin: 10px 0 10px 30px;
+      // font-size: 2rem;
+      padding: 10px;
+      width: fit-content;
+      border: 1px solid #8c1434;
+    }
+    .left{
+      border: none !important;
+      margin-bottom: 3rem;
+      height: fit-content;
+      overflow: visible;
+      display: flex;
+      flex-wrap: wrap;
+      .filterItem{
+        min-height: 100px;
+        height: max-content;
+        max-height: 150px;
+        width: 100px;
+        margin: 0 30px;
+        hr{
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.color{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #03a9f4;
+  margin: 5px 5px;
+}
+
+.product{
+  border: 1px solid transparent;
+  transition: .3s;
+  &:hover{
+    border-color:#000 ;
+    transform: translate(1.5%);
+  }
+  .sizes{
+    span{
+      margin: 0 .5rem;
+      &.active{
+        background-color: #cdcdcd;
+      }
+    }
+  }
+}

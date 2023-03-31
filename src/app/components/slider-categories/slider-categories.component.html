@@ -1,0 +1,27 @@
+<div class="my-3" *ngIf="type == 'home'">
+  <swiper [config]="config">
+    <ng-template class="category pt-3 cursor-pointer" swiperSlide> <a (click)="changeAndDirect(-1)" (mouseover)="ShowText(-1)"><img style="width: 40px;height:40px;" class="rounded-circle" src="../../../assets/images/download.jpg" alt=""><span>All</span></a> </ng-template>
+    <ng-template class="category pt-3 cursor-pointer" *ngFor="let src of categories;let i = index" swiperSlide> <a (click)="changeAndDirect(src.id)" (mouseover)="ShowText(src.id)"><img style="width: 40px;height:40px;" class="rounded-circle" src="https://dalilisouq.com/{{src.icon}}" alt=""><span>{{src.name }}</span></a> </ng-template>
+  </swiper>
+</div>
+<div class="my-3 slider" *ngIf="type == 'category'">
+  <swiper [config]="config">
+    <ng-template class="category pt-3 cursor-pointer" swiperSlide> <a (click)="changeCatSelected(-1)" [class.active]="catSelected == -1" (mouseover)="ShowText(-1)"><img style="width: 40px;height:40px;" class="rounded-circle" src="../../../assets/images/download.jpg" alt=""><span>All</span></a> </ng-template>
+    <ng-template class="category pt-3 cursor-pointer" *ngFor="let src of categories;let i = index" swiperSlide> <a  (click)="changeCatSelected(src?.id)" [class.active]="catSelected == src?.id" (mouseover)="ShowText(src.id)"><img style="width: 40px;height:40px;" class="rounded-circle" src="https://dalilisouq.com/{{src.icon}}" alt=""><span>{{src.name }}</span></a> </ng-template>
+  </swiper>
+</div>
+<div class="my-3 mySlider" *ngIf="type == 'sub'">
+  <div class="container">
+    <swiper [config]="config2">
+      <ng-template class="category pt-3 cursor-pointer" swiperSlide> <a  [class.active]="subSelected == -1" (click)="changeSubSelected(-1,false)" (mouseover)="ShowText(-1)"><img style="width: 40px;height:40px;" class="rounded-circle" src="../../../assets/images/download.jpg" alt=""><span>All</span></a> </ng-template>
+      <ng-template class="category pt-3 cursor-pointer" *ngFor="let src of categories;let i = index" swiperSlide> <a (click)="changeSubSelected(src?.id,src?.has_category)" [class.active]="subSelected == src?.id" routerLink="/all-ads" (mouseover)="ShowText(src.id)"><img style="width: 40px;height:40px;" class="rounded-circle" src="https://dalilisouq.com/{{src.icon}}" alt=""><span>{{src.name }}</span></a> </ng-template>
+    </swiper>
+  </div>
+</div>
+<div class="my-3 slider" *ngIf="type == 'subsub'">
+  <swiper [config]="config">
+    <ng-template class="category pt-3 cursor-pointer" swiperSlide> <a  [class.active]="subSubSelected == -1"  (click)="changeSubSubSelected(-1)" (mouseover)="ShowText(-1)"><img style="width: 40px;height:40px;" class="rounded-circle" src="../../../assets/images/download.jpg" alt=""><span>All</span></a> </ng-template>
+    <ng-template class="category pt-3 cursor-pointer" *ngFor="let src of categories;let i = index" swiperSlide> <a  [class.active]="subSubSelected == src?.id" (click)="changeSubSubSelected(src?.id)" (mouseover)="ShowText(src.id)"><img style="width: 40px;height:40px;" class="rounded-circle" src="https://dalilisouq.com/{{src.icon}}" alt=""><span>{{src.name }}</span></a> </ng-template>
+  </swiper>
+</div>
+

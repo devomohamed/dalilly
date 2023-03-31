@@ -1,0 +1,26 @@
+.image{
+  background-image: url('../../../assets/images/banner/pexels-anastasia-shuraeva-5704410.jpg');
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  &::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background:rgba($color: #000000, $alpha: .7);
+    z-index: 1;
+  }
+  .txt{
+    z-index: 5;
+    font-weight: bold;
+    margin-left: 3rem;
+    h2{
+      color: #fff;
+    }
+  }
+}

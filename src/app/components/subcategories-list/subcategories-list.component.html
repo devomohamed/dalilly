@@ -1,0 +1,5 @@
+<div class="categorries d-flex flex-wrap">
+  <div class="category" *ngFor="let sub of subCategories" (click)="checkandNavigate(sub)">
+    <app-categorry [category]="sub" [count]="sub?.no_adds"></app-categorry>
+  </div>
+</div>

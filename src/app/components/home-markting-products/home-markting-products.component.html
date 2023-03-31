@@ -1,0 +1,50 @@
+<div class="m-5 homeStores">
+  <div class="p-3 head">
+    <div class="top d-flex justify-content-between">
+      <h2>{{data?.name}}</h2>
+    </div>
+    <hr>
+    <div class="bottom pt-3">
+      <div [ngSwitch]="typeComponent">
+        <div *ngSwitchCase=1>
+
+          <swiper [config]="config">
+            <ng-template *ngFor="let myData of data?.data" class="category pt-3" swiperSlide>
+              <app-categorry (click)="redirectByCat(myData?.id)" [category]="myData"></app-categorry>
+            </ng-template>
+        </swiper>
+        </div>
+        <div *ngSwitchCase=2>
+          <swiper [config]="config">
+            <ng-template  *ngFor="let myData of data?.data" class="category pt-3" swiperSlide>
+              <app-product [data]="myData"></app-product>
+            </ng-template>
+        </swiper>
+        </div>
+        <div *ngSwitchCase=3>
+          <swiper [config]="config2">
+            <ng-template  *ngFor="let myData of data?.data" class="category pt-3" swiperSlide>
+              <app-offer [offerData]="myData"></app-offer>
+            </ng-template>
+        </swiper>
+        </div>
+        <div *ngSwitchCase=4>
+          <swiper [config]="config">
+            <ng-template  *ngFor="let myData of data?.data" class="category pt-3" swiperSlide>
+              <app-store2 [store]="myData"></app-store2>
+            </ng-template>
+        </swiper>
+        </div>
+        <div *ngSwitchCase=5>
+          <swiper [config]="config">
+            <ng-template  *ngFor="let myData of data?.data" class="category pt-3" swiperSlide>
+              <img style="height: 170px;" [src]="'https://dalilisouq.com/'+myData.image" alt="">
+            </ng-template>
+        </swiper>
+        </div>
+        <div *ngSwitchDefault>
+              defult
+        </div>
+  </div>
+</div>
+</div>

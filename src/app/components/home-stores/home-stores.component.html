@@ -1,0 +1,33 @@
+<div class="mx-5 homeStores">
+  <div class="p-3 border border-dark head">
+    <div class="top d-flex justify-content-between">
+      <h2>Stores</h2>
+      <ul class="nav justify-content-end">
+        <li class="nav-item" *ngFor="let link of links;let i = index" (click)="changeLink(link?.id)">
+          <a [class.active]="idActive == link?.id" class="nav-link h5">{{link?.name}}</a>
+        </li>
+      </ul>
+      <!-- <swiper class="mySwiper3 ml-3" [config]="config2">
+        <ng-template *ngFor="let link of links;let i = index" swiperSlide>
+          <a style="display: block;" [class.active]="idActive == i" class=" h5 text-center" (click)="idActive = i;catId = link?.id;getStoresByCategory()">{{link?.name}}</a>
+          <div class="d-flex">
+            <h3 style="width: 100%;">{{link?.name}}</h3>
+            <img src="https://dalilisouq.com/assets/images/offers/16735661777088.jpg" alt="https://dalilisouq.com/assets/images/offers/16735661777088.jpg">
+          </div>
+        </ng-template>
+        </swiper> -->
+    </div>
+    <hr>
+    <div class="bottom pt-3">
+      <div class="stores px-5 py-5">
+        <swiper class="mySwiper" [config]="config">
+          <ng-template *ngFor="let store of stores" swiperSlide>
+            <app-store [store]="store"></app-store>
+          </ng-template>
+          </swiper>
+      </div>
+      <div class="foot text-center h3 py-3" [routerLink]="['/stores']" routerLinkActive="router-link-active" >View All Stores</div>
+    </div>
+  </div>
+</div>
+{{catId}}

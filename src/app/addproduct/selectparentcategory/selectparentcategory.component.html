@@ -1,0 +1,75 @@
+<div *ngIf='!properties'>
+<div class='card-header header '>
+    <a  routerLink='/me/profile/my-profile/add_product/data'><i class="fa fa-arrow-left mr-3"></i>Select category</a>
+
+</div>
+<div class="row card-body" >
+    <div class='me card-header col-md-6 header rounded d-flex justify-content-between align-items-center' *ngFor='let category of categories ' >
+        <img  src="https://dalilisouq.com/{{category.icon}}" width='60px' height="20px">
+        <a (click)='getid(category.id,category.has_category,category.name,category.properties,category.is_color,category.is_size,category.is_online)' class='d-flex h3'>{{category.name}} </a>
+    </div>
+</div>
+</div>
+
+<div *ngIf='properties'>
+
+<div class="row  "  >
+    <div id='prop' class=' col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg '>
+            <form (ngSubmit)='submit()' class="form" #f='ngForm'>
+              <div class='card-header  d-flex justify-content-between' >
+                <a  ><i class="fa fa-arrow-left mr-3"></i>properties</a>
+                <button [disabled]='f.invalid' class='' type='submit'>submit</button>
+            </div>
+              <div class="container ">
+              <div class="row m-2">
+               <div class="col-md-4 my-2 " *ngFor='let prop of properties ;let j=index' >
+                <div class='me card-body  h-100  header rounded ' id={{prop.name}} >
+
+                    <a  class='card-header d-flex h3'>{{prop.name}} </a>
+
+                <div class="form-check" *ngFor=' let option of prop.options;let i=index'>
+
+                    <input class="form-check-input"  [type]="prop.type.name=='Multi Select'?'checkbox':'radio'"  name={{prop.name}} id={{option.id}}   value={{prop.name}}  >
+                    <label class="form-check-label" for="defaultCheck1">
+                     {{option.name}}
+                    </label>
+                  </div>
+                  </div>
+                  </div>
+
+                  </div>
+
+                  </div>
+                  <!-- <div class='me card-body col-md-6 m-2 mx-5 header rounded ' >
+                    <a  class='card-header d-flex h3'> select color</a>
+                    <input type="hidden" [(ngModel)]=selectedcolor>
+
+                  <div class='form-check  row d-flex justify-content-start' >
+
+                    <div   class=' d-flex justify-content-start m-1' *ngFor='let color of colors '>
+                    <span (click)='getcolor(color.color,color.id)' id={{color.id}}  class="p-1 circle d-flex justify-content-between" [style.background]="color.color">
+                    {{color.id}}{{selectedcolorid}}
+                    </span>
+                      </div>
+                    </div>
+                     </div>
+                     <div class='me card-body col-md-6 m-2 mx-5 header rounded ' >
+                        <a  class='card-header d-flex h3'> select size</a>
+                        <input type="hidden" [(ngModel)]=selectedcolor>
+
+                  <div class='form-check  row d-flex justify-content-start' >
+
+                    <div  class=' d-flex justify-content-start m-1' *ngFor='let size of sizes '>
+                    <span  class="text-center border bg-light d-flex justify-content-between" >
+                    {{size}}
+                    </span>
+                      </div>
+                    </div>
+                     </div> -->
+
+
+
+              </form>
+              </div>
+            </div>
+

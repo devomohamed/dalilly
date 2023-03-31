@@ -1,0 +1,454 @@
+body {
+    background: hsl(0, 0%, 90%);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+.btn-xm{
+   
+    font-size: 13px;
+    color: white;
+    background-color: #8c1434;;
+}
+.comment{
+    background-color: #F8F8F8;
+    border: lightgrey;
+}
+::placeholder {
+    color: 	#484848!important;
+    font-size: 17px;
+}
+.total{
+    background-color:#123c7a;
+    padding:4px;
+    
+}
+
+
+.backBtn {
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+   // border-bottom: 1px solid lightgray;
+}
+.store{background: #fff;
+  //  border-bottom: 1px solid lightgray;
+}
+
+.backBtn a {
+    margin-right: 18px;
+    font-size: 22px;
+}
+
+.backBtn span {
+    font-size: 18px;
+}
+
+// img {
+//     height: 300px;
+// }
+
+// .time-line {
+//     display: flex;
+//     width: 100%;
+//     justify-content: space-between;
+
+//     span {
+//         width: 30px;
+//         height: 30px;
+//         line-height: 30px;
+//         text-align: center;
+//         border: 1px solid #eee;
+//         border-radius: 50%;
+//         // .first-step {
+//         // }
+//         // .second-step {
+//         // }
+//         // .third-step {
+//         // }
+//     }
+// }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    // font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: hsl(0, 0%, 90%);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.backBtn {
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.backBtn a {
+    margin-right: 18px;
+    font-size: 22px;
+}
+
+.backBtn span {
+    font-size: 18px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.tabs .tablinks {
+    width: 50%;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    color: #FFF;
+    text-align: center;
+    opacity: .7;
+}
+
+.tabs .tablinks.waiting {
+    background: #9b1919;
+   
+}
+.waiting{margin:10px !important;}
+
+.tabs .tablinks.delivered {
+    background: #123c7a;
+}
+
+.tabs .tablinks.active {
+    opacity: 1;
+}
+
+.tabcontent {
+    // padding: 20px 0;
+    display: none;
+    /* background: #00f; */
+    margin-top: 15px;
+    /* display: grid; */
+    grid-template-columns: repeat(auto-fit, minmax(49%, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.tabcontent.active {
+    display: grid !important;
+}
+
+.tabcontent .order_item {
+    background: red;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.tabcontent .order_item .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: rgb(255, 255, 226);
+}
+
+.order_item .header p {
+    font-size: 18px;
+    color: #111;
+}
+
+.tabcontent .order_item p.status {
+    display: flex;
+    align-items: center;
+    gap: 0 7px;
+}
+#color-product{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    // background-color: red;
+    margin-left: 8px;
+}
+
+.tabcontent .order_item p.status span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: orange;
+}
+#shipped{
+    background-color:#35c3e3;
+}
+#cancelled{
+    background-color:#9b1919   
+}
+#delivered{
+    background-color:green;
+}
+
+.tabcontent .order_item .header p.date {
+    display: flex;
+    flex-direction: column;
+    color: #777;
+}
+.basiccolor{
+    color:#9b1919  ;
+}
+
+.tabcontent .order_item .progress {
+    // padding: 5px 10px;
+    // border-bottom: 1px solid #ccc;
+    background-color: #FFF;
+    padding: 30px 10px;
+    padding-bottom: 100px;
+    width: 100%;
+
+}
+
+.tabcontent .order_item .progress p {
+    margin-bottom: 30px;
+    color: #861818;
+    text-transform: capitalize;
+    font-size: 22px;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.progressbar {
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
+.progressbar li {
+    position: relative;
+    list-style: none;
+   
+    text-align: center;
+    text-transform: capitalize;
+}
+
+/* Circles */
+.progressbar li:before {
+    content: "✔";
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    background-color: lightgray;
+    color: #FFF;
+    font-size: 22px;
+    line-height: 35px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+     z-index: 2;
+}
+
+.progressbar li:after {
+    content: "";
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+     width:100%;
+    height: 4px; 
+    background: lightgray;
+    top: 20px;
+    left: -50%;
+     z-index: 1;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li.active:before {
+    background: orange;
+    content: "✔";
+    color: #FFF;
+    font-size: 22px;
+}
+
+.progressbar li.active+li:after {
+    background: orange;
+}
+
+.tabcontent .order_item .content {
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.tabcontent .order_item .content .imgBx {
+    width: 35%;
+    line-height: 0;
+}
+
+.tabcontent .order_item .content .textBx {
+    width: 70%;
+    padding: 25px 20px;
+}
+
+.tabcontent .order_item .content .imgBx img {
+    width: 100%;
+    height: auto;
+    border-right: thin solid #CCC;
+}
+
+.tabcontent .order_item .content .textBx p,
+.tabcontent .order_item .content .textBx .title {
+    margin-bottom: 10px;
+}
+
+.tabcontent .order_item .content .textBx p:last-child {
+    margin-bottom: 0;
+}
+
+.tabcontent .order_item .content .textBx .title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #123c7a;
+}
+
+.tabcontent .order_item .content .textBx .price {
+    font-size: 23px;
+    font-weight: 500;
+    color: #9b1919;
+}
+
+.tabcontent .order_item .content .textBx p:nth-child(3) {
+    font-size: 18px;
+}
+
+.tabcontent .order_item .content .textBx .ratings {
+    display: flex;
+    align-items: center;
+    gap: 0 4px;
+    color: lightgray;
+}
+
+.tabcontent .order_item .content .textBx .ratings i.active {
+    color: orange;
+}
+
+.tabcontent .order_item .buttons {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.tabcontent .order_item .buttons .button {
+    display: inline-block;
+    width: 25%;
+    height: 70px;
+    padding: 10px;
+    background-color: #123c7a;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+}
+
+.lgBtn {
+    width: 50%;
+    font-size: 20px;
+    text-transform: capitalize;
+    background-color: #35c3e3 !important;
+}
+
+
+
+
+
+
+
+
+
+
+li{
+    font-size: 16px;
+}
+/* Media Query */
+
+@media(max-width:450px) {
+    .order_item .header p {
+        font-size: 14px;
+    }
+
+
+    .progressbar li:before,
+    .progressbar li.active:before {
+        width: 20px;
+        height: 20px;
+        line-height: 22px;
+        font-size: 40px !important;
+    }
+
+    .progressbar li:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background: lightgray;
+        top: 9px;
+        z-index: 1;
+    }
+#abtn1{
+background-color: #9b1919 !important;
+color: #ffffff !important;
+border:1px solid #9b1919 !important
+}
+    .tabcontent .order_item .progress p {
+        padding-left: 5px;
+    }
+
+    .tabcontent .order_item .buttons .button {
+        font-size: 14px;
+        padding: 0 5px;
+        width:100%
+    }
+
+    .tabcontent .order_item .buttons .button .lgBtn {
+        font-size: 16px;
+    }
+}

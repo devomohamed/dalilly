@@ -1,0 +1,103 @@
+<div class="container">
+    
+    <div class="row ">
+        <div class="  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
+            <form id="contact-form" class="form mt-0"#f='ngForm' (ngSubmit)='create()' enctype="multipart/form-data"> 
+               
+          <div class='bg1 w-100 border-bottom  border-secondary' style="height: 200px;padding-top: 10px;margin-bottom: 5px;margin-top: 2px;">
+                
+            <div class="image-upload" [ngStyle]="{'background-image': 'url(' + imageSrc+ ')'}">
+                <label for="file-input">
+                    <i class="fa fa-camera fa-2x"></i>
+                </label>
+            
+                <input id="file-input" type="file" accept="image/*" (change)="selectedFile($event)"/>
+            </div>
+       
+            </div>
+           
+                <div class="form-group " >
+                    <label  *ngIf='data.category_store_name' for="exampleInputEmail1">Select Category</label>
+                  
+                    <input required id='categoryname' #categoryname='ngModel' ngModel [ngClass]='categoryname.touched&&categoryname.errors?.["required"]?"danger":""'  class="form-control" placeholder="select category" (click)='show($event)'  name='category' [(ngModel)]=data.category_store_name>
+                         
+                </div> 
+               
+                <div class="form-group">
+                    <label  class="" *ngIf='data.city_id' for="exampleInputEmail1" class=''> Select City</label>
+                    <input  required id='city' #city='ngModel' ngModel [ngClass]='city.touched&&city.errors?.["required"]?"danger":""'  class="form-control" placeholder="select city" (click)='getcity()'    name='city' [(ngModel)]=data.city_name >
+                    
+                </div>
+            
+           
+                <div class="form-group">
+                    <label for="exampleInputEmail1 " class='js-hide-label name'>Store name</label>
+                    <input type="text" required placeholder="Store name" class="form-control name" id="name" aria-describedby="emailHelp" [ngClass]='name.touched&&name.errors?.["required"]?"danger":""' #name='ngModel' [(ngModel)]=data.name name='name' (change)='displaylabel("name")' (blur)='hidelabel("name")' (click)='displaylabel("name")' (focus)='displaylabel("name")'>
+                </div>
+            
+           
+                <div class="form-group"  >
+                    <label for="exampleInputEmail1" class='js-hide-label desc'>details</label>
+                    <input required type="text" id='desc' placeholder=" detailes" class="form-control desc" [ngClass]='desc.touched&&desc.errors?.["required"]?"danger":""' #desc='ngModel' aria-describedby="emailHelp" [(ngModel)]=data.desc name='desc'  (change)='displaylabel("desc")' (blur)='hidelabel("desc")' (click)='displaylabel("desc")' (focus)='displaylabel("desc")'>
+                </div>
+            
+               
+           
+                <div class="form-group ">
+                    <label for="exampleInputEmail1" class='js-hide-label mobile' >phone</label>
+                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                        <img src='https://dalilisouq.com/{{country.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                    <input id='mobile' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number" (change)='displaylabel("mobile")' (blur)='hidelabel("mobile")' (click)='displaylabel("mobile")' (focus)='displaylabel("mobile")' placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=data.mobile name='phone'>
+                  
+               
+            </div> 
+                </div>
+                 
+                <div class="form-group"  >
+                    <label for="exampleInputEmail1" class='js-hide-label add'>details</label>
+                    <input required type="text" id='add' placeholder="Write address in detailes" class="form-control add" [ngClass]='add.touched&&add.errors?.["required"]?"danger":""' #add='ngModel' aria-describedby="emailHelp" [(ngModel)]=data.add name='desc'  (change)='displaylabel("add")' (blur)='hidelabel("add")' (click)='displaylabel("add")' (focus)='displaylabel("add")'>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" class='js-hide-label link1' for="link"> Facebook link</label>
+                    <input required [ngClass]='link1.touched&&link1.errors?.["required"]?"danger":""' type="text" placeholder="Add your facebook link" class="form-control link1 " id="link1" #link1="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.f name='link' (change)='displaylabel("link1")' (blur)='hidelabel("link1")' (click)='displaylabel("link1")' (focus)='displaylabel("link1")'>
+                    
+
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" class='js-hide-label link1' for="link"> Instgram link</label>
+                    <input required [ngClass]='link1.touched&&link1.errors?.["required"]?"danger":""' type="text" placeholder="Add your instgram link" class="form-control link1 " id="link1" #link1="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.i name='link' (change)='displaylabel("link1")' (blur)='hidelabel("link1")' (click)='displaylabel("link1")' (focus)='displaylabel("link1")'>
+                    
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label" class='js-hide-label link1' for="link"> Twitter link</label>
+                    <input required [ngClass]='link1.touched&&link1.errors?.["required"]?"danger":""' type="text" placeholder="Add your twitter link" class="form-control link1 " id="link1" #link1="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.t name='link' (change)='displaylabel("link1")' (blur)='hidelabel("link1")' (click)='displaylabel("link1")' (focus)='displaylabel("link1")'>
+                    
+
+                </div>
+           
+            
+               
+           
+            
+                <div class="form-group">
+                    <label class="form-label" class='js-hide-label link4' for="link">youtube link</label>
+                    <input required [ngClass]='link4.touched&&link4.errors?.["required"]?"danger":""' type="text" placeholder="Add your youtube link" class="form-control link4 " id="link4" #link4="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.y name='link' (change)='displaylabel("link4")' (blur)='hidelabel("link4")' (click)='displaylabel("link4")' (focus)='displaylabel("link4")'>
+                    
+
+                </div>
+                <label for="quantity"class='' >ubdate product Location</label>
+                   
+                <div id='map' style="width:100%;height:400px" class=""></div>
+
+                <div class="text-center col-md-12 d-flex justify-content-between">
+                    <a class="btn btn-primary">Reset</a>
+        <button type="submit" class="btn btn-primary" >Add</button>
+       
+        </div>
+    </form>
+</div>
+</div>
+</div>

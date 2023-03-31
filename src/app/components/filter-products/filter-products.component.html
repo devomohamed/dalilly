@@ -1,0 +1,142 @@
+<div class="searchProducts d-flex">
+  <div class="left border-right">
+    <div class="title">
+      Filter Products By
+    </div>
+    <div class="left">
+      <div class="filterItem">
+        <h3 class="filterName">Category</h3>
+        <select #catego class="custom-select" (change)="changeCat($event)">
+          <option  [selected]="catSelected == -1" value="-1">All</option>
+          <option [selected]="catSelected == cat?.id" *ngFor="let cat of categories" [value]="cat?.id">{{cat?.name}}</option>
+        </select>
+        <!-- {{catego.value}} -->
+        <hr>
+      </div>
+      <div class="filterItem" *ngIf="catSelected != -1">
+        <h3 class="filterName">SUB Category</h3>
+        <select class="custom-select" (change)="changeSub($event)">
+          <option [selected]="subSelected == -1"  value="-1">All</option>
+          <option [selected]="subSelected == sub?.id" *ngFor="let sub of subCategories" [value]="sub.id">{{sub?.name}}</option>
+        </select>
+        <hr>
+      </div>
+      <div class="filterItem" *ngIf="isSub">
+        <h3 class="filterName">SUB Sub Category</h3>
+        <select class="custom-select" (change)="changeSubSub($event)">
+          <option [selected]="subSubSelected == -1"  value="-1">All</option>
+          <option [selected]="subSubSelected == sub?.id" *ngFor="let sub of subSubCategories" [value]="sub.id">{{sub?.name}}</option>
+        </select>
+        <hr>
+      </div>
+      <div class="filterItem">
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" (change)="seller_type = 0;handleReq()">
+          <label class="custom-control-label" for="customRadio1">All</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" (change)="seller_type = 1;handleReq()">
+          <label class="custom-control-label" for="customRadio2">Users Only</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" (change)="seller_type = 2;handleReq()">
+          <label class="custom-control-label" for="customRadio3">Stores Only</label>
+        </div>
+        <hr>
+      </div>
+      <div class="filterItem" *ngFor="let prop of properties;let i = index">
+        <h3 class="filterName mb-3">{{prop?.name}}</h3>
+        <div class="properties d-flex flex-wrap">
+          <span class="m-2 p-2" (click)="checkAllInMyArr(i)">All</span>
+          <span [class.active]="status?.isSelected" class="m-2 p-2" *ngFor="let status of prop?.options" (click)="changeSelected(status?.id,i)">{{status?.name}}</span>
+        </div>
+        <hr>
+      </div>
+      <div *ngIf="sizes.length != 0" class="filterItem">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  ٍSizes
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                <div style="margin: 2rem 0;" class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" [(ngModel)]="allSizes" id="-1" (change)="SelectAllSizes()">
+                  <label class="custom-control-label" for="-1">All Sizes</label>
+                </div>
+                <div style="margin: 2rem 0;" class="custom-control custom-checkbox" *ngFor="let size of sizes;let i = index">
+                  <input [checked]="size?.isActive" type="checkbox" class="custom-control-input" id="{{size?.id}}" [value]="size?.isActive" (change)="toggleSizeSelected(i)">
+                  <label class="custom-control-label" for="{{size?.id}}">{{size?.value}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div *ngIf="colors.length != 0" class="filterItem">
+        <h3 class="filterName">Color</h3>
+        <div style="margin: 2rem 0;" class="custom-control custom-checkbox">
+          <input type="checkbox" [(ngModel)]="allColors" class="custom-control-input" id="colorsAll" (change)="selectAllColors()">
+          <label class="custom-control-label" for="colorsAll">All Colors</label>
+        </div>
+        <div class="colors d-flex flex-wrap py-2">
+          <span *ngFor="let color of colors;let i = index" [class.active]="color.isActive" [style.backgroundColor]="color?.color" (click)="checkActive(i)" class="color cursor-pointer"></span>
+        </div>
+        <hr>
+      </div>
+      <div class="filterItem">
+        <h3 class="filterName">Price</h3>
+        <form>
+          <div class="form-group">
+            <label for="formControlRange">Example Range input</label>
+            <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (userChangeEnd)="changePrice()"></ngx-slider>
+          </div>
+        </form>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div style="background-color: #e7e7e7;" class="head-products d-flex justify-content-between align-items-center py-2">
+      <div class="left-products">
+        <!-- <button (click)="changeList()" [class.active]="isGrid" class="p-2"><i class="fa fa-th-large ii rri fa-2xl"></i></button>
+        <button (click)="changeGrid()" [class.active]="!isGrid" class="p-2"><i class="fa-solid fa-list fa-2xl"></i></button> -->
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="isOnline" [(ngModel)]="isOnline" (change)="handleReq()">
+          <label class="custom-control-label" for="isOnline">Online</label>
+        </div>
+      </div>
+      <div class="right d-flex align-items-center">
+        <p class="p-3" style="width: 110px;margin: 0;">Sorted By</p>
+        <select class="custom-select p-3" [(ngModel)]="city" (change)="handleReq()">
+          <option [selected]="city == -1" value="-1">All</option>
+          <option [selected]="city == cityV?.id" *ngFor="let cityV of cities" [value]="cityV?.id">{{cityV?.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="products pt-3 d-flex flex-wrap ">
+      <div class="product" *ngFor="let product of data?.products?.data">
+        <app-product [data]="product"></app-product>
+      </div>
+      <div style="position: relative">
+        <!-- the position of the parent container must be set to relative -->
+        <!-- It is really important to set loaderId for non-master loader -->
+        <ngx-ui-loader [loaderId]="'loader-02'"></ngx-ui-loader>
+      </div>
+    </div>
+    <!-- <div class="d-flex justify-content-center align-items-center">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li [class.text-muted]="currentPage == 1" class="page-item page-link cursor-pointer" (click)="previousPage()">&laquo;</li>
+          <li [class.active]="i+1 == currentPage" class="page-item page-link cursor-pointer" *ngFor="let item of counter(data?.last_page) ;let i = index" (click)="changePage(i+1)">{{i+1}}</li>
+          <li [class.text-muted]="currentPage == data?.last_page" class="page-item page-link cursor-pointer" (click)="nextPage()">&raquo;</li>
+        </ul>
+      </nav>
+    </div> -->
+  </div>
+</div>

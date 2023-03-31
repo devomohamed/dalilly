@@ -1,0 +1,57 @@
+<div class="top">
+  <div class="user-data d-flex justify-content-between align-items-center flex-wrap mr-2">
+    <div>
+      <img class="rounded-circle" [src]="chatImage" alt="">
+    <div class="txt pl-3 my-3">
+      <div class="name">
+        Chat With {{chatName}}
+      </div>
+      <div class="status d-flex pt-2">
+        <p class="pl-3">{{chatRecently}}</p>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="product" class="product d-flex cursor-pointer" routerLink="/productdetails/{{product?.id}}">
+      <div class="image">
+        <img style="width: 50px; height: 50px;" [src]="'https://dalilisouq.com/'+product?.image" alt="">
+      </div>
+      <div class="txt ml-2">
+        <p>{{product?.name}}</p>
+        <p>{{product?.price}}$</p>
+      </div>
+    </div>
+    <div class="properities">
+      <div class="btn-group dropleft">
+        <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+        <div class="dropdown-menu">
+          <button (click)="deleteAllChats()" style="border:none;background-color: transparent;"><span class="mr-2">Delete All Chats</span><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div #scrollContainer class="middle">
+  <div [ngClass]="{'sent':userData?.id == item?.sender_id,'receve':userData?.id == item?.receiver_id}" class="message" *ngFor="let item of chat">
+    <div class="rounded">
+      <span *ngIf="userData?.id == item?.sender_id" [class.active]="item?.is_seen" class="mr-2 iconseen"><i class="fa-solid fa-check-double"></i></span> <span>{{item?.message}}</span> <img *ngIf="item?.image" style="max-width: 222px;" [src]="'https://dalilisouq.com/'+item?.image" alt="">
+      <button *ngIf="userData?.id == item?.sender_id" class="deleicon cursor-pointer" (click)="deleteMessage(item?.id)"><i class="fa-solid fa-trash fa-2x"></i></button>
+    </div>
+
+  </div>
+</div>
+<div class="bottom">
+  <form action="" class="d-flex">
+    <input #message type="text" placeholder="Your Message">
+    <div class="img position-relative">
+      <label for="image" class="cursor-pointer position-absolute"><i class="fa-solid fa-camera fa-2x"></i></label>
+      <span class=" position-absolute"><span>{{imgFile?.name}}</span></span>
+      <input id="image" class="d-none" type="file" (change)="changePhoto($event)">
+      <p class="position-absolute" [class.active]="imgFile?.name" (click)="imgFile = undefined">X</p>
+      <button (click)="sendMessage(message)"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+
+  </form>
+</div>

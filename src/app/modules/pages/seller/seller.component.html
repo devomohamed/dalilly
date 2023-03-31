@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="banner p-3">
+    <div class="socialIcons py-3">
+      <a target="_blank" href="{{userData?.facebook}}"><i class="fa-brands fa-facebook fa-2x px-1 cursor-pointer"></i></a>
+      <a href="{{userData?.instagram}}"><i class="fa-brands fa-instagram fa-2x px-1 cursor-pointer"></i></a>
+      <a href="{{userData?.twitter}}"><i class="fa-brands fa-twitter fa-2x px-1 cursor-pointer"></i></a>
+      <a href="{{userData?.google}}"><i class="fa-brands fa-youtube fa-2x px-1 cursor-pointer"></i></a>
+    </div>
+    <div class="profile-data d-flex justify-content-between  align-items-center">
+      <div class="left d-flex  align-items-center">
+        <img class="rounded-circle" [src]="'https://dalilisouq.com/'+userData?.image" alt="">
+        <div class="ml-4 txt">
+          <h2 class="name">{{userData?.name}} {{userData?.s_name}}</h2>
+          <div class="follwing-data mt-1 d-flex">
+            <p class="p-2 m-1" >{{userData?.no_followings}} Following</p>
+            <p class="p-2 m-1">{{userData?.no_follows}} Followers</p>
+            <p class="p-2 m-1">{{userData?.no_adds}} Advertising</p>
+          </div>
+          <div class="buttons d-flex mt-2">
+            <button *ngIf="userProfileData?.id != id" class="btn btn-dark mx-1" (click)="followAndUnFollow()">{{userData?.is_follow ? "Un Follow" : "follow"}}</button>
+            <button *ngIf="userProfileData?.id != id" class="btn btn-dark mx-1" (click)="getChat()">Chat</button>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <i class="fa-solid fa-share-nodes fa-lg px-2 cursor-pointer"></i>
+      </div>
+    </div>
+  </div>
+  <div class="bar-filter d-flex justify-content-between align-items-center">
+    <div class="search">
+      <form action="">
+        <input type="search" placeholder="Search In Your Ads" #keyword (keyup)="searchProducts(keyword.value)">
+        <button (click)="searchProducts(keyword.value)"><i class="fa-solid fa-magnifying-glass  fa-2xl"></i></button>
+      </form>
+    </div>
+    <div class="view">
+      <button class="p-2"><i class="fa fa-th-large ii rri fa-2xl"></i></button>
+      <button class="p-2"><i class="fa-solid fa-list fa-2xl"></i></button>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4" *ngFor="let product of products">
+      <app-product [data]="product"></app-product>
+    </div>
+  </div>
+</div>

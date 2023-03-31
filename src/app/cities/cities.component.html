@@ -1,0 +1,13 @@
+<div >
+    <div class='card-header header '>
+        <a  routerLink='/home/me/profile/my-profile/add_product/data'><i class="fa fa-arrow-left mr-3"></i>Select city</a>
+        
+    </div>
+    <div class="row card-body" >
+        <div class='me card-header col-md-6 header rounded d-flex justify-content-between align-items-center' *ngFor='let city of cities ;let i=index' >
+           
+            <a (click)='getregion(city.id,city.regions.length,city.name)'  class='d-flex h3'>{{city.name}} </a>  
+        </div>
+    </div>
+    </div>
+    

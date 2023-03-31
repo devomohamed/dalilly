@@ -1,0 +1,410 @@
+<div class="mt-0 container-fluid my-5 fontsize">
+    <div class="row justify-content-center ">
+        <div class="col-md-12">
+            <div class="card  ">
+                <!-- <div class="row p-2 mt-3 justify-content-between mx-sm-2">
+                    <div class="col">
+                        <p class="text-muted space mb-0 shop"> Shop No.78618K</p>
+                        <p class="text-muted space mb-0 shop">Store Locator</p>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-start ">
+                            <div class="col">
+                                <img class="irc_mi img-fluid cursor-pointer " src="https://i.imgur.com/jFQo2lD.png"  width="70" height="70" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <img class="irc_mi img-fluid bell" src="https://i.imgur.com/uSHMClk.jpg" width="30" height="30"  >
+                    </div>
+                </div> -->
+                <div class="row  mx-auto justify-content-center text-center">
+                    <div class="col-12 mt-3 ">
+                        <nav aria-label="breadcrumb" class="second ">
+                            <ol class="breadcrumb indigo lighten-6 first  ">
+                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " routerLink='/all-ads'><span class="mr-md-3 mr-1">BACK TO SHOPPING</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                                  </ol>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="row justify-content-around">
+                    <div class="col-md-5">
+                        <div class="card border-0">
+                            <div class="card-header pb-0">
+                                <h2 class="card-title space mt-4">Checkout</h2>
+
+                                <hr class="my-0">
+                            </div>
+                            <div class="card-body">
+                                <!-- <div class="row justify-content-between">
+                                    <div class="col-auto mt-0"><p><b>BBBootstrap Team Vasant Vihar  110020 New Delhi India</b></p></div>
+                                    <div class="col-auto"><p><b>BBBootstrap@gmail.com</b> </p></div>
+                                </div> -->
+                                <div class="form ">
+                                    <div class="col "><p class="text-muted ">Select PAYMENT Method</p>
+                                    </div>
+                                    <div class="form-check checkbox checkbox-circle">
+                                        <input (click)='getpay("cash")' checked class="form-check-input"  type="radio" name="cash" id="cash">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                         Cash on Deliver
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input (click)='getpay("online")'  class="form-check-input" type="radio" name="cash" id="method" >
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                         Payment Method
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="cash" id="bank" >
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                        Internal Tranfer
+                                        </label>
+                                      </div>
+                                      <!-- address -->
+                                      <div class="col mt-4"><p class="text-muted ">Select Address</p>
+                                      </div>
+                                      <div class="form-check  ">
+                                          <div class="d-flex  my-3 justify-content-between bg-light" *ngFor='let addr of  addresses;let i=index'>
+                                        <label class="form-check-label" >
+                                           <div class="font-weight-bold">{{addr.name}}</div>
+                                           <div>{{addr.address}}</div>
+                                        </label>
+                                        <div>
+                                        <div class=" my-2 d-flex align-content-end   border rounded-circle p-1"style="border:1px solid rgb(100, 28, 28);">
+                                          <input (change)='getaddress(addr.id)' type="radio" name="address" id={{addr.id}} [checked]='addr.is_default==1||i==0' value={{addr.id}}>
+                                        </div>
+                                        <div class="d-flex align-content-end ">
+                                          <a routerLink='edit/address/{{addr}}'><i  class="fa fa-pen rounded-circle border p-2 text-white" style="font-size: 10px;background-color: rgb(100, 28, 28);"></i>
+                                          </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                        </div>
+                                      <!-- end address -->
+                                      <div  class="col d-flex  my-5 justify-content-start " style="cursor: pointer;" routerLink="/address">
+
+                                        <i id='plusicon' class="fa fa-plus mx-2" style="color: rgb(100, 28, 28);"></i><div class="mx-2" style="color: rgb(12, 12, 63);">Add new address</div>
+                                        </div>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">NAME ON CARD</label>
+                                    <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="BBBootstrap Team">
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">CARD NUMBER</label>
+                                    <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
+                                </div>
+                                <div class="row no-gutters">
+                                    <div class="col-sm-6 pr-sm-2">
+                                        <div class="form-group">
+                                            <label for="NAME" class="small text-muted mb-1">VALID THROUGH</label>
+                                            <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="06/21">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="NAME" class="small text-muted mb-1">CVC CODE</label>
+                                            <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="183">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-md-5">
+                                    <div class="col">
+                                        <button type="button" name="" id="" class="btn  btn-lg btn-block ">PURCHASE $37 SEK</button>
+                                    </div>
+                                </div>     -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0 " >
+                            <div class="card-header card-2">
+                                <p class="card-text text-muted mt-md-4  mb-2 space">YOUR ORDER  </p>
+                                <hr class="my-2">
+                            </div>
+
+                            <div class=" pt-0">
+
+                                <div class="  bg-light justify-content-between" *ngFor='let product of stores_calc'>
+                                    <div class='   pt-4' style="background-color: rgb(255, 248, 248);">
+                                    <div class="d-flex justify-content-between">
+                                        <h3 class="d-flex justify-content-start align-items-center"> <i class="fas fa-store-alt   mx-3"></i>{{product.name}}</h3>
+                                       </div>
+                                       <div class="d-flex justify-content-between mx-1 pb-4" style="font-size:14px">
+
+                                        <span class="text-dark" >
+                                            <i class="fas fa-shipping-fast  ml-3 " ></i>
+                                            Delivery fees :{{product.delivery_price}} EGP
+                                        </span>
+                                            <span class="text-dark mr-2" *ngIf='deliver_fast==1'>
+                                                <i class="fas fa-tachometer-alt " style="color: rgb(110, 41, 41);"></i>
+
+                                                Delivery Fast :{{product.fast_delivery}} EGP</span>
+                                    </div>
+
+
+
+
+                                    </div>
+                                     <div class="card-body shadow-lg mx-3 my-2 border rounded px-2 bg-white justify-content-between" *ngFor='let p of product.products'>
+                                     <div class="col-md-12 d-flex justify-content-between">
+                                         <div class="media flex-column flex-sm-row">
+                                             <img class=" img-fluid mr-2" src="https://dalilisouq.com/{{p.image}}" style="width: 62px;height: 64px;">
+                                             <div class="media-body  my-auto">
+                                                 <div class=" ">
+                                                     <div class="">
+                                                         <p class="mb-0">
+                                                             <b>{{p.name}}</b>
+                                                         </p>
+                                                         <!-- <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">{{p.quantity}}</p></div>
+                                                         <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>${{p.price}} SEK</b></p></div>
+                                                      -->
+                                                         <div class=" mt-2 text-muted d-flex justify-content-between">
+
+                                                         <p style="height: 20px; width: 20px;" class="mr-5 bg-light border mx-3 d-flex justify-content-center align-items-center p-3  rounded-circle"  >{{p.size_id}}</p>
+                                                            <p style="height: 17px; width: 20px;" class=" mr-5  rounded-circle"  [style.background]="p.color_id" ></p>
+                                                            <p class="mr-5">Quantity :{{p.quantity}}</p>
+                                                            <p>{{p.price}} EGP</p>
+
+                                                         </div>
+                                                         <div (click)='showpopup(p.cart_id)' *ngIf='product.delivery_error!=""' style="cursor: pointer;font-size: 16px;" class="text-danger ">
+
+                                                            <span>{{product.delivery_error}} <i class="fa fa-times  p-1 rounded-circle" style="color: rgb(170, 36, 36);"></i></span>
+                                                        </div>
+
+
+
+                                                     </div>
+                                                 </div>
+
+                                         </div>
+                                     </div>
+
+                                    </div>
+                             </div>
+                         </div>
+                                <div class="  bg-light justify-content-between" *ngFor='let product of regions_cala'>
+                                   <div class=' ' style="background-color: rgb(255, 248, 248);">
+                                    <div >
+                                      <h3 class="d-flex justify-content-start  align-items-center pt-4"> <i class="fas fa-store-alt   mx-3"></i>{{product.name}}</h3>
+                                      </div>
+                                      <div class="d-flex justify-content-between mx-1 pb-3" style="font-size: 14px
+                                      ;">
+
+                                        <span class="text-dark" >
+                                            <i class="fas fa-shipping-fast  ml-3 " ></i>
+                                            Delivery fees :{{product.delivery_price}} EGP
+                                        </span>
+                                            <span class="text-dark mr-2" *ngIf='deliver_fast==1'>
+                                                <i class="fas fa-tachometer-alt " style="color: rgb(110, 41, 41);"></i>
+
+                                                Delivery Fast :{{product.fast_delivery}} EGP</span>
+                                    </div>
+                                   </div>
+                                    <div class="card-body shadow-lg mx-3 my-2 border rounded px-2 bg-white justify-content-between" *ngFor='let p of product.products'>
+                                    <div class="col-md-12 d-flex justify-content-between">
+                                        <div class="media flex-column flex-sm-row">
+                                            <img *ngIf='p.image!="undefined"' class=" img-fluid mr-2" src="https://dalilisouq.com/{{p.image}}" style="width: 62px;height: 64px;">
+                                            <img *ngIf='p.image=="undefined"' class=" img-fluid mr-2" src="assets/images/admin.jpg" style="width: 62px;height: 64px;">
+
+                                            <div class="media-body  my-auto">
+                                                <div class=" ">
+                                                    <div class="">
+                                                        <p class="mb-0">
+                                                            <b>{{p.name}}</b>
+                                                        </p>
+                                                        <!-- <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">{{p.quantity}}</p></div>
+                                                        <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>${{p.price}} SEK</b></p></div>
+                                                     -->
+                                                        <div class=" mt-2 text-muted d-flex justify-content-between">
+
+                                                        <p style="height: 20px; width: 20px;" class="mr-5 bg-light border mx-3 d-flex justify-content-center align-items-center p-3  rounded-circle"  >{{p.size_id}}</p>
+                                                           <p style="height: 17px; width: 20px;" class=" mr-5  rounded-circle"  [style.background]="p.color_id" ></p>
+                                                           <p class="mr-5">Quantity :{{p.quantity}}</p>
+                                                           <p>{{p.price}} EGP</p>
+
+                                                        </div>
+                                                        <div (click)='showpopup(p.cart_id)' *ngIf='p.delivery_error!=""' style="cursor: pointer;font-size: 16px;" class="text-danger ">
+
+                                                            <span>{{p.delivery_error}} <i class="fa fa-times  p-1 rounded-circle" style="color: rgb(170, 36, 36);"></i></span></div>
+
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                    </div>
+
+                                   </div>
+                            </div>
+                        </div>
+                                <hr class="my-2">
+                                <div class="row ">
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><p class="mb-1"><b>Items</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.quantites}} Item</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><p class="mb-1"><b>Subtotal</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total}}EGP </b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>Delivery fees</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_delivery}} EGP</b></p></div>
+                                        </div>
+                                        <div *ngIf='fees?.total_fast' class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>fast_delivery</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_fast}}EGP </b></p></div>
+                                        </div>
+
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>total reward points</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1" style="color: rgb(61, 216, 61) !important;">{{fees?.total_points}} points</p></div>
+                                        </div>
+                                        <div class="row justify-content-between" *ngIf=' copoun&&fees.coupon_value!=0'>
+                                            <div class="col"><p class="mb-1"><b>Discount Copoun</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1" >{{fees?.coupon_value}} EGP</p></div>
+                                        </div>
+                                        <div class="row justify-content-between" *ngIf='fees.redeem_value'>
+                                            <div class="col"><p class="mb-1"><b>redeem_value</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.redeem_value}} points</b></p></div>
+                                        </div>
+
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>tax</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.vat_amount}} EGP</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>Services</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.service_amount}} EGP</b></p></div>
+                                        </div>
+                                        <div class=" mx-3 row justify-content-between align-items-center bg-light text-dark">
+                                            <div class="col-4 d-flex "><p ><b>Total</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p  class="mb-1 text-danger">
+                                                <b >{{fees.total_price}} EGP</b>
+
+                                                   </p></div>
+                                                </div>
+
+                                        <hr class="my-0">
+                                    </div>
+                                </div>
+                                <div class="row  mt-4 text-center">
+                                    <div class="col-md-12 p-3 " style="background-color: rgb(228, 226, 226);"><i class="fas fa-shipping-fast  mx-3" style="color: rgb(170, 36, 36);"></i>you will recieve your order {{fees.fast_days}} .</div>
+                                </div>
+                                <div class="row mb-1 mt-4  text-center">
+
+                                     <div class=" col-md-12 py-3 d-flex align-items-center justify-content-center" style="background-color: rgb(228, 226, 226);">
+                                        <label class="switch form-label mx-3" style="font-size: 12px;">
+                                            <input (click)='getstatus($event)'  type="checkbox" class="mx-3 form-control" >
+                                            <span class="slider round"></span>
+                                          </label>
+                                         <label class="form-check-label"  for="flexSwitchCheckDefault">fast deliver costs (pay extra cost -{{fees.total_fast}} EGP)</label>
+                                      </div>
+                                </div>
+                                <div class="row mb-1 mt-4 text-center " *ngIf='deliver_fast==1'>
+                                    <div class="col-md-12">
+                                        <label class="sr-only" for="inlineFormInputGroup"></label>
+                                        <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
+
+                                          <input  type="date" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Username">
+                                          <div class="input-group-prepend">
+                                            <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Select Date</div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="col-md-12">
+                                       <div class="d-flex flex-wrap" style="font-size: 10px;">
+                                           <span (click)=gettime(time,i) id=t{{i}} *ngFor='let time of cart_data.times;let i=index' class="p-2 px-4 m-2 " style="cursor: pointer;;border:1px solid rgb(170, 36, 36);color: rgb(170, 36, 36);border-radius: 20px;">{{time?.from_time}} : {{time?.to_time}}</span>
+                                       </div>
+                                      </div>
+                                </div>
+                                <div class="row mb-1 mt-4 text-center " >
+                                    <div class="col-md-12">
+                                        <label class="sr-only" for="inlineFormInputGroup"></label>
+                                        <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
+
+                                          <input [readonly]='toggletocancel2==1' type="text" class=" form-control border-0 shadow-lg rounded border border-danger"  id="validationCustom02" value="Otto" required placeholder="Enter Copoun" name="copoun" [(ngModel)]='copoun'>
+                                          <div class="input-group-prepend">
+                                            <div *ngIf='toggletocancel2==0' (click)='applycopoun()' class="input-group-text" style="cursor: pointer;;font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Copoun</div>
+                                            <div *ngIf='toggletocancel2==1' (click)='cancelcopoun()' class="input-group-text" style="cursor: pointer;;font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Cancel Copoun</div>
+
+                                        </div>
+                                           </div>
+                                           <div *ngIf='message&&message!=""'><small class="text-danger">{{message}}</small></div>
+                                           <div *ngIf='validmess2&&validmess2!=""'><small class="text-danger">{{validmess2}}</small></div>
+
+                                      </div>
+                                      </div>
+                                      <div class="row   text-center">
+                                        <div class="col-md-12 p-3 d-flex justify-content-start" style="font-size: 13px;" >
+                                           *note: Each {{fees.reward_points}} points will deduct<span class="text-danger"></span> 20 EGP .</div>
+                                           <div class="col-md-12 p-3 d-flex justify-content-start" style="font-size: 13px;" >
+                                           Current Balance: <span style="color: rgb(170, 36, 36);">{{fees.balance_points}} points</span></div>
+
+
+                                        </div>
+                                        <form class=" needs-validation" novalidate>
+                                    <div class="row mb-1 mt-4 text-center " >
+                                        <div class="col-md-12">
+                                            <label class="sr-only " for=" validationCustom03" ></label>
+                                            <div class="input-group mb-2 has-validation"  style="border-radius: 20px 30px;">
+
+                                              <input [readonly]='toggletocancel==1' type="text" style="border:solid " class=" form-control border-0 shadow-lg rounded" id="validationCustom03" required placeholder="Enter redeemed points" name='points' [(ngModel)]=points>
+                                              <div class="input-group-prepend">
+                                                <div  *ngIf='toggletocancel==0' (click)='applyreedem()' class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;cursor: pointer;">Apply Redeem</div>
+                                                <div *ngIf='toggletocancel==1' (click)='cancelreedem()' class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;cursor: pointer;">Cancel Redeem</div>
+
+                                            </div>
+                                            </div>
+                                            <div *ngIf='validmess&&validmess!=""'><small class="text-danger">{{validmess}}</small></div>
+
+                                          </div>
+                                          </div>
+                                          <div class="row mb-1 mt-4 text-center " >
+                                            <div class="col-md-12">
+                                                <label class="sr-only" for="inlineFormInputGroup"></label>
+                                                <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
+
+                                                  <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Add comment to driver" name='comment' [(ngModel)]=user_comment>
+
+                                                </div>
+                                              </div>
+                                              </div>
+                                              <div class="row mb-1 mt-4 text-left " >
+                                                <div class="col-md-12">
+                                                    <p class='text-danger ' style="font-size: small;">{{fees.note}} .</p>
+                                                 </div>
+                                                 </div>
+                                                </form>
+                                <div class="row mb-1 mt-4 ">
+                                    <div class="col-md-7 col-lg-6 mx-auto"><button (click)=' checkout() ' type="button" class="btn btn-block btn-outline-primary btn-lg">continue order</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div id="myModal" class="modal">
+
+
+    <div class="modal-content">
+      <span (click)='close()' class="close">&times;</span>
+      <p>"Do y want to remove this product?</p>
+      <div class='row d-flex justify-content-between m-3'>
+          <a class="rouned btn btn-primary" (click)='close()'>cancel</a>
+          <a (click)='delete()' class="rounded btn btn-primary"   >delete</a>
+      </div>
+    </div>
+
+  </div> -->

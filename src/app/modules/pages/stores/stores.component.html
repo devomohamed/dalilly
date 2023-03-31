@@ -1,0 +1,14 @@
+<div class="">
+  <app-banner [name]="'Stores'"></app-banner>
+  <div class="search  mb-3  d-flex justify-content-center">
+    <form action="" class="d-flex position-relative">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" (focus)="dataSearchActive = true" (blur)="searchNotActive()" (keyup)="search($event)">
+      <button class="btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <div [class.active]="dataSearchActive" class="data-search active">
+        <div *ngFor="let item of dataSearch" class="item">{{item.name}}</div>
+      </div>
+    </form>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+

@@ -1,0 +1,130 @@
+<div class="container">
+    
+    <div class="row ">
+        <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
+            <form id="contact-form" class="form"#f='ngForm' (ngSubmit)='create()' > 
+                <div class="form-group mt-3">      
+                  <label class="form-label" class='js-hide-label select1'>Select account</label>
+                 <select  id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
+                        <option  class="text-dark " [selected]='data.store_name=="my account"' >My account</option>
+                        <option class="text-dark" id={{store.id}} [selected]='data.store_name==store.name'
+                         *ngFor='let store of stores' >{{store?.name}}</option>
+                    </select>
+                   
+                </div>
+          
+           
+                <div class="form-group" *ngIf='flag ||data.category_name.length==0'>
+                    <label class="form-label"  class='js-hide-label' for="exampleInputEmail1">Select Category</label>
+                  
+                    <input class="form-control" placeholder="select category" (click)='show($event)'   name='category'>
+                         
+                </div> 
+                <div *ngIf='flag==false' [(ngModel)]=flag class="myborder col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-3 form">
+                    <div class='form-group' *ngFor='let name of data?.category_name ;let i=index'>
+                        <label class="" *ngIf='i==0'> Category </label>
+                        <label class="" *ngIf='i!=0'>Sub Category</label>
+                        <a (click)='changecategory(data.category_ids[i])'> <div class="form-control d-flex justify-content-between"><span>{{name}}</span><i class='fa fa-angle-right'></i> </div>
+                        </a>
+                    </div>
+                    <div class='form-group' *ngFor='let prop of data.properties'>
+                        <label>{{prop.name}}</label>
+                         <span *ngFor='let option of prop.options'>
+                            <a (click)='changepro()'>  <div class="form-control d-flex justify-content-between" *ngIf='option.selected!=0'><span>{{option.name}}</span><i class='fa fa-angle-right'></i> </div></a>
+                         </span>
+                        
+                     </div>
+                      <div *ngIf='data.colors' class='form-group'>
+                         
+                         <table class='table table-bordered w-100'>
+                         <thead class=''>
+                             <tr  class='text-center'>
+                                 <th scope="col">color</th>
+                                 <th scope="col">quantity</th>
+                                 <th scope="col">size</th>
+                                 <th scope="col">remove</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr *ngFor='let dataofcolor of data?.colors' class='text-center'>
+                                
+                                 <td class="d-flex align-items-center justify-content-center "><span class='circle p-2 px-3' [style.background]='dataofcolor.color'></span></td>
+                                 <td>{{dataofcolor.quantity}}</td>
+                                 <td>{{dataofcolor.size}}</td>
+                                 <td (click)='deleteitem(dataofcolor)'><i class='fa fa-times  rounded-circle basiccolor p-2 del'></i></td>
+                            
+                             </tr> 
+                            </tbody>
+                             <tfoot>
+                             <tr>
+                            
+                             <td colspan="4" class='text-center'><a id='link1' (click)='navme()'>Add More / Edit color &Quantity</a></td>
+                             </tr>
+                            </tfoot>
+                        
+                     </table>
+                 </div>
+                 
+             </div>
+           
+                <div class="form-group">
+                    <label  class="form-label" for="exampleInputEmail1" class='js-hide-label'>city</label>
+                    <select required id='2' class='form-control ' >
+                        <option  selected >select city</option>
+                        <option (click)='changestyle("2")' *ngFor='let city of cities ;let i=index'> {{city.name}}</option>
+                    </select>
+                </div>
+            
+           
+                <div class="form-group">
+                    <label for="exampleInputEmail1 " class='js-hide-label title1'>product title</label>
+                    <input type="text" required placeholder="product title" class="form-control title1" id="title" aria-describedby="emailHelp" [ngClass]='title.touched&&title.errors?.["required"]?"danger":""' #title='ngModel' [(ngModel)]=data.title name='title' (change)='displaylabel("title1")' (blur)='hidelabel("title1")' (click)='displaylabel("title1")' (focus)='displaylabel("title1")'>
+                </div>
+            
+           
+                <div class="form-group"  >
+                    <label for="exampleInputEmail1" class='js-hide-label desc'>product details</label>
+                    <input required type="text" id='desc' placeholder="product detailes" class="form-control desc" [ngClass]='desc.touched&&desc.errors?.["required"]?"danger":""' #desc='ngModel' aria-describedby="emailHelp" [(ngModel)]=data.desc name='desc'  (change)='displaylabel("desc")' (blur)='hidelabel("desc")' (click)='displaylabel("desc")' (focus)='displaylabel("desc")'>
+                </div>
+            
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class='js-hide-label price' >product price</label>
+                    <input type="number" required id='price' [ngClass]='price.touched&&price.errors?.["required"]?"danger":""' #price='ngModel' placeholder="price" class="form-control price" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]=data.price name='price' (change)='displaylabel("price")' (blur)='hidelabel("price")' (click)='displaylabel("price")' (focus)='displaylabel("price")'>
+                </div>
+           
+                <div class="form-group ">
+                    <label for="exampleInputEmail1" class='js-hide-label mobile' >phone</label>
+                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                        <img src='https://dalilisouq.com/{{country.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                    <input id='mobile' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number" (change)='displaylabel("mobile")' (blur)='hidelabel("mobile")' (click)='displaylabel("mobile")' (focus)='displaylabel("mobile")' placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=data.mobile name='phone'>
+                  
+               
+            </div> 
+                </div>
+           
+            
+                <div class="form-group" *ngIf='flag ||data.colors?.length==0'>
+                    <label for="quantity"class='js-hide-label quantity' >product quantity</label>
+                    <input id='quantity' type='number' required [ngClass]='quantity.touched&&quantity.errors?.["required"]?"danger":""' #quantity="ngModel"  placeholder="Product quantity" class="form-control quantity"  aria-describedby="emailHelp" [(ngModel)]=data.quantity name='quantity' (change)='displaylabel("mobile")' (blur)='hidelabel("quantity")' (click)='displaylabel("quantity")' (focus)='displaylabel("quantity")'>
+                </div>
+           
+            
+                <div class="form-group">
+                    <label class="form-label" class='js-hide-label link' for="link">youtube link</label>
+                    <input required [ngClass]='link.touched&&link.errors?.["required"]?"danger":""' type="text" placeholder=" youtube link" class="form-control link " id="link" #link="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.link name='link' (change)='displaylabel("link")' (blur)='hidelabel("link")' (click)='displaylabel("link")' (focus)='displaylabel("link")'>
+                    
+
+                </div>
+                <label for="quantity"class='' >ubdate product Location</label>
+                   
+                <div id='map'  style="width:100%;height:400px" class=""></div>
+
+                <div class="text-center col-md-12 d-flex justify-content-between">
+                    <a class="btn btn-primary">Reset</a>
+        <button type="submit" class="btn btn-primary" [disabled]='f.invalid'>Add</button>
+       
+        </div>
+    </form>
+</div>
+</div>
+</div>

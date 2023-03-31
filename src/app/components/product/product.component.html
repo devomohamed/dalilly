@@ -1,0 +1,28 @@
+<div class="product">
+  <div class="top position-relative d-flex justify-content-center">
+    <img [src]="'https://dalilisouq.com/'+data?.image" alt="">
+    <span class="sales position-absolute">27% OFF</span>
+    <a *ngIf="data?.profile?.id" routerLink="/sellerprofile/{{data?.profile?.id}}" class="seller position-absolute">
+      <img style="width: 30px;height:30px;border-radius:50%" [src]="'https://dalilisouq.com/'+data?.profile?.image" alt="">
+    </a>
+    <a *ngIf="!data?.profile?.id" routerLink="/sellerprofile/{{data?.seller?.id}}" class="seller position-absolute">
+      <img style="width: 30px;height:30px;border-radius:50%" [src]="'https://dalilisouq.com/'+data?.profile?.image" alt="">
+    </a>
+    <a routerLink="/productdetails/{{data?.id}}" class="details position-absolute">Quick View</a>
+  </div>
+  <div class="bottom d-flex justify-content-between">
+    <div class="left">
+      <h6 class="category text-muted cursor-pointer">{{data?.category?.name}}</h6>
+      <h5 class="card-title cursor-pointer">{{data?.name}}</h5>
+      <div class="icons text-warning my-1">
+        <ng-container *ngFor="let r of [1,2,3,4,5] | slice:0:data?.rate">
+          <i class="fa-solid fa-star"></i>
+        </ng-container>
+      </div>
+    </div>
+    <div class="right d-flex">
+      <i class="fa-regular fa-heart fa-lg cursor-pointer"></i>
+      <h6 class="product-price h4 mt-3"><span class="newPrice">{{data?.price}}$</span></h6>
+    </div>
+  </div>
+</div>

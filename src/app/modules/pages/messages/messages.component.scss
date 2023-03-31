@@ -1,0 +1,154 @@
+.messagesAll{
+  height: calc(100vh - 61px);
+  .users-left{
+    height: 100%;
+
+    // background-color: #3b3e49;
+    // background-color: #8c1434;
+    border-right: 1px solid #000;
+    width: 30%;
+    .top{
+      padding: 10px;
+      form {
+        width: 100%;
+        padding: 10px 0;
+        margin: 0;
+        input{
+          width: 80%;
+        }
+        button{
+          width: 20%;
+          height: 24px;
+          background-color: transparent !important;
+          color: #fff;
+          border: 1px solid #fff !important;
+        }
+      }
+    }
+    .users{
+      height: calc(100vh - 61px);
+      overflow-x: auto;
+      .user{
+        padding: 0 10px !important;
+        transition: .3s;
+        &:hover,&.active{
+          background-color: #5e616a;
+          border-radius: 10px;
+          .txt{
+            color: white;
+          }
+        }
+        img{
+          width: 60px;
+          height:60px;
+          border:3px solid #ddd
+        }
+        .txt{
+          color: white;
+          color: #000;
+          .name{
+            font-size: 2rem;
+          }
+          .status{
+            span{
+              width: 10px;
+              height: 10px;
+              display: block;
+              &.online{
+                background-color: #58b666;
+              }
+              &.offline{
+                background-color: #ff725d;
+              }
+            }
+            p{
+
+            }
+          }
+        }
+      }
+    }
+  }
+  .chat{
+    width: 70%;
+    height: calc(100vh - 61px);
+
+  }
+}
+
+.icon.active{
+  color: #58b666;
+}
+
+@media (max-width: 576px) {
+  .container{
+    .users-left{
+      width: 40%;
+      .top{
+        form {
+          input{
+          }
+          button{
+          }
+        }
+      }
+      .users{
+        .user{
+          flex-wrap: wrap;
+          &:hover,&.active{
+          }
+          img{
+          }
+          .txt{
+            .name{
+            }
+            .status{
+              span{
+                &.online{
+                }
+                &.offline{
+                }
+              }
+              p{
+
+              }
+            }
+          }
+        }
+      }
+    }
+    .chat{
+      width: 60%;
+      .top{
+        .user-data{
+          img{
+          }
+          .txt{
+            .name{
+            }
+            .status{
+            }
+          }
+        }
+      }
+      .middle{
+        .message{
+          }
+          &.sent{
+            p{
+            }
+          }
+          &.receve{
+          }
+        }
+      }
+      .bottom{
+        form{
+          input{
+          }
+          button{
+          }
+        }
+      }
+    }
+  }

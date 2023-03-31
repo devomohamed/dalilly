@@ -1,0 +1,100 @@
+<!-- <app-profile-cover></app-profile-cover> -->
+
+<div class="container me">
+    <div class='d-flex justify-content-start  links'>
+       <a (click)="redirect(profile_data.Response.facebook)"> <i  class="fab fa-facebook-f m-1  " style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+        <a (click)="redirect(profile_data.Response.instagram)">  <i class="fab fa-instagram m-1" style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+        <a (click)="redirect(profile_data.Response.twitter)"> <i class="fab fa-twitter m-1" style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+        <a (click)="redirect(profile_data.Response.youtube)">  <i class="fab fa-youtube m-1" style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+    </div>
+    <div class="me-tabs">
+        <ul>
+            <li class=''> <a routerLink="profile/my-profile" [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{exact: false}"><i class="fa fa-user"></i> Profile</a> </li>
+            <li> <a routerLink="my-advertising" [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{exact: false}"><i class="fa fa-ad"></i> my advertising</a> </li>
+            <li> <a routerLink="my-wallet" [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{exact: false}"> <i class="fas fa-wallet"></i> my wallet</a> </li>
+            <li> <a routerLink="settings" [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{exact: false}"><i class="fas fa-cogs"></i> settings</a> </li>
+        </ul>
+    </div>
+    <div class="me-header">
+        <div class="me-header-img">
+            <img src="https://dalilisouq.com/{{profile_data?.Response.image}}" />
+        </div>
+        <div class="me-header-info">
+            <div class="me-header-info-header">
+                <h3 class='m-0'>{{profile_data?.Response.name}} {{profile_data?.Response.s_name}}</h3>
+                <div class='d-flex'>
+                    <div class="dropdown">
+                        <i class="fa fa-share-alt" style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                        </i>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-left: -100px;">
+                            <a class="dropdown-item"><i class="fas fa-share-alt"></i> share my profile</a>
+                            <a class="dropdown-item"><i class="fas fa-share-alt"></i>share application</a>
+                            <a class="dropdown-item"><i class="fas fa-phone"></i> contact us</a>
+                            <a class="dropdown-item"><i class="fa fa-info-circle"></i> about us</a>
+                        </div>
+                    </div>
+                    <!-- <button class="btn btn-sm btn-light"><i class="fa fa-cog"></i> setting</button> -->
+                </div>
+                
+            </div>
+            <div class="d-flex justify-content-between w-100">
+                <div class="counts-row">
+                    <div class="box">
+                        <span class="count">{{profile_data?.Response.follwing_count}}</span>
+                        <span class="title">followign</span>
+                    </div>
+                    <div class="box">
+                        <span class="count">{{profile_data?.Response.follwers_count}}</span>
+                        <span class="title">followers</span>
+                    </div>
+                    <div class="box">
+                        <span class="count">{{profile_data?.Response.no_adds}}</span>
+                        <span class="title">advertising</span>
+                    </div>
+                    <!-- <div class="box">
+                        <span class="count">{{profile_data?.Response.wallet}}</span>
+                        <span class="title">points</span>
+                    </div> -->
+                </div>
+                <!-- <div class='wallet'>
+                    <div>
+                        <h4>current balance</h4>
+                        <p>4234 <small>points</small></p>
+                        <button class="btn btn-sm btn-primary">buy balance</button>
+                    </div>
+                    <div>
+                        <h4>reward points system</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">10 points <span>100 egp</span> </li>
+                            <li class="list-group-item">200 points <span>1000 egp</span> </li>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+
+<!-- <div class="container">
+</div> -->
+<!-- <ul class='d-flex justify-content-center profile-tabs mt-4'>
+        <li><a routerLink="/me" (click)="changeUserTab(UserTabs.Profile)"  class='{{userTab === UserTabs.Profile ? "active": "" }}'>Profile</a></li>
+        <li><a routerLink="/me" (click)="changeUserTab(UserTabs.Ads)"  class='{{userTab === UserTabs.Ads ? "active": "" }}'>my ads</a></li>
+        <li><a routerLink="/me" (click)="changeUserTab(UserTabs.Wallet)"  class='{{userTab === UserTabs.Wallet ? "active": "" }}'>my wallet</a></li>
+        <li><a routerLink="/me" (click)="changeUserTab(UserTabs.Settings)"  class='{{userTab === UserTabs.Settings ? "active": "" }}'>settings</a></li>
+    </ul> -->
+
+<section class="container">
+    
+    <router-outlet></router-outlet>
+</section>

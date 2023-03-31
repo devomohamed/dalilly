@@ -1,0 +1,257 @@
+// @import '~bootstrap/scss/bootstrap';
+
+/* You can add global styles to this file, and also import other style files */
+
+@import "node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme";
+
+
+/* Importing Bootstrap SCSS file. */
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import "swiper/scss/grid";
+
+
+.pagination{
+  .page-link.active{
+    background-color: #e9ecef !important;
+  }
+  .page-link.disabled{
+
+  }
+}
+
+
+body {
+    // background-color: #f1f1f1;
+    position: relative;
+}
+
+* {
+    text-transform: capitalize !important;
+    // padding: 0;
+    // margin: 0;
+    // box-sizing: border-box;
+    // border: 1px solid #000;
+}
+
+::-webkit-scrollbar-track
+    {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar
+    {
+      width: .6em;
+      background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-thumb
+    {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+      background-color: #8c1434;
+    }
+
+.remove-after {
+    &::after {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.card {
+    .card-header,
+    .card-body {
+        min-height: auto;
+        &::after {
+            display: none !important;
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+    }
+}
+
+button {
+    text-transform: capitalize;
+    &.btn {
+        text-transform: capitalize;
+    }
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+.text-centter{
+  text-align: center;
+}
+.btn-primary {
+    border-color: #8c1434;
+    background-color: #8c1434;
+    color: #fff;
+    box-shadow: none;
+    &:hover {
+        border-color: #163e73;
+        background-color: #163e73;
+    }
+}
+
+.card-body h4 {
+    margin-bottom: 0.7rem;
+    color: #2c2c2c;
+}
+
+.dropdown-menu {
+    .dropdown-item {
+        font-size: 1.5rem;
+        position: relative;
+        &:hover {
+           // background: #163e73;
+            cursor: pointer;
+            color: #fff !important;
+        }
+        i {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+.dropdown>i {
+    width: 35px;
+    height: 35px;
+    background: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+// .fa.fa-heart{
+// color: #8c1434;
+// }
+.badge {
+    font-size: 80%;
+}
+
+.badge.bg-danger {
+    color: #fff;
+}
+
+a {
+    text-decoration: none !important;
+    color: #000;
+}
+
+.following-card {
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+
+.text-primary {
+    color: #8c1434 !important;
+}
+
+.filter-view-way {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .input {
+        width: 50%;
+        input {
+            width: 100%;
+            margin-bottom: 0;
+        }
+    }
+    .view-way {
+        display: flex;
+        i {
+            width: 35px;
+            height: 35px;
+            font-size: 2rem;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            background: #8c1434;
+            color: #fff;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+    }
+}
+
+a.btn-link,
+a,
+.btn-link {
+    color: #8c1434;
+    text-decoration: none;
+    &:hover {
+        color: #163e73;
+    }
+}
+
+.bg-primary {
+    background-color: #8c1434 !important;
+}
+
+.form-check {
+    margin-left: 1.25rem;
+    label {
+        margin-left: 0.5rem;
+    }
+}
+
+
+
+
+
+@media (max-width: 575px){
+  .sticky-wrapper {
+    display: block;
+  }
+  .header-bottom {
+    display: block;
+  }
+}
+
+
+.data-search{
+  top: 44px;
+  left: 50%;
+  position: absolute;
+  width: 100%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  .item{
+      display: none;
+      padding: 1.7rem;
+      transition: .3s;
+      cursor: pointer;
+  }
+  &.active{
+      .item{
+          display: block;
+          &:hover{
+              padding-left: 3rem;
+            }
+      }
+  }
+}

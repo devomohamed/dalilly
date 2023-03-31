@@ -1,0 +1,143 @@
+
+<section class="orders" >
+<div class="backBtn">
+    <a ><i class="fa fa-arrow-left"></i></a>
+    <span>My orders</span>
+</div>
+<div class="tabs">
+    <button class="tablinks waiting " [ngClass]='is_complete==0?"activebtn":"nonactivebtn"'   (click)='waitingorders()' >Waiting</button>
+    <button class="tablinks delivered" [ngClass]='is_complete==0?"nonactivebtn":"activebtn"'  (click)='deliveredorders()' >Delivered</button>
+</div>
+<div class='row d-flex justify-content-around' >
+    <div class='col-md-5 ' *ngFor='let order of orders'>
+        <!-- <div class="card">
+            <div class="order_item">
+            <div class="card-header d-flex justify-content-between align-items-center">
+
+
+                <div class="header">
+                    <p class="status">
+                        <span></span>
+                        Pending
+                    </p>
+                    <p class="order_number">Order (101)</p>
+                    <p class="date">
+                        <span>26-05-2022</span>
+                        <span>03:55 PM</span>
+                    </p>
+                </div>
+
+
+            <div class="card-body">
+                <div class="time-line">
+                    <span class="first-step">1</span>
+                    <span class="second-step">2</span>
+                    <span class="third-step">3</span>
+                </div>
+            </div>
+            <img src="" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> -->
+          <div id="Waiting" class="tabcontent active " >
+          <div class="order_item">
+            <!-- <div class=" header card-header d-flex justify-content-between align-items-center">
+            -->
+                <div class=" header">
+                <p class="status" *ngIf='order.status==0'>
+                    <span></span>
+                   Pending
+                </p>
+                <p class="status" *ngIf='order.status==1'>
+                    <span id='shipped'></span>
+                    shipped
+                </p>
+                <p class="status" *ngIf='order.status==2'>
+                    <span id='delivered'></span>
+                    delivered
+                </p>
+                <p class="status" *ngIf='order.status==3'>
+                    <span></span>
+                    out of stock
+                </p>
+                <p class="status" *ngIf='order.status==4'>
+                    <span ></span>
+                    rejected
+                </p>
+                <p class="status" *ngIf='order.status==5'>
+                    <span></span>
+                    returned to seller
+                </p>
+                <p class="status" *ngIf='order.status==6'>
+                    <span id='cancelled'></span>
+                    cancelled
+                </p>
+                <p class="order_number">Order ({{order.id}})</p>
+                <p class="date">
+                    <span>{{order.created_at}}</span>
+
+                </p>
+            </div>
+
+            <div class="progress ">
+                <div class='row '>
+                    <p class='col-md-12 ' >Online Payment</p>
+
+                <div class='col-md-12 '>
+                <ul class=" progressbar d-flex justify-content-evenly" *ngIf='order.status!=6'>
+                    <li class="
+                     col-md-4 " [ngClass]="order.status==0||order.status==1||order.status==2?'active':''">Processing</li>
+                    <li class=" col-md-4" [ngClass]="order.status==1||order.status==2?'active':''">shipped</li>
+                    <li class='col-md-4' [ngClass]="order.status==2?'active':''">delivered</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+            <div class="content ">
+                <div class="imgBx">
+                    <img src="https://dalilisouq.com/{{order.product?.image}}" >
+                </div>
+                <div class="textBx">
+                    <h3 class="title" style=" word-wrap: break-word;">{{order.product?.name}}</h3>
+                    <p class="price">{{order.product?.price}} EGP</p>
+                    <p>Rate this product:</p>
+                    <p class="ratings">
+                        <i class="fa fa-star " ></i>
+                        <i class="fa fa-star  "></i>
+                        <i class="fa fa-star  "></i>
+                        <i class="fa fa-star  "></i>
+                        <i class="fa fa-star"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="buttons row text-center">
+                <a class="smBtn button col-md-4 text-center" routerLink='/me/profile/viewcode/{{order.id}}'>View code</a>
+                <a class="lgBtn button col-md-4" routerLink='/me/profile/order/{{order.id}}'>View Order Details</a>
+                <a class="smBtn button col-md-4">Report order</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+<div id='load' class="fa-3x " style="display: none;">
+    <i class="fas fa-spinner fa-spin" ></i>
+    </div>
+<nav aria-label="Page navigation example" class="m-3">
+    <ul class="pagination">
+      <!-- <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li> -->
+      <li class="page-item" *ngFor='let mypage of pages'><a [ngClass]='mypage==page?"activepage":""' class="page-link " (click)='paginate(mypage)'>{{mypage}}</a></li>
+       <li class="page-item">
+        <!-- <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li> -->
+    </ul>
+  </nav>

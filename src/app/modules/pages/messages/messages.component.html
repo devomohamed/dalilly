@@ -1,0 +1,54 @@
+<div class="messagesAll d-flex">
+  <div class="users-left">
+    <div class="users px-2">
+      <div routerLinkActive="router-link-active"  *ngFor="let user of data" (click)="redirectToChat(user)" class="user d-flex align-items-center cursor-pointer py-2 p-1 my-3">
+        <img *ngIf="user?.is_admin == 1" class="rounded-circle" src="../../../assets/images/logo.png" alt="">
+        <img *ngIf="user?.store_id != 0 && user?.is_admin == 0 && user?.store_id != null" class="rounded-circle" [src]="'https://dalilisouq.com/'+user?.store?.image" alt="">
+        <img *ngIf="user?.store_id == 0 && user?.is_admin == 0 && user?.receiver?.id != userData?.id" class="rounded-circle" [src]="'https://dalilisouq.com/'+user?.receiver?.image" alt="">
+        <img *ngIf="user?.is_admin == 0 && user?.store_id == null && user?.receiver?.id != userData?.id" class="rounded-circle" [src]="'https://dalilisouq.com/'+user?.receiver?.image" alt="">
+        <img *ngIf="user?.store_id == 0 && user?.is_admin == 0 && user?.receiver?.id == userData?.id" class="rounded-circle" [src]="'https://dalilisouq.com/'+user?.sender?.image" alt="">
+        <img *ngIf="user?.is_admin == 0 && user?.store_id == null && user?.receiver?.id == userData?.id" class="rounded-circle" [src]="'https://dalilisouq.com/'+user?.sender?.image" alt="">
+        <div class="txt pl-3 my-3">
+          <div class="name" *ngIf="user?.is_admin == 1">
+              Dalili Souq Admin
+          </div>
+          <div class="name" *ngIf="user?.store_id != 0 && user?.is_admin == 0 && user?.store_id != null">
+              {{user?.store?.name}}
+          </div>
+          <div class="name" *ngIf="user?.store_id == 0 && user?.is_admin == 0 && user?.receiver?.id != userData?.id">
+            {{user?.receiver?.name}}
+          </div>
+          <div class="name" *ngIf="user?.is_admin == 0 && user?.store_id == null && user?.receiver?.id != userData?.id">
+              {{user?.receiver?.name}}
+          </div>
+          <div class="name" *ngIf="user?.store_id == 0 && user?.is_admin == 0 && user?.receiver?.id == userData?.id">
+            {{user?.sender?.name}}
+          </div>
+          <div class="name" *ngIf="user?.is_admin == 0 && user?.store_id == null && user?.receiver?.id == userData?.id">
+              {{user?.sender?.name}}
+          </div>
+          <div class="status d-flex flex-column pt-2">
+            <!-- <span class="online rounded-circle"></span>
+            <p class="pl-3">Online</p> -->
+            <div class="d-flex">
+              <div [class.active]="user?.is_seen" class="icon">
+                <i class="fa-solid fa-check-double"></i>
+              </div>
+              <div class="txt ml-2">{{user?.message}}</div>
+            </div>
+
+            <div *ngIf="user?.product_id" class="product d-flex align-items-center mt-2">
+              <img class="rounded-circle" style="width: 20px;height: 20px;" [src]="'https://dalilisouq.com/'+user?.product?.image" alt="">
+              <p class="ml-2">{{user?.product?.name}}</p>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="page-content page-container" id="page-content">
+    <div class="">
+        <div class="row container d-flex justify-content-center">
+<div class="col-md-12">
+            <div class="card card-bordered">
+              <div class="card-header">
+                <h4 class="card-title" ><strong>Report Product <span style="color: rgb(112, 32, 32);">(#{{product_id}} )</span></strong></h4>
+               
+              </div>
+              <div class="media media-chat" >
+                <img class="avatar" src="https://dalilisouq.com/{{product?.image}}" alt="...">
+                <div class="">
+                  <p>{{product?.name}}</p>
+                  <p style="color: rgb(48, 206, 114);">{{product?.price}} EGP</p>
+                   </div>
+              </div>
+              <hr style="margin-top: 0;margin-bottom: 3px;">
+
+                <div class="card-body" (scroll)='geth()'>
+                 
+                 <div *ngFor='let report of allreports'>
+                    
+                    <div *ngIf='report.admin_id==1' class="media media-chat">
+                        <img class="avatar" src="/assets/images/admin.jpg" alt="..." style="width: 36px;height:36px" >
+                        <div class="media-body">
+                          <p class="text-dark bg-light">{{report.desc}}</p>
+                            <p class="meta"><time datetime="2018">23:58</time>
+                               
+                            </p>
+                        </div>
+                      </div>
+                <div *ngIf='report.admin_id==0'  class=" media media-chat media-chat-reverse" >
+                    <img class="avatar" src="https://dalilisouq.com/{{product.user.image}}" alt="..." style="width: 36px;height:36px">
+                
+                    <div class="media-body" >
+                    <p>{{report.desc}}
+                        
+                    </p>
+                    <p class="meta"><time datetime="2018">23:58</time>
+                        <!-- <i [ngClass]='report.is_admin_seen==0?"text-secondary":"text-white"' class="fa fa-check text-dark"></i>   -->
+                      </p>
+                  
+                  </div>
+                
+                </div>
+        
+        </div>
+               
+
+              <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div></div></div>
+
+              <div class="publisher bt-1 border-light ">
+                <!-- <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="..."> -->
+                <input class="publisher-input col-md-11" type="text" placeholder="Add Your comment" [(ngModel)]=mess>
+             
+                 <a (click)='report()' *ngIf='mess&&mess!=""' class="publisher-btn text-info"  data-abc="true"><i id='send' class="fa fa-paper-plane"></i></a>
+              </div>
+
+             </div>
+          </div>
+          </div>
+          </div>
+          </div>
